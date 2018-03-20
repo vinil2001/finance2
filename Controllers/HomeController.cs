@@ -8,11 +8,9 @@ using Finance.Models;
 
 namespace Finance.Controllers
 {
-<<<<<<< HEAD
-    [Authorize]
-=======
+
     //[Authorize]  // Temporary commented. To do: Uncomment !!!
->>>>>>> paymentSatementOnly
+
     public class HomeController : Controller
     {
 

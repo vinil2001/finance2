@@ -311,11 +311,6 @@
     <Compile Include="Migrations\201802151914581_CounterpartySearchUnionModel.Designer.cs">
       <DependentUpon>201802151914581_CounterpartySearchUnionModel.cs</DependentUpon>
     </Compile>
-<<<<<<< HEAD
-    <Compile Include="Migrations\201803201415560_update20.03.18.cs" />
-    <Compile Include="Migrations\201803201415560_update20.03.18.Designer.cs">
-      <DependentUpon>201803201415560_update20.03.18.cs</DependentUpon>
-=======
     <Compile Include="Migrations\201803171305284_UserRoles.cs" />
     <Compile Include="Migrations\201803171305284_UserRoles.Designer.cs">
       <DependentUpon>201803171305284_UserRoles.cs</DependentUpon>
@@ -327,7 +322,6 @@
     <Compile Include="Migrations\201803201657201_PaymentStatement_changeDBCntext.cs" />
     <Compile Include="Migrations\201803201657201_PaymentStatement_changeDBCntext.Designer.cs">
       <DependentUpon>201803201657201_PaymentStatement_changeDBCntext.cs</DependentUpon>
->>>>>>> paymentSatementOnly
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
@@ -380,6 +374,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -576,10 +571,6 @@
     <EmbeddedResource Include="Migrations\201802151914581_CounterpartySearchUnionModel.resx">
       <DependentUpon>201802151914581_CounterpartySearchUnionModel.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="Migrations\201803201415560_update20.03.18.resx">
-      <DependentUpon>201803201415560_update20.03.18.cs</DependentUpon>
-=======
     <EmbeddedResource Include="Migrations\201803171305284_UserRoles.resx">
       <DependentUpon>201803171305284_UserRoles.cs</DependentUpon>
     </EmbeddedResource>
@@ -588,7 +579,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803201657201_PaymentStatement_changeDBCntext.resx">
       <DependentUpon>201803201657201_PaymentStatement_changeDBCntext.cs</DependentUpon>
->>>>>>> paymentSatementOnly
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -629,10 +619,4 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target> -->
 </Project>

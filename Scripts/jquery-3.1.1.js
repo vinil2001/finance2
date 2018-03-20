@@ -1010,7 +1010,7 @@ function createButtonPseudo( type ) {
  */
 function createDisabledPseudo( disabled ) {
 
-	// Known :disabled false positives: fieldset[disabled] > legend:nth-of-type(n+2) :can-disable
+	// Known :disabled false positives: fieldset.disabled > legend:nth-of-type(n+2) :can-disable
 	return function( elem ) {
 
 		// Only certain elements can match :enabled or :disabled
@@ -8439,7 +8439,7 @@ jQuery.fn.extend( {
 		.filter( function() {
 			var type = this.type;
 
-			// Use .is( ":disabled" ) so that fieldset[disabled] works
+			// Use .is( ":disabled" ) so that fieldset.disabled works
 			return this.name && !jQuery( this ).is( ":disabled" ) &&
 				rsubmittable.test( this.nodeName ) && !rsubmitterTypes.test( type ) &&
 				( this.checked || !rcheckableType.test( type ) );
