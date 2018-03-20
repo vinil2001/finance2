@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Finance.Models.Counterparty>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    @Html.Partial("MenuBar", "Counterparty")
+    <h2>Контрагенты</h2>
+    <br />
+    <div>
+        <div class="col-md-2">
+            <button type="button" onclick="location.href='@Url.Action("Create")'">
+                Создать новый
+            </button>
+        </div>
+        <div class="col-md-4">
+            <input id="CounterpartySearch" type="text" placeholder="Поиск по названию" @*onchange="CounterpartySearchFunc()"*@ />
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+
+    <br /><br />
+    <table id="indexCounterpartiesTable" class="table">
+        <tr>
+            <th width="5%">
+                Форма собств.
+            </th>
+            <th width="30%">
+                Название
+            </th>
+            <th width="10%">
+                Код плательщика НДС
+            </th>
+            <th width="10%">
+                Номер тел.
+            </th>
+            <th width="20%">
+                Контакт.лицо
+            </th>
+            <th width="15%">
+                Комментарий
+            </th>
+            <th width="10%">
+                Операции
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwneshipType.OwnershipTypeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodVATPayer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactPerson)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    <a href='@Url.Action("Edit", new { id = item.Id })'>
+                        <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                    </a>
+                    <a href='@Url.Action("Details", new { id = item.Id })'>
+                        <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+                    </a>
+                    <a href='@Url.Action("Delete", new { id = item.Id })'>
+                        <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+<script>
+    $("#referenceBooks").addClass('active');
+    if ("@ViewBag.SameNameInBothDb")
+        alert("@ViewBag.SameNameInBothDb");
+</script>
+<script type="text/javascript">
+    var ajaxRequest = null;
+    $("#CounterpartySearch").on('input', function () {
+        if (ajaxRequest != null)
+            ajaxRequest.abort();
+        var request = $("#CounterpartySearch").val();
+        ajaxRequest = $.ajax({
+            url: '/Counterparties/CounterpartySearch/',
+            data: {
+                request: request, 
+            },
+            success: function (data) 
+            {
+                $("#indexCounterpartiesTable").html(data);
+            }
+        })
+    });
+
+</script>

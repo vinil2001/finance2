@@ -1,0 +1,91 @@
+﻿@model Finance.Models.PaymentStatement
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PaymentStatement</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KltId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KltId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceSumma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceSumma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvoiceChecked)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceChecked)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentApproved)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentApproved)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaymentDone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaymentDone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DocumentUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DocumentUrl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

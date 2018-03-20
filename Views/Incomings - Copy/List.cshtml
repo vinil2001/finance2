@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Finance.Models.Incoming>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Приходы</h2>
+<br />
+<button>
+    @Html.ActionLink("Создать новый", "Index")
+</button>
+<br /><br />
+<table class="table">
+    <tr>
+        <th>
+            <p>Плательщик</p>
+        </th>
+        <th>
+            <p>Сумма</p>
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.IncomingData)*@
+            <p>Дата платежа</p>
+        </th>
+        <th>
+            <p>Номер счета</p>
+        </th>
+        <th>
+            <p>Дата счета</p>
+        </th>
+        <th>
+            <p>Банк</p>
+        </th>
+        <th>
+            <p>Категория</p>
+        </th>
+        <th>
+            <p>Способ оплаты</p>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payer.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomingSum)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomingData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceData)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bank.BankName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IncomingCategorys.Count)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WayOfPayments.Count)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,108 @@
+﻿@model Finance.Models.CounterpartySearchUnionModel
+
+<br /><br />
+      <table id="indexCounterpartiesTable" class="table">
+          <tr>
+              <th width="5%">
+                  Форма собств.
+              </th>
+              <th width="30%">
+                  Название
+              </th>
+              <th width="10%">
+                  Код плательщика НДС
+              </th>
+              <th width="10%">
+                  Номер тел.
+              </th>
+              <th width="20%">
+                  Контакт.лицо
+              </th>
+              <th width="15%">
+                  Комментарий
+              </th>
+              <th width="10%">
+                  Операции
+              </th>
+          </tr>
+    @if (Model.FinanceCounterparties.Count() != 0)
+    {
+        foreach (var i in Model.FinanceCounterparties)
+        {
+          <tr>
+              <td>
+                  @Html.DisplayFor(modelItem => i.OwneshipType.OwnershipTypeName)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => i.Name)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => i.CodVATPayer)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => i.PhoneNumber)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => i.ContactPerson)
+              </td>
+              <td>
+                  @Html.DisplayFor(modelItem => i.Comment)
+              </td>
+              <td>
+                  <a href='@Url.Action("Edit", new { id = i.Id })'>
+                      <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                  </a>
+                  <a href='@Url.Action("Details", new { id = i.Id })'>
+                      <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+                  </a>
+                  <a href='@Url.Action("Delete", new { id = i.Id })'>
+                      <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                  </a>
+              </td>
+          </tr>
+              }
+          }
+     @if (Model.OrestCounterparties.Count() != 0)
+     {
+        foreach (var i in Model.OrestCounterparties)
+        {
+            <tr>
+                <td>
+                    <img src="~/pictures/OrestDb.png" />
+                    @*@Html.DisplayFor(modelItem => i.OwneshipTypeId)*@
+                </td>
+                 <td style="background-color:#FFBB3E">
+                  @Html.DisplayFor(modelItem => i.name)
+                </td>
+                <td>
+                  @Html.DisplayFor(modelItem => i.knds)
+                </td>
+                 <td>
+                  @Html.DisplayFor(modelItem => i.telf)
+                </td>
+                <td>
+                  @*@Html.DisplayFor(modelItem => i.ContactPerson)*@
+                 </td>
+                <td>
+                  @Html.DisplayFor(modelItem => i.comt)
+                </td>
+                <td>
+                    <a href='@Url.Action("ImportFromOrestToFinance", new { orestCounterpartyId = i.id })'>
+                        <img style="padding: 0 18px 0 18px" src="~/pictures/database-model-synchronization50.png" alt="Импортировать из Орест в Finance" title="Импортировать из Орест в Finance" />
+                    </a>
+                  @*<a href='@Url.Action("Edit", new { id = i.id })'>
+                      <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                  </a>*@
+                  @*<a href='@Url.Action("Details", new { id = i.id })'>
+                      <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+                  </a>*@
+                  @*<a href='@Url.Action("Delete", new { id = i.id })'>
+                      <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                  </a>*@
+                </td>
+              </tr>
+              }
+          }
+
+      </table>
+

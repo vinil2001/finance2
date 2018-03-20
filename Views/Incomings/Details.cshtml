@@ -1,0 +1,85 @@
+﻿@model Finance.Models.Incoming
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Детальная информация</h2>
+
+<div>
+    <h4>Приход</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Плательщик
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Counterparty.Name)
+        </dd>
+
+        <dt>
+            Сумма
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomingSum)
+        </dd>
+
+        <dt>
+            Дата платежа
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomingData)
+        </dd>
+
+        <dt>
+            № Счета
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNumber)
+        </dd>
+
+        <dt>
+            Дата счета
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceData)
+        </dd>
+
+        <dt>
+            Банк
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank.BankName)
+        </dd>
+
+        <dt>
+            Категория
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomingCategory.IncomingCategoryName)
+        </dd>
+
+        <dt>
+            Способ оплаты
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WayOfPayment.WayOfPaymentName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href='@Url.Action("Edit", new { id = Model.Id })'>
+        <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+    </a>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id })*@
+</p>

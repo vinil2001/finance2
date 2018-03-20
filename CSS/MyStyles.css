@@ -1,0 +1,100 @@
+﻿.padding-left_0 {
+    padding-left: 0px;
+    padding-right: 0px;
+
+}
+.label-width {
+    width: 150px;
+}
+.form-style-9{
+    max-width: 450px;
+    background: #FAFAFA;
+    padding: 30px;
+    margin: 50px auto;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid #305A72;
+}
+.form-style{
+    background: #FAFAFA;
+    padding: 30px;
+    margin: auto;
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid #305A72;
+}
+input{
+    width: 200px;
+    height: 30px;
+    border-radius: 4px;
+}
+.DropDownListWidth{
+    width: 200px;
+    height: 30px;
+    border-radius: 4px;
+}
+.PlusButton{
+    height: 30px;
+    width: 30px;
+    padding: 5px;
+    border-radius: 4px;
+}
+#divParrentBackground{
+    position: fixed; 
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left:0;
+    background-color: Black;
+    filter: alpha(opacity=60);
+    opacity: 0.6;
+    display:none;
+}
+.rememberMe{
+    width: 20px;
+    height: 20px;
+    margin: 10px 1px 10px 1px;
+}
+#modalWindow {
+    position: fixed;
+    background-color: rgba(0,0,0,0.6);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+}
+#windowContent{
+    position:fixed;
+    width: 60%;
+    background-color: white;
+    margin:auto auto;
+    top: 10%;
+    bottom: 10%;
+    left: 20%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 90%;
+
+}
+#closeButton{
+    position:absolute;
+    top:-1%;
+    right: 1%;
+    font-size: 30px;
+    cursor:pointer;
+    font-family:cursive;
+}
+#WinLoader{
+    position:absolute;
+    top:50%;
+    right: -50%;
+    z-index: 4;
+}
+/*.CounterpartyFieldIndexTable {
+    width: 20%;
+    word-wrap: break-word;
+}*/

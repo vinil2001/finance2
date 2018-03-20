@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    @*<script src="//code.jquery.com/jquery-1.10.2.js"></script>*@
+    @*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@  
+    <link href="~/CSS/MyStyles.css" rel="stylesheet" />
+    <link href="~/CSS/MenuBar.css" rel="stylesheet" />
+    <script src="~/Scripts/myPopUp.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @*<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+</head>
+<body class="form-style">
+    @*@Html.Partial("MenuBar")*@
+    @RenderBody()
+    <div>
+        <hr />
+        <footer>
+            <p>Дата, время: @DateTime.Now</p>
+        </footer>
+    </div>
+
+    <div id="modalWindow" style="display:none">
+        <div id="WinLoader" style="width: 100%; height: 100%; display: none">
+            <img style="margin: auto auto;" src="~/pictures/Loader.gif" />
+        </div>  
+        <div id="windowContent" class="form-style">
+        </div>
+        
+    </div>
+
+    <script>
+        $("#modalWindow, #closeButton").mousedown(function (e) {
+            $("#modalWindow").fadeOut();
+            e.stopPropagation();
+        })
+        $("#windowContent").mousedown(function (e) {
+            e.stopPropagation();
+        })
+        
+        function showModalWindow(Link) {
+            alert(Link);
+            $("#modalWindow").fadeIn();
+            $("#WinLoader").show();
+            $("#windowContent").html('');
+            $.ajax({
+                url: Link,
+               
+                success: function (result) {
+                    $("#WinLoader").hide();
+                    $("#windowContent").html("<div id=\"closeButton\">x</div>"+result);
+                },
+                error: function () {
+                    alert("showModalWindow error");
+                }
+            })
+            //alert(Link);
+        }
+        $(function () {
+            $("#windowContent, #closeButton").draggable();
+        });
+       
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="orestModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'bls' in the table 'def.orest.klt' was excluded.-->
+        <EntityType Name="klt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="grp" Type="usmallint" />
+          <Property Name="idp" Type="uint" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="okpo" Type="varchar" MaxLength="255" />
+          <Property Name="knds" Type="varchar" MaxLength="255" />
+          <Property Name="snds" Type="varchar" MaxLength="255" />
+          <Property Name="chet" Type="varchar" MaxLength="255" />
+          <Property Name="bank" Type="varchar" MaxLength="255" />
+          <Property Name="mfob" Type="varchar" MaxLength="255" />
+          <Property Name="adft" Type="varchar" MaxLength="255" />
+          <Property Name="adur" Type="varchar" MaxLength="255" />
+          <Property Name="telf" Type="varchar" MaxLength="255" />
+          <Property Name="cont" Type="varchar" MaxLength="255" />
+          <Property Name="comt" Type="text" />
+          <Property Name="per" Type="usmallint" />
+          <Property Name="full" Type="varchar" MaxLength="255" />
+          <Property Name="nds" Type="usmallint" />
+          <Property Name="sld" Type="double" />
+          <Property Name="dsld" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="orestModelStoreContainer">
+          <EntitySet Name="klt" EntityType="Self.klt" Schema="orest" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="orestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="orestEntities" annotation:LazyLoadingEnabled="true" >
+          <EntitySet Name="klt" EntityType="orestModel.klt" />
+        </EntityContainer>
+        <EntityType Name="klt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="grp" Type="Int32" />
+          <Property Name="idp" Type="Int64" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="okpo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="knds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="snds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="chet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="bank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mfob" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="adft" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="adur" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="telf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cont" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="per" Type="Int32" />
+          <Property Name="full" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nds" Type="Int32" />
+          <Property Name="sld" Type="Double" />
+          <Property Name="dsld" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="orestModelStoreContainer" CdmEntityContainer="orestEntities" >
+          <EntitySetMapping Name="klt">
+            <EntityTypeMapping TypeName="orestModel.klt">
+              <MappingFragment StoreEntitySet="klt">
+                <ScalarProperty Name="dsld" ColumnName="dsld" />
+                <ScalarProperty Name="sld" ColumnName="sld" />
+                <ScalarProperty Name="nds" ColumnName="nds" />
+                <ScalarProperty Name="full" ColumnName="full" />
+                <ScalarProperty Name="per" ColumnName="per" />
+                <ScalarProperty Name="comt" ColumnName="comt" />
+                <ScalarProperty Name="cont" ColumnName="cont" />
+                <ScalarProperty Name="telf" ColumnName="telf" />
+                <ScalarProperty Name="adur" ColumnName="adur" />
+                <ScalarProperty Name="adft" ColumnName="adft" />
+                <ScalarProperty Name="mfob" ColumnName="mfob" />
+                <ScalarProperty Name="bank" ColumnName="bank" />
+                <ScalarProperty Name="chet" ColumnName="chet" />
+                <ScalarProperty Name="snds" ColumnName="snds" />
+                <ScalarProperty Name="knds" ColumnName="knds" />
+                <ScalarProperty Name="okpo" ColumnName="okpo" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="idp" ColumnName="idp" />
+                <ScalarProperty Name="grp" ColumnName="grp" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

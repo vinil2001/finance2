@@ -1,0 +1,47 @@
+﻿
+<div id='cssmenu' style="z-index:1;">
+    <ul>
+        <li id="mainPage"><a href='~/Home/Index'><span>Главная</span></a></li>
+        <li id="referenceBooks" class='has-sub'>
+            <a href='#'><span>Справочники</span></a>
+            <ul>
+                <li @*class='has-sub'*@>
+                    <a href='~/Counterparties/Index'><span>Контрагенты</span></a>
+                    <ul>
+                        <li><a href='#'><span>Удаленные в архив</span></a></li>
+                        @*<li class='last'><a href='#'><span>Получатели</span></a></li>*@
+                    </ul>
+                </li>
+                <li @*class='has-sub'*@>
+                    <a href='#'><span>Банки</span></a>
+                    @*<ul>
+                <li><a href='#'><span></span></a></li>
+                <li class='last'><a href='#'><span>Sub Product</span></a></li>
+            </ul>*@
+                </li>
+                <li>
+                    <a href='#'><span>Формы собственности</span></a>
+                </li>
+                <li>
+                    <a href='#'><span>Формы оплаты</span></a>
+                </li>
+                <li>
+                    <a href='#'><span>Категории</span></a>
+                </li>
+                <li>
+                    <a href='#'><span>Статьи/Типы</span></a>
+                </li>
+            </ul>
+        </li>
+        @*<li><a href=#><span>Синхронизировать</span></a></li> @*~/Counterparties/Import*@
+        <li class='last'><a href='#'><span>Платежная ведомость</span></a></li>
+
+        @*<li ><a href='#'><span></span></a></li>*@
+
+        <li style="padding-left:30%; color:#fafafa">
+            <a href="~/Account/LogOff">Выход</a>
+        </li>
+    </ul>
+</div>
+
+

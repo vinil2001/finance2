@@ -1,0 +1,86 @@
+﻿@model Finance.Models.Counterparty
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы уверенны что хотите удалить @Model.OwneshipType.OwnershipTypeName @Model.Name ?</h3>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div>
+    <hr />
+    <table class="table">
+        <tr>
+            <td>Форма собственности</td>
+            <td>@Html.DisplayFor(model => model.OwneshipType.OwnershipTypeName)</td>
+        </tr>
+        <tr>
+            <td><p>Название</p></td>
+            <td><p>@Html.DisplayFor(model => model.Name)</p></td>
+        </tr>
+        <tr>
+            <td><p>Название полностью</p></td>
+            <td><p>@Html.DisplayFor(model => model.FullName)</p></td>
+        </tr>
+        <tr>
+            <td><p>Плательщик НДС</p></td>
+            <td><p>@Html.DisplayFor(model => model.VATPayer)</p></td>
+        </tr>
+        <tr>
+            <td><p>ИНН</p></td>
+            <td><p>@Html.DisplayFor(model => model.CodVATPayer)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер свидетельсва плательщика НДС</p></td>
+            <td><p>@Html.DisplayFor(model => model.VATCertificateNumber)</p></td>
+        </tr>
+        <tr>
+            <td><p>Банк</p></td>
+            <td><p>@Html.DisplayFor(model => model.BankName)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер счета</p></td>
+            <td><p>@Html.DisplayFor(model => model.AccountNumber)</p></td>
+        </tr>
+        <tr>
+            <td><p>МФО</p></td>
+            <td><p>@Html.DisplayFor(model => model.BankMFO)</p></td>
+        </tr>
+        <tr>
+            <td><p>ЄДРПОУ</p></td>
+            <td><p>@Html.DisplayFor(model => model.EDRPO)</p></td>
+        </tr>
+        <tr>
+            <td><p>Юр.Адрес</p></td>
+            <td><p>@Html.DisplayFor(model => model.LegalAdress)</p></td>
+        </tr>
+        <tr>
+            <td><p>Физ.Адрес</p></td>
+            <td><p>@Html.DisplayFor(model => model.ActualAddress)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер тел.</p></td>
+            <td><p>@Html.DisplayFor(model => model.PhoneNumber)</p></td>
+        </tr>
+        <tr>
+            <td><p>Контактное лицо</p></td>
+            <td><p>@Html.DisplayFor(model => model.ContactPerson)</p></td>
+        </tr>
+        <tr>
+            <td><p>Комментарий</p></td>
+            <td><p>@Html.DisplayFor(model => model.Comment)</p></td>
+        </tr>
+    </table>
+    <div class="form-actions no-color">
+        <input type="submit" value="Удалить" class="btn btn-default" />
+        @*<button type="submit">
+            @Html.ActionLink("Удалить", "Delete")
+        </button>*@
+    </div>
+</div>
+
+}

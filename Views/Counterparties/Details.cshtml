@@ -1,0 +1,84 @@
+﻿@model Finance.Models.Counterparty
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("MenuBar", "Counterparty")
+
+<h2>Детальная информация</h2>
+
+<div>
+    <h4>Контрагент</h4>
+
+    <table class="table">
+        <tr>
+            <td>Форма собственности</td>
+            <td>@Html.DisplayFor(model => model.OwneshipType.OwnershipTypeName)</td>
+        </tr>
+        <tr>
+            <td><p>Название</p></td>
+            <td><p>@Html.DisplayFor(model => model.Name)</p></td>
+        </tr>
+        <tr>
+            <td><p>Название полностью</p></td>
+            <td><p>@Html.DisplayFor(model => model.FullName)</p></td>
+        </tr>
+        <tr>
+            <td><p>Плательщик НДС</p></td>
+            <td><p>@Html.DisplayFor(model => model.VATPayer)</p></td>
+        </tr>
+        <tr>
+            <td><p>ИНН</p></td>
+            <td><p>@Html.DisplayFor(model => model.CodVATPayer)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер свидетельсва плательщика НДС</p></td>
+            <td><p>@Html.DisplayFor(model => model.VATCertificateNumber)</p></td>
+        </tr>
+        <tr>
+            <td><p>Банк</p></td>
+            <td><p>@Html.DisplayFor(model => model.BankName)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер счета</p></td>
+            <td><p>@Html.DisplayFor(model => model.AccountNumber)</p></td>
+        </tr>
+        <tr>
+            <td><p>МФО</p></td>
+            <td><p>@Html.DisplayFor(model => model.BankMFO)</p></td>
+        </tr>
+        <tr>
+            <td><p>ЄДРПОУ</p></td>
+            <td><p>@Html.DisplayFor(model => model.EDRPO)</p></td>
+        </tr>
+        <tr>
+            <td><p>Юр.Адрес</p></td>
+            <td><p>@Html.DisplayFor(model => model.LegalAdress)</p></td>
+        </tr>
+        <tr>
+            <td><p>Физ.Адрес</p></td>
+            <td><p>@Html.DisplayFor(model => model.ActualAddress)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер тел.</p></td>
+            <td><p>@Html.DisplayFor(model => model.PhoneNumber)</p></td>
+        </tr>
+        <tr>
+            <td><p>Контактное лицо</p></td>
+            <td><p>@Html.DisplayFor(model => model.ContactPerson)</p></td>
+        </tr>
+        <tr>
+            <td><p>Комментарий</p></td>
+            <td><p>@Html.DisplayFor(model => model.Comment)</p></td>
+        </tr>
+        <tr>
+            <td><p>Скидка %</p></td>
+            <td><p>@Html.DisplayFor(model => model.Discount)</p></td>
+        </tr>
+    </table>
+</div>
+<button>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id })
+</button>
+

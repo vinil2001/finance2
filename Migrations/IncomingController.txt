@@ -1,0 +1,130 @@
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using Finance.Models;
+
+namespace Finance.Controllers
+{
+    public class IncomingsController : Controller
+    {
+        private FinanceDbContext db = new FinanceDbContext();
+
+        public object Db { get; private set; }
+
+        // GET: Incomings
+        public ActionResult Index()
+        {
+            return View(db.Incomings.ToList());
+        }
+
+        // GET: Incomings/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Incoming incoming = db.Incomings.Find(id);
+            if (incoming == null)
+            {
+                return HttpNotFound();
+            }
+            return View(incoming);
+        }
+
+        // GET: Incomings/Create
+        public ActionResult Create()
+        {
+            ViewBag.Bank_Id = new SelectList(db.Banks, "Id", "BankName");
+            return View();
+        }
+
+        // POST: Incomings/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,Name,IncomingData,IncomingSum,InvoiceNumber,InvoiceData")] Incoming incoming)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Incomings.Add(incoming);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(incoming);
+        }
+
+        // GET: Incomings/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Incoming incoming = db.Incomings.Find(id);
+            if (incoming == null)
+            {
+                return HttpNotFound();
+            }
+            return View(incoming);
+        }
+
+        // POST: Incomings/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,Name,IncomingData,IncomingSum,InvoiceNumber,InvoiceData")] Incoming incoming)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(incoming).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(incoming);
+        }
+
+        // GET: Incomings/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Incoming incoming = db.Incomings.Find(id);
+            if (incoming == null)
+            {
+                return HttpNotFound();
+            }
+            return View(incoming);
+        }
+
+        // POST: Incomings/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Incoming incoming = db.Incomings.Find(id);
+            db.Incomings.Remove(incoming);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+    }
+}

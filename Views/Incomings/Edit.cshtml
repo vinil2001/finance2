@@ -1,0 +1,217 @@
+﻿@model Finance.Models.EditIncomingModel
+
+@{
+    ViewBag.Title = "Редактирование";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //SelectList IncomingCategoryList = ViewBag.IncomingCategoryId as SelectList;
+    ////SelectList BankList = ViewBag.BankId as SelectList;
+    //SelectList BankList = new SelectList(ViewBag.BankId);
+    //SelectList IncomingTypeList = ViewBag.IncomingTypeId as SelectList;
+
+}
+<h2>Редактирование</h2>
+<div id="divParrentBackground">
+</div>
+<div>
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+        @Html.HiddenFor(model => model.EditedIncoming.Id);
+        <fieldset class="col-lg-12 col-md-12 col-sm-12">
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-left_0 ">
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.EditedIncoming.IncomingData, "Дата получения")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.TextBoxFor(model => model.EditedIncoming.IncomingData, "{0:dd-MM-yyyy}")
+                        @Html.ValidationMessageFor(model => model.EditedIncoming.IncomingData)
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-left_0">
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.EditedIncoming.WayOfPayment, "Форма оплаты")
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0">
+                        @Html.DropDownListFor(model => model.EditedIncoming.WayOfPaymentId, Model.WayOfPayments as SelectList, htmlAttributes: new { @class = "DropDownListWidth" })
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding-left_0 ">
+                        <a href="#" style="text-decoration: none" onclick='showModalWindow("/WayOfPayments/Create")'>
+                            <img lenght="20" width="20" src="~/pictures/plus_icon2.png" title="Добавить форму оплаты" alt="Добавить форму оплаты">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br>
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-left_0 ">
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-10 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.EditedIncoming.Counterparty.Name, "Плательщик")
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 padding-left_0" style="width:200px">
+                        <input type="hidden" id="CounterpartyTypeDb" name="CounterpartyTypeDb" />
+                        @Html.HiddenFor(model => model.EditedIncoming.CounterpartyId)
+                        @Html.EditorFor(model => model.EditedIncoming.Counterparty.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 padding-left_0">
+                        <img src="~/pictures/magnifier_icon-icons.com_67993.png" width="20" height="20" />
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 padding-left_0 ">
+                        <a href="#" style="text-decoration: none" onclick='showModalWindow("/Counterparties/Create")'>
+                            <img lenght="20" width="20" src="~/pictures/plus_icon2.png" title="Добавить плательщика" alt="Добавить плательщика">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.EditedIncoming.Bank, "Банк", new { @Id = "BankId" })
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0">
+                        @Html.DropDownListFor(model => model.EditedIncoming.BankId, Model.Banks as SelectList, htmlAttributes: new { @class = "DropDownListWidth"})
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding-left_0 ">
+                        <a href="#" id="addBank" style="text-decoration: none" onclick='showModalWindow("/Banks/Create")'>
+                            <img lenght="20" width="20" src="~/pictures/plus_icon2.png" title="Добавить банк" alt="Добавить банк">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br />
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-left_0 ">
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-3 col-md-3 col-sm-6 label-width padding-left_0">
+                        @Html.LabelFor(model => model.EditedIncoming.InvoiceNumber, "Счет №")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.TextBoxFor(model => model.EditedIncoming.InvoiceNumber)
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.EditedIncoming.IncomingCategory.IncomingCategoryName, "Категория")
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0">
+                        @Html.DropDownListFor(model => model.EditedIncoming.IncomingCategoryId, Model.Categories as SelectList, htmlAttributes: new { @class = "DropDownListWidth" })
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding-left_0 ">
+                        <a href="#" style="text-decoration: none" onclick='showModalWindow("/IncomingCategories/Create")'>
+                            <img lenght="20" width="20" src="~/pictures/plus_icon2.png" title="Добавить категорию" alt="Добавить банк">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br />
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-left_0">
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0 ">
+                    <div class="col-lg-3 col-md-3 col-sm-6 label-width padding-left_0">
+                        @Html.LabelFor(model => model.EditedIncoming.InvoiceData, "Дата счета")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.TextBoxFor(model => model.EditedIncoming.InvoiceData, "{0:dd-MM-yyyy}")
+                        @Html.ValidationMessageFor(model => model.EditedIncoming.InvoiceData)
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0 ">
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.EditedIncoming.IncomingType.TypeName, "Статья/Тип")
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0">
+                        @Html.DropDownListFor(model => model.EditedIncoming.IncomingTypeId, Model.Types as SelectList, htmlAttributes: new { @class = "DropDownListWidth" })
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding-left_0 ">
+                        <a href="#" style="text-decoration: none" onclick='showModalWindow("/IncomingTypes/Create")'>
+                            <img lenght="20" width="20" src="~/pictures/plus_icon2.png" title="Добавить статью/тип" alt="Добавить банк">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-left_0" style="margin-top:30px; margin-bottom:30px">
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.EditedIncoming.IncomingSum, "Сумма")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.TextBoxFor(model => model.EditedIncoming.IncomingSum)
+                    </div>
+                </div>
+            </div>
+
+            <br /><br /><br />
+            <div>
+                <p><input type="submit" value="Отправить" id="InputNewIncomingFor" /></p>
+            </div>
+        </fieldset>
+    }
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#EditedIncoming_Counterparty_Name").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Counterparties/SearchAutocomplete/',
+                        type: "POST", //Типа HTML-запроса
+                        dataType: "json",
+                        data: {
+                            request: request.term, // данные отправляемые на сервер
+                        },
+                        success: function (data) //в параметр функции data попадёт результат работы представления в виде html-кода (код страницы, указанной в URL)
+                        {
+                            response($.map(data, function (item) {
+
+                                //$("#Counterparty_Name").val(item.Name);
+                                return { label: item.Name, id: item.Id, TypeDb: item.TypeDb };
+                            }))
+                        }
+                    })
+                },
+                //messages: {
+                //    noResults: "", results: function () { console.log($("#Counterparty_Name").val.toString()) }
+                //},
+                select: function (event, ui) {
+                    $('#EditedIncoming_CounterpartyId').val(ui.item.id);
+                    $('#CounterpartyTypeDb').val(ui.item.TypeDb);
+                }
+            });
+
+        })
+</script>
+<script>
+    if ($("#EditedIncoming_WayOfPaymentId").val() !== "1") // "1"-Bank
+    {
+        $("#EditedIncoming_BankId").val(" ");
+        $("#EditedIncoming_BankId").attr("disabled", true);
+        $("#BankId").css("color", "grey");
+        $("#addBank").hide();
+
+    }
+
+    $("#EditedIncoming_WayOfPaymentId").change(function () {
+        if ($("#EditedIncoming_WayOfPaymentId").val() !== "1") {
+            $("#EditedIncoming_BankId").val(" ");
+            $("#EditedIncoming_BankId").attr("disabled", true);
+            $("#EditedIncoming_BankId").css("border-color", "rgb(169, 169, 169)", "border-width", "1px");
+            $("#BankId").css("color", "grey");
+            $("#addBank").hide();
+        }
+        else {
+            alert("Выберите банк");
+            $("#EditedIncoming_BankId").val();
+            $("#EditedIncoming_BankId").attr("disabled", false);
+            $("#EditedIncoming_BankId").css("border-color", "rgba(48, 90, 114, 1)", "border-width", "2px");
+            $("#EditedIncoming_BankId").focus();
+            $("#BankId").css("color", "#333");
+            $("#addBank").show();
+        }
+    })
+    $(function () {
+        $("#EditedIncoming_IncomingData, #EditedIncoming_InvoiceData").datepicker(
+            {
+                dateFormat: "dd-mm-yy"
+            });
+
+    });
+</script>
+
+
+

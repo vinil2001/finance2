@@ -1,0 +1,144 @@
+﻿@model Finance.Models.Incoming
+@using System.Data.Entity;
+@using Finance.Models;
+@{
+    FinanceDbContext db = new FinanceDbContext();
+
+    SelectList IncomingCategoryList = new SelectList(db.IncomingCategorys, "Id", "IncomingCategoryName");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Входящие средства</h2>
+<br /><br />
+<div>
+    @using (Html.BeginForm(FormMethod.Post))
+    {
+        <fieldset class="col-lg-12 col-md-12 col-sm-12">
+            <div>
+                @Html.HiddenFor(model => model.Id)
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-left_0 ">
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.IncomingData, "Дата получения")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.EditorFor(model => model.IncomingData)
+                        @Html.ValidationMessageFor(model => model.IncomingData)
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 padding-left_0">
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.Bank.BankName, "Банк")
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10 padding-left_0">
+                        @Html.DropDownList("Bank_Id", null, htmlAttributes: new { @style = "width:auto" })
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 padding-left_0 ">
+                        <a href="#" style="text-decoration: none">
+                            <img lenght="20" width="20" src="~/pictures/plus_icon2.png" title="Добавить банк" alt="Добавить банк">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br>
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-left_0 ">
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-2 col-md-2 col-sm-2 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.Payer, "Плательщик")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.TextBoxFor(model => model.Payer, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="col-lg-1 col-md-1 col-sm-1 padding-left_0">
+                        <img src="~/pictures/magnifier_icon-icons.com_67993.png" width="20" height="20" />
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0 label-width">
+                        @Html.LabelFor(model => model.IncomingSum, "Сумма")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.TextBoxFor(model => model.IncomingSum) 
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br />
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-left_0 ">
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-3 col-md-3 col-sm-6 label-width padding-left_0">
+                        @Html.LabelFor(model => model.InvoiceNumber, "Счет №")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.TextBoxFor(model => model.InvoiceNumber)
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
+                    <div class="col-lg-3 col-md-3 col-sm-6 label-width padding-left_0">
+                        @Html.LabelFor(model => model.InvoiceData, "Дата счета")
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                        @Html.EditorFor(model => model.InvoiceData)
+                        @Html.ValidationMessageFor(model => model.InvoiceData)
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br />
+            <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0 ">
+                <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0 label-width">
+                    @Html.LabelFor(model => model.IncomingCategorys, "Категория")
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
+                    @Html.DropDownList("Id", IncomingCategoryList as SelectList, htmlAttributes: new { @style = "width:auto" })
+                </div>
+            </div>
+            <br /><br /><br />
+            <div>
+                <p><input type="submit" value="Отправить" /></p>
+            </div>
+        </fieldset>
+    }
+</div>
+
+@*<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+ 
+  $( function() {
+    var availableTags = ["hgjhg","jhjhg","ygffdsfsf"];
+    $("#Counterpartys").autocomplete({
+      source: availableTags
+    });
+  } );
+</script>*@
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">  
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+<script type="text/javascript">
+        $(document).ready(function () {
+            $("#Payer").autocomplete({
+                source: function (request, response) {
+                $.ajax({
+                    url: 'Incomings/SearchAutocomplete/',
+                    type: "POST", //Типа HTML-запроса
+                    dataType: "json",
+                    data: {
+                        InputValue: request.term // данные отправляемые на сервер
+                    },
+                    success: function (data) //в параметр функции data попадёт результат работы представления в виде html-кода (код страницы, указанной в URL)
+                    {
+                        response($.map(data, function(item){
+                            return {label: item.Name, value: item.Name};
+                        }))
+                    }
+                        })
+                },
+                messages: {
+                    noResults: "", results: ""
+                }
+            });
+        })
+</script>

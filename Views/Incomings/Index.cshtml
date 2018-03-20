@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Finance.Models.Incoming>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var orderBy = "";
+    if(ViewBag.triger == null)
+    {
+        ViewBag.triger = 0;
+    }
+}
+
+@Html.Partial("MenuBar")
+<style>
+    p {
+        font-weight: 800;
+        color: black;
+        text-decoration: underline;
+    }
+</style>
+<br />
+<h2>Входящие средства</h2>
+<br />
+@*<button>
+    @Html.ActionLink("Создать новый", "Create")
+</button>*@
+<button type="button" onclick="location.href='@Url.Action("Create")'">
+    Создать новый
+</button>
+<br /><br />
+<table class="table">
+    <tr>
+        <th>
+            @{orderBy = "Counterparty";}
+            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
+                <p>Плательщик <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+            </a>
+        </th>
+        <th>
+            <p>Сумма</p>
+        </th>
+        <th>
+            @{orderBy = "IncomingData";}
+            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
+                <p>Дата платежа <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+            </a>
+        </th>
+        <th>
+            <p>Номер счета</p>
+        </th>
+        <th>
+            @{orderBy = "InvoiceData";}
+            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
+                <p>Дата счета <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+            </a>
+        </th>
+        <th>
+            @{orderBy = "BankName";}
+            <a href='@Url.Action("GroupBy", new { ViewBag.triger, orderBy })'>
+                <p>Банк <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+            </a>
+        </th>
+        <th>
+            @{orderBy = "IncomingCategoryName";}
+            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
+                <p>Категория <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+            </a>
+        </th>
+        <th>
+            @{orderBy = "WayOfPaymentName";}
+            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
+                <p>Способ оплаты <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+            </a>
+        </th>
+        <th>
+            <p>Операции</p>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="width: 20%;">
+                @Html.DisplayFor(modelItem => item.Counterparty.Name)
+            </td>
+            <td style="width: 10%;">
+                @Html.DisplayFor(modelItem => item.IncomingSum)
+            </td>
+            <td style="width: 11%;">
+                @Html.DisplayFor(modelItem => item.IncomingData)
+            </td>
+            <td style="width: 8%;">
+                @Html.DisplayFor(modelItem => item.InvoiceNumber)
+            </td>
+            <td style="width: 11%;">
+                @Html.DisplayFor(modelItem => item.InvoiceData)
+            </td>
+            <td style="width: 10%;">
+                @Html.DisplayFor(modelItem => item.Bank.BankName)
+            </td>
+            <td style="width: 10%;">
+                @Html.DisplayFor(modelItem => item.IncomingCategory.IncomingCategoryName)
+            </td>
+            <td style="width: 10%;">
+                @Html.DisplayFor(modelItem => item.WayOfPayment.WayOfPaymentName)
+            </td>
+            <td style="width: 10%;">
+                <a href='@Url.Action("Edit", new { id = item.Id })'>
+                    <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                </a>
+                <a href='@Url.Action("Details", new { id = item.Id })'>
+                    <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+                </a>
+                <a href='@Url.Action("Delete", new { id = item.Id })'>
+                    <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                </a>
+                @*@Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+        @Html.ActionLink("Детальнее", "Details", new { id = item.Id }) |
+        @Html.ActionLink("Удалить", "Delete", new { id = item.Id })*@
+            </td>
+        </tr>
+    }
+
+</table>
+
+<script>
+    $("#referenceBooks").addClass('active');
+</script>

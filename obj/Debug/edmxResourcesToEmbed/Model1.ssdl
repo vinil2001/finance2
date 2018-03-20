@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="orestModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'bls' in the table 'def.orest.klt' was excluded.-->
+  <EntityType Name="klt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="grp" Type="usmallint" />
+    <Property Name="idp" Type="uint" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="okpo" Type="varchar" MaxLength="255" />
+    <Property Name="knds" Type="varchar" MaxLength="255" />
+    <Property Name="snds" Type="varchar" MaxLength="255" />
+    <Property Name="chet" Type="varchar" MaxLength="255" />
+    <Property Name="bank" Type="varchar" MaxLength="255" />
+    <Property Name="mfob" Type="varchar" MaxLength="255" />
+    <Property Name="adft" Type="varchar" MaxLength="255" />
+    <Property Name="adur" Type="varchar" MaxLength="255" />
+    <Property Name="telf" Type="varchar" MaxLength="255" />
+    <Property Name="cont" Type="varchar" MaxLength="255" />
+    <Property Name="comt" Type="text" />
+    <Property Name="per" Type="usmallint" />
+    <Property Name="full" Type="varchar" MaxLength="255" />
+    <Property Name="nds" Type="usmallint" />
+    <Property Name="sld" Type="double" />
+    <Property Name="dsld" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityContainer Name="orestModelStoreContainer">
+    <EntitySet Name="klt" EntityType="Self.klt" Schema="orest" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

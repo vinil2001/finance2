@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="orestModelStoreContainer" CdmEntityContainer="orestEntities">
+    <EntitySetMapping Name="klt">
+      <EntityTypeMapping TypeName="orestModel.klt">
+        <MappingFragment StoreEntitySet="klt">
+          <ScalarProperty Name="dsld" ColumnName="dsld" />
+          <ScalarProperty Name="sld" ColumnName="sld" />
+          <ScalarProperty Name="nds" ColumnName="nds" />
+          <ScalarProperty Name="full" ColumnName="full" />
+          <ScalarProperty Name="per" ColumnName="per" />
+          <ScalarProperty Name="comt" ColumnName="comt" />
+          <ScalarProperty Name="cont" ColumnName="cont" />
+          <ScalarProperty Name="telf" ColumnName="telf" />
+          <ScalarProperty Name="adur" ColumnName="adur" />
+          <ScalarProperty Name="adft" ColumnName="adft" />
+          <ScalarProperty Name="mfob" ColumnName="mfob" />
+          <ScalarProperty Name="bank" ColumnName="bank" />
+          <ScalarProperty Name="chet" ColumnName="chet" />
+          <ScalarProperty Name="snds" ColumnName="snds" />
+          <ScalarProperty Name="knds" ColumnName="knds" />
+          <ScalarProperty Name="okpo" ColumnName="okpo" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idp" ColumnName="idp" />
+          <ScalarProperty Name="grp" ColumnName="grp" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

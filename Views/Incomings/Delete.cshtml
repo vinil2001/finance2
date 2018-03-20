@@ -1,0 +1,89 @@
+﻿@model Finance.Models.Incoming
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Удаление</h2>
+
+<h3>Вы действительно хотите удалить?</h3>
+<div>
+    <h4>Приход</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.Counterparty.Name, "Плательщик")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Counterparty.Name)
+        </dd>
+        
+        <dt>
+            @Html.LabelFor(model => model.IncomingSum, "Сумма")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomingSum)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.IncomingData, "Дата платежа")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomingData)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.InvoiceNumber, "Номер счета")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNumber)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.InvoiceData, "Дата счета")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceData)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.Bank.BankName, "Банк")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bank.BankName)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.IncomingCategory.IncomingCategoryName, "Категория")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IncomingCategory.IncomingCategoryName)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.WayOfPayment.WayOfPaymentName, "Способ оплаты")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WayOfPayment.WayOfPaymentName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Удалить", "Delete")
+        </div>
+    }
+</div>

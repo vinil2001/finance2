@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="orestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="orestEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="klt" EntityType="orestModel.klt" />
+  </EntityContainer>
+  <EntityType Name="klt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grp" Type="Int32" />
+    <Property Name="idp" Type="Int64" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="okpo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="knds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="snds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="chet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="bank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mfob" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="adft" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="adur" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cont" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="per" Type="Int32" />
+    <Property Name="full" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="nds" Type="Int32" />
+    <Property Name="sld" Type="Double" />
+    <Property Name="dsld" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
