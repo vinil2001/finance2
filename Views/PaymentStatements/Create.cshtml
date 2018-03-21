@@ -5,26 +5,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Новый платеж</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>PaymentStatement</h4>
+        <h4>Плетежная ведомость</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.KltId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.KltId, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.KltId, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.InvoiceNumber, "№ счета", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.InvoiceNumber, "", new { @class = "text-danger" })
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.InvoiceDate, "Дата счета", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.InvoiceDate, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.InvoiceDate, "", new { @class = "text-danger" })
@@ -40,7 +40,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceSumma, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.InvoiceSumma, "Сумма", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.InvoiceSumma, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.InvoiceSumma, "", new { @class = "text-danger" })
@@ -48,7 +48,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Comment, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Comment, "Коммент.", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
@@ -56,7 +56,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceChecked, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.InvoiceChecked, "Поверен", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
                     @if (User.IsInRole("Sign1"))
@@ -72,20 +72,34 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PaymentApproved, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PaymentApproved, "В оплату", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.CheckBoxFor(model => model.PaymentApproved)
+                    @if(User.IsInRole("Sign2"))
+                    {
+                        @Html.EditorFor(model=>model.PaymentApproved)
+                    }
+                    else
+                    {
+                        @Html.CheckBoxFor(model => model.PaymentApproved, new { @disabled = "disabled" })   
+                    }
                     @Html.ValidationMessageFor(model => model.PaymentApproved, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PaymentDone, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PaymentDone, "Оплачен", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.CheckBoxFor(model => model.PaymentDone)
+                    @if(User.IsInRole("Accountant"))
+                    {
+                        @Html.EditorFor(model=>model.PaymentDone)
+                    }
+                    else
+                    {
+                        @Html.CheckBoxFor(model => model.PaymentDone)
+                    }   
                     @Html.ValidationMessageFor(model => model.PaymentDone, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -101,12 +115,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Сохранить" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Назад", "Index")
 </div>

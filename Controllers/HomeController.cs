@@ -20,7 +20,7 @@ namespace Finance.Controllers
         public ActionResult Index()
         {
             //if (!User.IsInRole("Developer"))
-            //    return RedirectToAction("Index", "PaymentStatements"); // Temporary commented. To do: Uncomment !!!
+                /*return RedirectToAction("Index", "PaymentStatements");*/ // Temporary commented. To do: Uncomment !!!
 
             return View();
         }

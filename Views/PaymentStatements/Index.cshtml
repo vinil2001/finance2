@@ -8,36 +8,44 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Добавить в оплату", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.KltId)
+            #
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InvoiceNumber)
+            @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
+            Счет №
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InvoiceDate)
+            @*@Html.DisplayNameFor(model => model.InvoiceDate)*@
+            Счет дата
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InvoiceSumma)
+            @*@Html.DisplayNameFor(model => model.InvoiceSumma)*@
+            Сумма
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Comment)
+            @*@Html.DisplayNameFor(model => model.Comment)*@
+            Коммент.
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.InvoiceChecked)
+            @*@Html.DisplayNameFor(model => model.InvoiceChecked)*@
+            Проверен
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PaymentApproved)
+            @*@Html.DisplayNameFor(model => model.PaymentApproved)*@
+            К оплате
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PaymentDone)
+            @*@Html.DisplayNameFor(model => model.PaymentDone)*@
+            Оплачен
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DocumentUrl)
+            @*@Html.DisplayNameFor(model => model.DocumentUrl)*@
+            Счет(файл)
         </th>
         <th></th>
     </tr>
