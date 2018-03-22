@@ -68,7 +68,7 @@ namespace Finance.Controllers
                     string fileName = System.IO.Path.GetFileName(UploadDocumentUrl.FileName);
                     // сохраняем файл в папку Files в проекте
                     UploadDocumentUrl.SaveAs(Server.MapPath("~/Files/" + fileName));
-                    paymentStatement.DocumentUrl = "~/Files/" + fileName;
+                    paymentStatement.DocumentUrl = "/Files/" + fileName;
                 }
              
 
@@ -78,6 +78,13 @@ namespace Finance.Controllers
             }
 
             return View(paymentStatement);
+        }
+
+        public ActionResult GetFileUrl(int id)
+        {
+            PaymentStatement paymentStatement = db.PaymentStatements.Find(id);
+            return Redirect(paymentStatement.DocumentUrl.ToString());
+
         }
 
         // GET: PaymentStatements/Edit/5

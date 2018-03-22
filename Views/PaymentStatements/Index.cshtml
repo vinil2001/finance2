@@ -5,7 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@Html.Partial("MenuBar", "PaymentStatements")
+
+<h2>Список платежей</h2>
 
 <p>
     @Html.ActionLink("Добавить в оплату", "Create")
@@ -77,6 +79,9 @@
             @Html.DisplayFor(modelItem => item.PaymentDone)
         </td>
         <td>
+            <button type="button" onclick="location.href='@Url.Action("GetFileUrl", new { id=item.Id })'">
+                Открыть счет
+            </button>
             @Html.DisplayFor(modelItem => item.DocumentUrl)
         </td>
         <td>

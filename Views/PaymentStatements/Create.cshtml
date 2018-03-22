@@ -5,23 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@Html.Partial("MenuBar", "PaymentStatements")
+
 <h2>Новый платеж</h2>
 
-@using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "PaymentStatements", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Плетежная ведомость</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @*<div class="form-group">
-            @Html.LabelFor(model => model.KltId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.KltId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.KltId, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
+                @Html.LabelFor(model => model.KltId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.KltId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KltId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.InvoiceNumber, "№ счета", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -61,10 +63,11 @@
                 <div class="checkbox">
                     @if (User.IsInRole("Sign1"))
                     {
-                          @Html.EditorFor(model => model.InvoiceChecked)
-                    } else
+                        @Html.EditorFor(model => model.InvoiceChecked)
+                    }
+                    else
                     {
-                         @Html.CheckBoxFor(model => model.InvoiceChecked, new { @disabled = "disabled" })
+                        @Html.CheckBoxFor(model => model.InvoiceChecked, new { @disabled = "disabled" })
                     }
                     @Html.ValidationMessageFor(model => model.InvoiceChecked, "", new { @class = "text-danger" })
                 </div>
@@ -75,13 +78,13 @@
             @Html.LabelFor(model => model.PaymentApproved, "В оплату", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @if(User.IsInRole("Sign2"))
+                    @if (User.IsInRole("Sign2"))
                     {
-                        @Html.EditorFor(model=>model.PaymentApproved)
+                        @Html.EditorFor(model => model.PaymentApproved)
                     }
                     else
                     {
-                        @Html.CheckBoxFor(model => model.PaymentApproved, new { @disabled = "disabled" })   
+                        @Html.CheckBoxFor(model => model.PaymentApproved, new { @disabled = "disabled" })
                     }
                     @Html.ValidationMessageFor(model => model.PaymentApproved, "", new { @class = "text-danger" })
                 </div>
@@ -92,23 +95,23 @@
             @Html.LabelFor(model => model.PaymentDone, "Оплачен", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @if(User.IsInRole("Accountant"))
+                    @if (User.IsInRole("Accountant"))
                     {
-                        @Html.EditorFor(model=>model.PaymentDone)
+                        @Html.EditorFor(model => model.PaymentDone)
                     }
                     else
                     {
                         @Html.CheckBoxFor(model => model.PaymentDone)
-                    }   
+                    }
                     @Html.ValidationMessageFor(model => model.PaymentDone, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
-         
+
         <div class="form-group">
             @Html.LabelFor(model => model.DocumentUrl, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="file" name="UploadDocumentUrl" id="DocumentUrl"/>
+                <input type="file" name="UploadDocumentUrl" id="DocumentUrl" />
                 @Html.ValidationMessageFor(model => model.DocumentUrl, "", new { @class = "text-danger" })
             </div>
         </div>
