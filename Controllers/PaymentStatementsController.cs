@@ -84,6 +84,7 @@ namespace Finance.Controllers
         public ActionResult GetFileUrl(int id)
         {
             PaymentStatement paymentStatement = db.PaymentStatements.Find(id);
+            var url = db.PaymentStatements.Find(id);
             return Redirect(paymentStatement.DocumentUrl.ToString());
 
         }

@@ -111,8 +111,11 @@
             <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id = Model.Id })')">
                 Открыть счет
             </button>
-            @*@Html.EditorFor(model => model.DocumentUrl, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DocumentUrl, "", new { @class = "text-danger" })*@
+            <div>
+                @Html.HiddenFor(model => model.DocumentUrl)
+                @*@Html.ValidationMessageFor(model => model.DocumentUrl, "", new { @class = "text-danger" })*@
+            </div>
+           
         </div>
     </div>
     <div class="form-group">
