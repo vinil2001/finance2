@@ -73,6 +73,7 @@ namespace Finance.Controllers
              
 
                 db.PaymentStatements.Add(paymentStatement);
+
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

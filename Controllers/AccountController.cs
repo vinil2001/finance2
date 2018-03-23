@@ -13,7 +13,7 @@ using Finance.Models;
 
 namespace Finance2.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
