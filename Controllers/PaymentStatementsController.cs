@@ -19,7 +19,7 @@ namespace Finance.Controllers
         // GET: PaymentStatements
         public async Task<ActionResult> Index()
         {
-            return View(await db.PaymentStatements.ToListAsync());
+            return View(await db.PaymentStatements.OrderByDescending(i=>i.Id).ToListAsync());
         }
 
         // GET: PaymentStatements/Details/5

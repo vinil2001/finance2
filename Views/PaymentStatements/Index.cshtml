@@ -14,9 +14,9 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             #
-        </th>
+        </th>*@
         <th>
             @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
             Счет №
@@ -54,14 +54,14 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.KltId)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.InvoiceNumber)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.InvoiceDate)
+            @Html.DisplayFor(modelItem => item.InvoiceDate, "{0:d MMM yyyy}", new { @class = "input-large" })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.InvoiceSumma)
@@ -79,7 +79,7 @@
             @Html.DisplayFor(modelItem => item.PaymentDone)
         </td>
         <td>
-            <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id })')">
+            <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
                 Открыть счет
             </button>
             @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
@@ -104,3 +104,12 @@
 }
 
 </table>
+<script>
+    $(function () {
+        $("#InvoiceDate").datepicker(
+            {
+                dateFormat: "dd-mm-yy"
+            });
+
+    });
+</script>
