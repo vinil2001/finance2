@@ -70,7 +70,11 @@ namespace Finance.Controllers
                     UploadDocumentUrl.SaveAs(Server.MapPath("~/Files/" + fileName));
                     paymentStatement.DocumentUrl = "/Files/" + fileName;
                 }
-             
+                else
+                {
+                    ViewBag.ErrorUploadDocumentUrlIsNull = null;
+                    return View(paymentStatement);
+                }
 
                 db.PaymentStatements.Add(paymentStatement);
 

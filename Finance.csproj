@@ -453,6 +453,7 @@
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Tasks.txt" />
+    <Content Include="PStasks.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

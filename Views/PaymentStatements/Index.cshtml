@@ -4,19 +4,34 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div id="MenuBar">
+    @Html.Partial("MenuBar", "PaymentStatements")
+</div>
 
-@Html.Partial("MenuBar", "PaymentStatements")
+@if (!User.IsInRole("Developer"))
+{
+    <script>
+        $("#MenuBar").hide();
+    </script>
+}
+
+<div style="float:right;">
+    Вы вошли под логином: @User.Identity.Name
+</div>
+
 
 <h2>Список платежей</h2>
 
 <p>
     @Html.ActionLink("Добавить в оплату", "Create")
 </p>
+
+
 <table class="table">
     <tr>
         @*<th>
-            #
-        </th>*@
+                #
+            </th>*@
         <th>
             @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
             Счет №
@@ -35,15 +50,15 @@
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.InvoiceChecked)*@
-            Проверен
+            <img src="~/pictures/approved-512-30x30.png" alt="Счет проверен" title="Счет проверен" />
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.PaymentApproved)*@
-            К оплате
+            <img src="~/pictures/Approved-5-512-30x30.png" alt="К оплате" title="К оплате" />
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.PaymentDone)*@
-            Оплачен
+            <img src="~/pictures/PaymentDone-30x30.png" alt="Оплачен" title="Оплачен" />
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.DocumentUrl)*@
@@ -52,56 +67,57 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.KltId)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.InvoiceNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvoiceDate, "{0:d MMM yyyy}", new { @class = "input-large" })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvoiceSumma)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvoiceChecked)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentApproved)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PaymentDone)
-        </td>
-        <td>
-            <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
-                Открыть счет
-            </button>
-            @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
-        </td>
-        <td>
-            <a href='@Url.Action("Edit", new { id = item.Id })'>
-                <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
-            </a>
-            @*<a href='@Url.Action("Details", new { id = item.Id })'>
-                <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
-            </a>*@
-            <a href='@Url.Action("Delete", new { id = item.Id })'>
-                <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
-            </a>
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>*@
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.KltId)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceDate, "{0:d MMM yyyy}", new { @class = "input-large" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceSumma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td align="center">
+                @Html.DisplayFor(modelItem => item.InvoiceChecked)
+            </td>
+            <td align="center" class="largerCheckbox">
+                @Html.DisplayFor(modelItem => item.PaymentApproved)
+            </td>
+            <td align="center" class="largerCheckbox">
+                @Html.DisplayFor(modelItem => item.PaymentDone)
+            </td>
+            <td>
+                <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
+                    Открыть счет
+                </button>
+                @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
+            </td>
+            <td>
+                <a href='@Url.Action("Edit", new { id = item.Id })'>
+                    <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                </a>
+                @*<a href='@Url.Action("Details", new { id = item.Id })'>
+                        <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+                    </a>*@
+                <a href='@Url.Action("Delete", new { id = item.Id })'>
+                    <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                </a>
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>*@
+        </tr>
+    }
 
 </table>
 <script>
