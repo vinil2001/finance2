@@ -18,7 +18,17 @@
 <div style="float:right;">
     Вы вошли под логином: @User.Identity.Name
 </div>
-
+@{
+    int orderBy;
+    if (ViewBag.TrigerOrderBy == 1)
+    {
+        orderBy = 1;
+    }
+    else
+    {
+        orderBy = 0;
+    }
+}
 
 <h2>Список платежей</h2>
 
@@ -29,9 +39,11 @@
 
 <table class="table">
     <tr>
-        @*<th>
-                #
-            </th>*@
+        <th>
+            <a href='@Url.Action("Index", new { orderBy })'>
+                <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" alt="Сортировать по дате добавления" />
+            </a>
+        </th>
         <th>
             @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
             Счет №
@@ -70,9 +82,10 @@
     @foreach (var item in Model)
     {
         <tr>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.KltId)
-                </td>*@
+            <td>
+                @*@Html.DisplayFor(modelItem => item.KltId)*@
+
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.InvoiceNumber)
             </td>

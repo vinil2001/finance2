@@ -17,9 +17,18 @@ namespace Finance.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PaymentStatements
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(int? orderBy)
         {
-            return View(await db.PaymentStatements.OrderByDescending(i=>i.Id).ToListAsync());
+            if(orderBy == 1)
+            {
+                ViewBag.TrigerOrderBy = 0;
+                return View(await db.PaymentStatements.OrderByDescending(i => i.Id).ToListAsync());
+            }
+            else
+            {
+                ViewBag.TrigerOrderBy = 1;
+                return View(await db.PaymentStatements.OrderBy(i => i.Id).ToListAsync());
+            }
         }
 
         // GET: PaymentStatements/Details/5
@@ -40,6 +49,7 @@ namespace Finance.Controllers
         // GET: PaymentStatements/Create
         public ActionResult Create()
         {
+            ViewBag.ErrorUploadDocumentUrlIsNull = 1;
             return View();
         }
 
@@ -72,7 +82,7 @@ namespace Finance.Controllers
                 }
                 else
                 {
-                    ViewBag.ErrorUploadDocumentUrlIsNull = null;
+                    ViewBag.ErrorUploadDocumentUrlIsNull = 0;
                     return View(paymentStatement);
                 }
 
