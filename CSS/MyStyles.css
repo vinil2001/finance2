@@ -23,11 +23,6 @@
     border-radius: 10px;
     border: 6px solid #305A72;
 }
-input{
-    width: auto;
-    height: auto;
-    border-radius: 4px;
-}
 .DropDownListWidth{
     width: 200px;
     height: 30px;
@@ -94,7 +89,6 @@ input{
     right: -50%;
     z-index: 4;
 }
-/*.CounterpartyFieldIndexTable {
-    width: 20%;
-    word-wrap: break-word;
-}*/
+#InputFormField{
+    width: 250px;
+}

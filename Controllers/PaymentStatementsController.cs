@@ -12,6 +12,7 @@ using Microsoft.AspNet.Identity.Owin;
 
 namespace Finance.Controllers
 {
+    [Authorize]
     public class PaymentStatementsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -22,12 +23,12 @@ namespace Finance.Controllers
             if(orderBy == 1)
             {
                 ViewBag.TrigerOrderBy = 0;
-                return View(await db.PaymentStatements.OrderByDescending(i => i.Id).ToListAsync());
+                return View(await db.PaymentStatements.OrderBy(i => i.Id).ToListAsync());
             }
             else
             {
                 ViewBag.TrigerOrderBy = 1;
-                return View(await db.PaymentStatements.OrderBy(i => i.Id).ToListAsync());
+                return View(await db.PaymentStatements.OrderByDescending(i => i.Id).ToListAsync());
             }
         }
 

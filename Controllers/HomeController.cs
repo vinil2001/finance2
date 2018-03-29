@@ -19,9 +19,9 @@ namespace Finance.Controllers
          
         public ActionResult Index()
         {
-            if (!User.IsInRole("Developer"))
-                return RedirectToAction("Index", "PaymentStatements"); // Temporary commented. To do: Uncomment !!!
-
+            if (!User.IsInRole("Developer") && !User.IsInRole("User"))
+                return RedirectToAction("Index", "PaymentStatements");
+        
             return View();
         }
 

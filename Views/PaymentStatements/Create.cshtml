@@ -89,7 +89,8 @@
                     }
                     else
                     {
-                        @Html.CheckBoxFor(model => model.InvoiceChecked, new { @disabled = "disabled" })
+                        @*@Html.CheckBoxFor(model => model.InvoiceChecked, new { @disabled = "disabled" })*@
+                        @Html.CheckBoxFor(model => model.InvoiceChecked, new { @onclick = "return false;" })
                     }
                     @Html.ValidationMessageFor(model => model.InvoiceChecked, "", new { @class = "text-danger" })
                 </div>
@@ -106,7 +107,8 @@
                     }
                     else
                     {
-                        @Html.CheckBoxFor(model => model.PaymentApproved, new { @disabled = "disabled" })
+                        @*@Html.CheckBoxFor(model => model.PaymentApproved, new { @disabled = "disabled" })*@
+                        @Html.CheckBoxFor(model => model.PaymentApproved, new { @onclick = "return false;" })
                     }
                     @Html.ValidationMessageFor(model => model.PaymentApproved, "", new { @class = "text-danger" })
                 </div>
@@ -123,7 +125,8 @@
                     }
                     else
                     {
-                        @Html.CheckBoxFor(model => model.PaymentDone, new { @disabled = "disabled" })
+                        @*@Html.CheckBoxFor(model => model.PaymentDone, new { @disabled = "disabled" })*@
+                        @Html.CheckBoxFor(model => model.PaymentDone, new { @onclick = "return false;" })
                     }
                     @Html.ValidationMessageFor(model => model.PaymentDone, "", new { @class = "text-danger" })
                 </div>

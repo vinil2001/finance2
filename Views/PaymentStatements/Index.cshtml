@@ -8,7 +8,7 @@
     @Html.Partial("MenuBar", "PaymentStatements")
 </div>
 
-@if (!User.IsInRole("Developer"))
+@if (!User.IsInRole("Developer") && !User.IsInRole("User"))
 {
     <script>
         $("#MenuBar").hide();
