@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Finance.Models
 {
@@ -9,6 +11,13 @@ namespace Finance.Models
     {
         public int Id { get; set; }
         public long KltId { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        [Required(ErrorMessage = "Плательщик должен быть выбран. Если плательщик новый, нажмите + для его добавления")]
+        public int Counterparty_Id { get; set; }
+        
+        [Display(Name = "Плательщик")]
+        public virtual Counterparty Counterparty { get; set; }
 
         public string InvoiceNumber { get; set; }
         public DateTime InvoiceDate { get; set; }

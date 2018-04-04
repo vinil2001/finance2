@@ -46,6 +46,10 @@
         </th>
         <th>
             @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
+            Компания
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
             Счет №
         </th>
         <th>
@@ -81,55 +85,59 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.KltId)*@
+    <tr>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.KltId)*@
 
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InvoiceNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InvoiceDate, "{0:d MMM yyyy}", new { @class = "input-large" })
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InvoiceSumma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comment)
-            </td>
-            <td align="center">
-                @Html.DisplayFor(modelItem => item.InvoiceChecked)
-            </td>
-            <td align="center" class="largerCheckbox">
-                @Html.DisplayFor(modelItem => item.PaymentApproved)
-            </td>
-            <td align="center" class="largerCheckbox">
-                @Html.DisplayFor(modelItem => item.PaymentDone)
-            </td>
-            <td>
-                <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
-                    Открыть счет
-                </button>
-                @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
-            </td>
-            <td>
-                <a href='@Url.Action("Edit", new { id = item.Id })'>
-                    <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
-                </a>
-                @*<a href='@Url.Action("Details", new { id = item.Id })'>
-                        <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
-                    </a>*@
-                <a href='@Url.Action("Delete", new { id = item.Id })'>
-                    <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
-                </a>
-            </td>
-            @*<td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-                </td>*@
-        </tr>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Counterparty_Id)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceDate, "{0:d MMM yyyy}", new { @class = "input-large" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceSumma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td align="center">
+            @Html.DisplayFor(modelItem => item.InvoiceChecked)
+        </td>
+        <td align="center" class="largerCheckbox">
+            @Html.DisplayFor(modelItem => item.PaymentApproved)
+        </td>
+        <td align="center" class="largerCheckbox">
+            @Html.DisplayFor(modelItem => item.PaymentDone)
+        </td>
+        <td>
+            <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
+                Открыть счет
+            </button>
+            @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
+        </td>
+        <td>
+            <a href='@Url.Action("Edit", new { id = item.Id })'>
+                <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+            </a>
+            @*<a href='@Url.Action("Details", new { id = item.Id })'>
+                <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+            </a>*@
+            <a href='@Url.Action("Delete", new { id = item.Id })'>
+                <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+            </a>
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>*@
+    </tr>
     }
 
 </table>

@@ -29,6 +29,7 @@ namespace Finance.Models
         public string Comment { get; set; }
         public int? Discount { get; set; }
         public virtual ICollection<Incoming> Incomings { get; set; }
+        public virtual ICollection<PaymentStatement> PaymentStatements { get; set; }
         public int? OwneshipTypeId { get; set; }
         public virtual OwnershipType OwneshipType { get; set; }
 

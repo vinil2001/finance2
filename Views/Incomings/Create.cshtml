@@ -22,8 +22,8 @@
                     <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0 label-width">
                         @Html.LabelFor(model => model.IncomingData, "Дата получения")
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
-                        @Html.TextBoxFor(model => model.IncomingData, "{0:dd-MM-yyyy}"@*, new { required = "required" }*@)
+                    <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0 label-width">
+                        @Html.TextBoxFor(model => model.IncomingData, "{0:dd-MM-yyyy}", new { @class = "label-width" })
                         @*@Html.ValidationMessageFor(model => model.IncomingData)*@
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                         @Html.LabelFor(model => model.InvoiceNumber, "Счет №")
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
-                        @Html.TextBoxFor(model => model.InvoiceNumber)
+                        @Html.TextBoxFor(model => model.InvoiceNumber, new { @class = "label-width" })
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-12 padding-left_0">
@@ -106,7 +106,7 @@
                         @Html.LabelFor(model => model.InvoiceData, "Дата счета")
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
-                        @Html.TextBoxFor(model => model.InvoiceData, "{0:dd.MM.yyyy}")
+                        @Html.TextBoxFor(model => model.InvoiceData, "{0:dd.MM.yyyy}", new { @class = "label-width" })
                         @*@Html.ValidationMessageFor(model => model.InvoiceData)*@
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                         @Html.LabelFor(model => model.IncomingSum, "Сумма")
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 padding-left_0">
-                        @Html.TextBoxFor(model => model.IncomingSum)
+                        @Html.TextBoxFor(model => model.IncomingSum, new { @class = "label-width" })
                     </div>
                 </div>
             </div>

@@ -35,124 +35,165 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        @*<h4>Плетежная ведомость</h4>*@
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @*<div class="form-group">
-                @Html.LabelFor(model => model.KltId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.KltId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.KltId, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceNumber, "№ счета", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvoiceNumber, "", new { @class = "text-danger" })
-            </div>
+<div class="form-horizontal">
+    @*<h4>Плетежная ведомость</h4>*@
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @*<div class="form-group">
+               @Html.LabelFor(model => model.KltId, htmlAttributes: new { @class = "control-label col-md-2" })
+               <div class="col-md-10">
+                   @Html.EditorFor(model => model.KltId, new { htmlAttributes = new { @class = "form-control" } })
+                   @Html.ValidationMessageFor(model => model.KltId, "", new { @class = "text-danger" })
+               </div>
+        </div>*@
+    <div class="form-group">
+        @Html.LabelFor(model => model.Counterparty.Name, "Компания", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 paymentStatementinput">
+            <input type="hidden" id="CounterpartyTypeDb" name="CounterpartyTypeDb" />
+            @Html.HiddenFor(model => model.Counterparty_Id)
+            @Html.EditorFor(model => model.Counterparty.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.KltId, "", new { @class = "text-danger" })
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceDate, "Дата счета", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvoiceDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvoiceDate, "", new { @class = "text-danger" })
-            </div>
+        @*<div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 padding-left_0">
+            <img src="~/pictures/magnifier_icon-icons.com_67993.png" width="20" height="20" />
+        </div>*@
+        <div class="col-lg-1 col-md-1 col-sm-1 col-xs-2 padding-left_0 ">
+            <a href="#" style="text-decoration: none" onclick='showModalWindow("/Counterparties/Create")'>
+                <img lenght="40" width="31" src="~/pictures/addItem40x39.png" title="Добавить компанию" alt="Добавить компанию">
+            </a>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceSumma, "Сумма", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvoiceSumma, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvoiceSumma, "", new { @class = "text-danger" })
-            </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.InvoiceNumber, "№ счета", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 paymentStatementinput">
+            @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.InvoiceNumber, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Comment, "Коммент.", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.InvoiceDate, "Дата счета", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 paymentStatementinput">
+            @Html.EditorFor(model => model.InvoiceDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.InvoiceDate, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvoiceChecked, "Проверен", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @if (User.IsInRole("Sign1") || User.IsInRole("Developer"))
-                    {
-                        @Html.EditorFor(model => model.InvoiceChecked)
-                    }
-                    else
-                    {
-                        @*@Html.CheckBoxFor(model => model.InvoiceChecked, new { @disabled = "disabled" })*@
-                        @Html.CheckBoxFor(model => model.InvoiceChecked, new { @onclick = "return false;" })
-                    }
-                    @Html.ValidationMessageFor(model => model.InvoiceChecked, "", new { @class = "text-danger" })
-                </div>
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.InvoiceSumma, "Сумма", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 paymentStatementinput">
+            @Html.EditorFor(model => model.InvoiceSumma, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.InvoiceSumma, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PaymentApproved, "В оплату", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @if (User.IsInRole("Sign1") || User.IsInRole("Developer"))
-                    {
-                        @Html.EditorFor(model => model.PaymentApproved)
-                    }
-                    else
-                    {
-                        @*@Html.CheckBoxFor(model => model.PaymentApproved, new { @disabled = "disabled" })*@
-                        @Html.CheckBoxFor(model => model.PaymentApproved, new { @onclick = "return false;" })
-                    }
-                    @Html.ValidationMessageFor(model => model.PaymentApproved, "", new { @class = "text-danger" })
-                </div>
-            </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Comment, "Коммент.", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 paymentStatementinput">
+            @Html.EditorFor(model => model.Comment, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Comment, "", new { @class = "text-danger" })
         </div>
+    </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PaymentDone, "Оплачен", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @if (User.IsInRole("Accountant") || User.IsInRole("Sign1") || User.IsInRole("Developer"))
-                    {
-                        @Html.EditorFor(model => model.PaymentDone)
-                    }
-                    else
-                    {
-                        @*@Html.CheckBoxFor(model => model.PaymentDone, new { @disabled = "disabled" })*@
-                        @Html.CheckBoxFor(model => model.PaymentDone, new { @onclick = "return false;" })
-                    }
-                    @Html.ValidationMessageFor(model => model.PaymentDone, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DocumentUrl, "Загрузить счет", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" value="Открыть" name="UploadDocumentUrl" id="DocumentUrl" />
-                @Html.ValidationMessageFor(model => model.DocumentUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Сохранить" class="btn btn-default" />
+    <div class="form-group">
+        @Html.LabelFor(model => model.InvoiceChecked, "Проверен", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 paymentStatementinput">
+            <div class="checkbox">
+                @if (User.IsInRole("Sign1") || User.IsInRole("Developer"))
+                {
+                    @Html.EditorFor(model => model.InvoiceChecked)
+                }
+                else
+                {
+                    @*@Html.CheckBoxFor(model => model.InvoiceChecked, new { @disabled = "disabled" })*@
+                    @Html.CheckBoxFor(model => model.InvoiceChecked, new { @onclick = "return false;" })
+                }
+                @Html.ValidationMessageFor(model => model.InvoiceChecked, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PaymentApproved, "В оплату", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @if (User.IsInRole("Sign1") || User.IsInRole("Developer"))
+                {
+                    @Html.EditorFor(model => model.PaymentApproved)
+                }
+                else
+                {
+                    @*@Html.CheckBoxFor(model => model.PaymentApproved, new { @disabled = "disabled" })*@
+                    @Html.CheckBoxFor(model => model.PaymentApproved, new { @onclick = "return false;" })
+                }
+                @Html.ValidationMessageFor(model => model.PaymentApproved, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.PaymentDone, "Оплачен", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="checkbox">
+                @if (User.IsInRole("Accountant") || User.IsInRole("Sign1") || User.IsInRole("Developer"))
+                {
+                    @Html.EditorFor(model => model.PaymentDone)
+                }
+                else
+                {
+                    @*@Html.CheckBoxFor(model => model.PaymentDone, new { @disabled = "disabled" })*@
+                    @Html.CheckBoxFor(model => model.PaymentDone, new { @onclick = "return false;" })
+                }
+                @Html.ValidationMessageFor(model => model.PaymentDone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.DocumentUrl, "Загрузить счет", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" value="Открыть" name="UploadDocumentUrl" id="DocumentUrl" />
+            @Html.ValidationMessageFor(model => model.DocumentUrl, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Сохранить" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div>
     @Html.ActionLink("Назад", "Index")
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#Counterparty_Name").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: '/Counterparties/SearchAutocomplete/',
+                    type: "POST", //Типа HTML-запроса
+                    dataType: "json",
+                    data: {
+                        request: request.term,
+                    },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.Name, id: item.Id, TypeDb: item.TypeDb };
+                        }))
+                    }
+                })
+            },
+            select: function (event, ui) {
+                $('#Counterparty_Id').val(ui.item.id);
+                $('#CounterpartyTypeDb').val(ui.item.TypeDb);
+            }
+        });
 
+    })
+</script>
 <script>
     $(function () {
         $("#InvoiceDate").datepicker(

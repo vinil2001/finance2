@@ -4,9 +4,11 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml;
 using Finance.Models;
 
 namespace Finance.Controllers
@@ -239,6 +241,44 @@ namespace Finance.Controllers
 
         public JsonResult SearchAutocomplete(string request)
         {
+
+           
+
+
+            //          1: Employees e = new Employees();
+            //          2:  
+            // 3: XmlReader[] sReaders = new XmlReader[]{ XmlReader.Create(
+            // 4:     Assembly.GetExecutingAssembly().GetManifestResourceStream("Employees.ssdl"))};
+            // 5:  
+            // 6: XmlReader[] mReaders = new XmlReader[]{ XmlReader.Create(
+            // 7:     Assembly.GetExecutingAssembly().GetManifestResourceStream("Employees.msl"))};
+            // 8:  
+            // 9: StoreItemCollection sCollection = new StoreItemCollection(sReaders);
+            //10: EdmItemCollection cCollection = e.MetadataWorkspace.GetItemCollection(
+            //11:     DataSpace.CSpace) as EdmItemCollection;
+            //12:  
+            //13: StorageMappingItemCollection csCollection =
+            //14:     new StorageMappingItemCollection(cCollection, sCollection, mReaders);
+            //15:  
+            //16: e.MetadataWorkspace.RegisterItemCollection(sCollection);
+            //17: e.MetadataWorkspace.RegisterItemCollection(csCollection);
+            //18:  
+            //19: EntityContainer container =
+            //20:     e.MetadataWorkspace.GetItem<EntityContainer>(
+            //21:         "TestModelStoreContainer", 
+            //22:         DataSpace.SSpace);            
+            //23:                     
+            //24: EntitySetBase set = container.BaseEntitySets["Person"];
+            //25:  
+            //26: typeof(EntitySetBase).GetField(
+            //27:     "_schema",
+            //28:     BindingFlags.NonPublic | BindingFlags.Instance).SetValue(set, "dbo");
+            //29:           
+            //30: var q = from p in e.Person
+            //31:         select p;
+            //32:  
+            //33: Console.WriteLine(e.Person.ToTraceString());
+            //34: Console.WriteLine(q.First().Age);
 
             //Db.Configuration.ProxyCreationEnabled = false;
 

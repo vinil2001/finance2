@@ -56,7 +56,6 @@ D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AI.Web.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AI.WindowsServer.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.ApplicationInsights.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\VisualStudioProjects\Finance\Finance\bin\MySql.Data.xml
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.Helpers.xml
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.Mvc.xml
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.Optimization.xml
@@ -80,7 +79,6 @@ D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.Owin.Security.OAuth.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.Owin.Security.Google.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.Owin.Security.Twitter.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csprojResolveAssemblyReference.cache
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.First.resources
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.Test.resources
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
@@ -109,3 +107,6 @@ D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csproj.GenerateResourc
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.dll
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.pdb
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csprojResolveAssemblyReference.cache
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance\Finance\bin\MySql.Data.xml

@@ -1,10 +1,14 @@
-﻿.padding-left_0 {
+﻿.paymentStatementinput {
+    width:75%;
+}
+.padding-left_0 {
     padding-left: 0px;
     padding-right: 0px;
 
 }
 .label-width {
-    width: 150px;
+    width: 200px;
+    border-radius: 4px;
 }
 .form-style-9{
     max-width: 450px;
