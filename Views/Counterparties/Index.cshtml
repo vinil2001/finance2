@@ -1,31 +1,32 @@
-﻿@model IEnumerable<Finance.Models.Counterparty>
-
+﻿@model IEnumerable<Finance.klt>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    @Html.Partial("MenuBar", "Counterparty")
-    <h2>Контрагенты</h2>
-    <br />
-    <div>
-        <div class="col-md-2">
-            <button type="button" onclick="location.href='@Url.Action("Create")'">
-                Создать новый
-            </button>
-        </div>
-        <div class="col-md-4">
-            <input id="CounterpartySearch" type="text" placeholder="Поиск по названию" @*onchange="CounterpartySearchFunc()"*@ />
-        </div>
-        <div class="col-md-6"></div>
+<link href="~/CSS/responstable.css" rel="stylesheet" />
+@Html.Partial("MenuBar", "Counterparty")
+<h2>Контрагенты</h2>
+<br />
+<div>
+    <div class="col-md-2">
+        <button type="button" onclick="location.href='@Url.Action("Create")'">
+            Создать новый
+        </button>
     </div>
-
-    <br /><br />
-    <table id="indexCounterpartiesTable" class="table">
+    <div class="col-md-4">
+        <input id="CounterpartySearch" type="text" placeholder="Поиск по названию компании" />
+    </div>
+    <div class="col-md-6"></div>
+</div>
+<br /><br />
+<div id="CompaniesContext">
+    <table id="indexCounterpartiesTable" class="responstable">
         <tr>
-            <th width="5%">
+            @*<th width="5%">
                 Форма собств.
-            </th>
+            </th>*@
             <th width="30%">
+                <img src="/pictures/arrowupdown_icon-icons.com_61201s.png">
                 Название
             </th>
             <th width="10%">
@@ -44,65 +45,90 @@
                 Операции
             </th>
         </tr>
-
-        @foreach (var item in Model)
+        @foreach (var i in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OwneshipType.OwnershipTypeName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CodVATPayer)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PhoneNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ContactPerson)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Comment)
-                </td>
-                <td>
-                    <a href='@Url.Action("Edit", new { id = item.Id })'>
-                        <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
-                    </a>
-                    <a href='@Url.Action("Details", new { id = item.Id })'>
-                        <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
-                    </a>
-                    <a href='@Url.Action("Delete", new { id = item.Id })'>
-                        <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
-                    </a>
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => i.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => i.knds)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => i.telf)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => i.ContactPerson)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => i.comt)
+            </td>
+            <td>
+                @*<a href='@Url.Action("ImportFromOrestToFinance", new { orestCounterpartyId = i.id })'>
+            <img style="padding: 0 18px 0 18px" src="~/pictures/database-model-synchronization50.png" alt="Импортировать из Орест в Finance" title="Импортировать из Орест в Finance" />
+        </a>*@
+                <a href='@Url.Action("Edit", new { id = i.id })'>
+                    <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                </a>
+                <a href='@Url.Action("Details", new { id = i.id })'>
+                    <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+                </a>
+                <a href="#" style="text-decoration: none" onclick='showModalWindow("/Counterparties/Delete/@i.id")'>
+                    <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                </a>
+                @*<a href='@Url.Action("Delete", new { id = i.id })'>
+                    <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                </a>*@
+            </td>
+        </tr>
         }
-
     </table>
+</div>
 
-<script>
-    $("#referenceBooks").addClass('active');
-    if ("@ViewBag.SameNameInBothDb")
-        alert("@ViewBag.SameNameInBothDb");
-</script>
+
+@if (ViewBag.newElementName == true)
+{
+    <script>
+         alert("@ViewBag.newElementName");
+    </script>
+}
+
 <script type="text/javascript">
-    var ajaxRequest = null;
-    $("#CounterpartySearch").on('input', function () {
-        if (ajaxRequest != null)
-            ajaxRequest.abort();
-        var request = $("#CounterpartySearch").val();
-        ajaxRequest = $.ajax({
-            url: '/Counterparties/CounterpartySearch/',
+    var ajaxResponse = null;
+    $('#CounterpartySearch').on("input", function () {
+        var request = $('#CounterpartySearch').val().toString();
+        if (ajaxResponse != null) // если пользователь ввел новый символ сразу за предыдущим
+        {
+            ajaxResponse.abort();// убиваем рез.старого запроса
+        }
+        ajaxResponse = $.ajax({
+            url: '/Counterparties/CounterpartySearch',
+            type: 'GET',
             data: {
-                request: request, 
+                request: request
             },
-            success: function (data) 
-            {
-                $("#indexCounterpartiesTable").html(data);
-            }
-        })
-    });
+            success: function (data) {
+                $('#CompaniesContext').html(data);
+                var allNames = $('td[name="companyName"]');
+                for (var i = 0; i < allNames.length; i++) {
+                    var startIndex = allNames[i].innerHTML.indexOf(request);
+                    if (startIndex == -1) {
+                        startIndex = allNames[i].innerHTML.indexOf(request.toUpperCase());
+                    }
+                    var beforeRequestWord = allNames[i].innerHTML.substring(0, startIndex);
+                    var openSpan = "<span class='highlightSymbols'>";
+                    var responseWord = allNames[i].innerHTML.substring(startIndex, (startIndex + request.length));
+                    var closeSpan = "</span>";
+                    var afterRequestWord = allNames[i].innerHTML.substring((startIndex + request.length), allNames[i].innerHTML.length);
+                    allNames[i].innerHTML = beforeRequestWord + openSpan + responseWord + closeSpan + afterRequestWord;
+                }
 
+            }
+
+        })
+    })
+</script>
+<script>
+    if ('@ViewBag.MessageAddToArchiveIndex' != "")
+        alert('@ViewBag.MessageAddToArchiveIndex');
 </script>

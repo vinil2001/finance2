@@ -50,12 +50,15 @@ D:\VisualStudioProjects\Finance\Finance\bin\System.Web.WebPages.Deployment.dll
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.WebPages.dll
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.WebPages.Razor.dll
 D:\VisualStudioProjects\Finance\Finance\bin\WebGrease.dll
+D:\VisualStudioProjects\Finance\Finance\bin\EntityFramework.xml
+D:\VisualStudioProjects\Finance\Finance\bin\EntityFramework.SqlServer.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AI.DependencyCollector.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AI.Web.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AI.WindowsServer.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.ApplicationInsights.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VisualStudioProjects\Finance\Finance\bin\MySql.Data.xml
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.Helpers.xml
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.Mvc.xml
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.Optimization.xml
@@ -65,8 +68,6 @@ D:\VisualStudioProjects\Finance\Finance\bin\System.Web.WebPages.Deployment.xml
 D:\VisualStudioProjects\Finance\Finance\bin\System.Web.WebPages.Razor.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Antlr3.Runtime.pdb
 D:\VisualStudioProjects\Finance\Finance\bin\Newtonsoft.Json.xml
-D:\VisualStudioProjects\Finance\Finance\bin\EntityFramework.xml
-D:\VisualStudioProjects\Finance\Finance\bin\EntityFramework.SqlServer.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AspNet.Identity.Core.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
 D:\VisualStudioProjects\Finance\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -103,10 +104,1542 @@ D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.Counterpart
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csproj.GenerateResource.Cache
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.dll
 D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.pdb
-D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csprojResolveAssemblyReference.cache
-D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
-D:\VisualStudioProjects\Finance\Finance\bin\MySql.Data.xml
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance\Finance\obj\Debug\Finance.csproj.CopyComplete
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\ApplicationInsights.config
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\csc.exe
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\vbc.exe
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\VBCSCompiler.exe
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Finance.dll.config
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Finance.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Finance.pdb
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Antlr3.Runtime.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\EntityFramework.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\EntityFramework.SqlServer.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.Web.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\MySql.Data.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\MySql.Data.Entity.EF6.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Newtonsoft.Json.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Owin.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.Helpers.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.Mvc.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.Optimization.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.Razor.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.WebPages.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.WebPages.Razor.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\WebGrease.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\EntityFramework.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\EntityFramework.SqlServer.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.Web.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\MySql.Data.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.Helpers.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.Mvc.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.Optimization.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.Razor.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.WebPages.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\System.Web.WebPages.Razor.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Antlr3.Runtime.pdb
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Newtonsoft.Json.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.dll
+D:\VisualStudioProjects\Finance - 02-08-2018\Finance\obj\Debug\Finance.pdb
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.pdb
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\ApplicationInsights.config
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\csc.exe
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\vbc.exe
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\VBCSCompiler.exe
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.dll.config
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.pdb
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Antlr3.Runtime.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.SqlServer.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Web.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.Entity.EF6.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Newtonsoft.Json.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Owin.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Helpers.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Mvc.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Optimization.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Razor.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Razor.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\WebGrease.dll
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.SqlServer.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Web.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Helpers.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Mvc.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Optimization.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Razor.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Razor.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Antlr3.Runtime.pdb
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Newtonsoft.Json.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+D:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\ApplicationInsights.config
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\csc.exe
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\vbc.exe
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\VBCSCompiler.exe
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.dll.config
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.pdb
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Antlr3.Runtime.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.SqlServer.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Web.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.Entity.EF6.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Newtonsoft.Json.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Owin.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Helpers.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Mvc.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Optimization.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Razor.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Razor.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\WebGrease.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.SqlServer.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Web.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Helpers.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Mvc.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Optimization.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Razor.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Razor.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Antlr3.Runtime.pdb
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Newtonsoft.Json.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.dll
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.pdb
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\ApplicationInsights.config
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\csc.exe
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\vbc.exe
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\VBCSCompiler.exe
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.dll.config
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Finance.pdb
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Antlr3.Runtime.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.SqlServer.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Web.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.Entity.EF6.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Newtonsoft.Json.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Owin.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Helpers.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Mvc.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Optimization.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Razor.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Razor.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\WebGrease.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\EntityFramework.SqlServer.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.Web.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\MySql.Data.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Helpers.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Mvc.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Optimization.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.Razor.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\System.Web.WebPages.Razor.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Antlr3.Runtime.pdb
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Newtonsoft.Json.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.dll
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.pdb
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+E:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+F:\VisualStudioProjects\Finance - 11-08-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\ApplicationInsights.config
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\csc.exe
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\vbc.exe
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\VBCSCompiler.exe
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.dll.config
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.pdb
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Antlr3.Runtime.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.SqlServer.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Web.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Newtonsoft.Json.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Owin.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Helpers.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Mvc.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Optimization.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Razor.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Razor.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\WebGrease.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.SqlServer.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Web.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Helpers.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Mvc.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Optimization.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Razor.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Razor.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Antlr3.Runtime.pdb
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Newtonsoft.Json.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.pdb
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveOldIncomings.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddNewIncomings.resources
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Google.Protobuf.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Google.Protobuf.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.xml
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.EntityFramework.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\ApplicationInsights.config
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\csc.exe
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\vbc.exe
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\VBCSCompiler.exe
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.dll.config
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.pdb
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Antlr3.Runtime.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.SqlServer.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Google.Protobuf.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Web.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.EntityFramework.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Newtonsoft.Json.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Owin.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Helpers.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Mvc.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Optimization.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Razor.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Razor.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\WebGrease.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.SqlServer.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Google.Protobuf.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Web.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.EntityFramework.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Helpers.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Mvc.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Optimization.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Razor.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Razor.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Antlr3.Runtime.pdb
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Newtonsoft.Json.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveOldIncomings.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddNewIncomings.resources
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.dll
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.pdb
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\ApplicationInsights.config
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\csc.exe
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\vbc.exe
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\VBCSCompiler.exe
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.dll.config
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Finance.pdb
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Antlr3.Runtime.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.SqlServer.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Google.Protobuf.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Web.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.EntityFramework.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Newtonsoft.Json.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Owin.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Helpers.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Mvc.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Optimization.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Razor.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Razor.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\WebGrease.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\EntityFramework.SqlServer.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Google.Protobuf.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.Web.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\MySql.Data.EntityFramework.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Helpers.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Mvc.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Optimization.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.Razor.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\System.Web.WebPages.Razor.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Antlr3.Runtime.pdb
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Newtonsoft.Json.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.RemoveOldIncomings.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.Migrations.AddNewIncomings.resources
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.dll
+E:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.pdb
+F:\VisualStudioProjects\Finance - 18-08-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\ApplicationInsights.config
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\csc.exe
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\vbc.exe
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\VBCSCompiler.exe
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Finance.dll.config
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Finance.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Finance.pdb
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Antlr3.Runtime.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\EntityFramework.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\EntityFramework.SqlServer.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Google.Protobuf.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.Web.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\MySql.Data.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\MySql.Data.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Newtonsoft.Json.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Owin.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.Helpers.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.Mvc.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.Optimization.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.Razor.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.WebPages.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.WebPages.Razor.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\WebGrease.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\EntityFramework.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\EntityFramework.SqlServer.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Google.Protobuf.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.Web.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\MySql.Data.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\MySql.Data.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.Helpers.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.Mvc.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.Optimization.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.Razor.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.WebPages.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\System.Web.WebPages.Razor.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Antlr3.Runtime.pdb
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Newtonsoft.Json.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveOldIncomings.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddNewIncomings.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.pdb
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.PartialPayment.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.Back.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.GoToNewVersion.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.WhenEditedRemoved.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\bin\MySql.Data.Entity.EF6.dll
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTable.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTableChangeWho.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTableAllowNullDateTime.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementUpdate.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementBack.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.test2.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsAddPaymentList.resources
+D:\VisualStudioProjects\Finance - 08-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentPaymentStatementId.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\ApplicationInsights.config
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\csc.exe
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\vbc.exe
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\VBCSCompiler.exe
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Finance.dll.config
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Finance.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Finance.pdb
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Antlr3.Runtime.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\EntityFramework.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\EntityFramework.SqlServer.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Google.Protobuf.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.Web.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\MySql.Data.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\MySql.Data.Entity.EF6.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\MySql.Data.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Newtonsoft.Json.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Owin.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.Helpers.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.Mvc.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.Optimization.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.Razor.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.WebPages.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.WebPages.Razor.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\WebGrease.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\EntityFramework.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\EntityFramework.SqlServer.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Google.Protobuf.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.Web.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\MySql.Data.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\MySql.Data.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.Helpers.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.Mvc.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.Optimization.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.Razor.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.WebPages.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\System.Web.WebPages.Razor.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Antlr3.Runtime.pdb
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Newtonsoft.Json.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveOldIncomings.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddNewIncomings.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PartialPayment.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.Back.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.GoToNewVersion.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.WhenEditedRemoved.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTable.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTableChangeWho.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTableAllowNullDateTime.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementUpdate.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementBack.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.test2.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsAddPaymentList.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentPaymentStatementId.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.dll
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.pdb
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsChanging1.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsChanging2.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.Currency.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentUpdates.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementCurrency.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.DublicatePayDone.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.RenamePaymentFields.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.Migrations.Test3.resources
+D:\VisualStudioProjects\Finance - 19-09-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\ApplicationInsights.config
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\csc.exe
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\vbc.exe
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\VBCSCompiler.exe
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Finance.dll.config
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Finance.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Finance.pdb
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Antlr3.Runtime.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\EntityFramework.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\EntityFramework.SqlServer.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Google.Protobuf.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.Web.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\MySql.Data.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\MySql.Data.Entity.EF6.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\MySql.Data.EntityFramework.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Newtonsoft.Json.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Owin.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.Helpers.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.Mvc.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.Optimization.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.Razor.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.WebPages.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.WebPages.Razor.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\WebGrease.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\EntityFramework.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\EntityFramework.SqlServer.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Google.Protobuf.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.Web.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\MySql.Data.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\MySql.Data.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.Helpers.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.Mvc.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.Optimization.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.Razor.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.WebPages.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\System.Web.WebPages.Razor.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Antlr3.Runtime.pdb
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Newtonsoft.Json.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveOldIncomings.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddNewIncomings.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PartialPayment.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.Back.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.GoToNewVersion.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.WhenEditedRemoved.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTable.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTableChangeWho.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTableAllowNullDateTime.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementUpdate.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementBack.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.test2.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsAddPaymentList.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentPaymentStatementId.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsChanging1.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsChanging2.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.Currency.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentUpdates.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementCurrency.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.DublicatePayDone.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.RenamePaymentFields.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.Test3.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentDocuments.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveCurrency.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.AddCurrency.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.Migrations.CheckAddCurrencyId.resources
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.dll
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.pdb
+D:\VisualStudioProjects\Finance - 24-09-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\ApplicationInsights.config
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\csc.exe
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\System.Collections.Immutable.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\System.Reflection.Metadata.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\vbc.exe
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\VBCSCompiler.exe
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\roslyn\VBCSCompiler.exe.config
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Finance.dll.config
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Finance.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Finance.pdb
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Antlr3.Runtime.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\EntityFramework.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\EntityFramework.SqlServer.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Google.Protobuf.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.Agent.Intercept.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.DependencyCollector.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.Web.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.WindowsServer.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.ApplicationInsights.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AspNet.Identity.Core.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.Cookies.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.Facebook.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.Google.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.OAuth.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.Twitter.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Web.Infrastructure.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\MySql.Data.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\MySql.Data.Entity.EF6.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\MySql.Data.EntityFramework.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Newtonsoft.Json.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Owin.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.Helpers.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.Mvc.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.Optimization.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.Razor.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.WebPages.Deployment.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.WebPages.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.WebPages.Razor.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\WebGrease.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\EntityFramework.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\EntityFramework.SqlServer.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Google.Protobuf.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.DependencyCollector.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.Web.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AI.WindowsServer.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.ApplicationInsights.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\MySql.Data.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\MySql.Data.EntityFramework.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.Helpers.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.Mvc.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.Optimization.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.Razor.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.WebPages.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.WebPages.Deployment.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\System.Web.WebPages.Razor.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Antlr3.Runtime.pdb
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Newtonsoft.Json.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AspNet.Identity.Core.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.Facebook.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.Cookies.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.OAuth.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.Google.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.Twitter.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.csprojAssemblyReference.cache
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.First.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.Test.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.Counterparties.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.Counterparties2.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AccountNumberInBank.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.IncomingSummToDecimal.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.EditIncomingModel.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AccNumbersDbContext.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.BankId.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.CounterpartyBankAccNumber.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.UnionContexts.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddIdORest.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.IntToLongIdOrest.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.LongNullabelIdOrest.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.DiscountToNulable.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddNullabelToOwneshipTypeId.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddRequiredAttributesToIncoming2.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceData0Available.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.CounterpartySearchUnionModel.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.UserRoles.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.CheckPayment.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatement_changeDBCntext.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddCountrapartyNameToPaymentStatement.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.applicationUserManaget.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.backToApplicationUser.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.CounterparyNameRequired.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToString.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.InvoiceSummaToDecimal.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.whoAddThisAndWhoMadeLastChanges.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpary.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.BigUpdate.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveSearchUnionModel.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.DeleteRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddRemovedCounterparty.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.Test1.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.OrestCounterpartyIdToLong.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.RemovedCounterpartyName.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.add_RemovedCounterpartyComment.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveOldIncomings.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddNewIncomings.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PartialPayment.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.Back.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.GoToNewVersion.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.WhenEditedRemoved.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTable.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTableChangeWho.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentTableAllowNullDateTime.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementUpdate.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementBack.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.test2.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsAddPaymentList.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentPaymentStatementId.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsChanging1.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementsChanging2.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.Currency.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentUpdates.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.PaymentStatementCurrency.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.DublicatePayDone.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.RenamePaymentFields.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.Test3.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddPaymentDocuments.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.RemoveCurrency.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.AddCurrency.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.Migrations.CheckAddCurrencyId.resources
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.csproj.GenerateResource.cache
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.csproj.CoreCompileInputs.cache
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.csproj.CopyComplete
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.dll
+D:\VisualStudioProjects\Finance_24-09-2018\Finance\obj\Debug\Finance.pdb

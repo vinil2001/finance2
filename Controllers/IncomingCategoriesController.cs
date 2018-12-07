@@ -11,6 +11,7 @@ using Finance.Models;
 
 namespace Finance.Controllers
 {
+    [Authorize]
     public class IncomingCategoriesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

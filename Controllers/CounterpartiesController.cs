@@ -13,18 +13,25 @@ using Finance.Models;
 
 namespace Finance.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class CounterpartiesController : Controller
     {
+
         private ApplicationDbContext db = new ApplicationDbContext();
         private orestEntities orestDb = new orestEntities();
-
 
         // GET: Counterparties
         public ActionResult Index()
         {
-            var counterparties = db.Counterparties.Include(c => c.OwneshipType);
-            return View(counterparties.ToList());
+            List<RemovedCounterparty> RemovedCompanies = db.RemovedCounterpartys.ToList();
+
+            List <klt> OrestCounterparties = orestDb.klt.Where(i=>i.idp != 0 && i.idp != 1 && i.idp != 2975 && i.name != "").OrderByDescending(a => a.id).Take(100).ToList();
+
+            OrestCounterparties.RemoveAll(el1 => RemovedCompanies.Exists(el2 => el2.OrestCounterpartyId == el1.id));
+
+            if (TempData["MessageAddToArchive"] != null)
+                ViewBag.MessageAddToArchiveIndex = TempData["MessageAddToArchive"];
+            return View(OrestCounterparties);
         }
 
         // GET: Counterparties/Details/5
@@ -34,7 +41,7 @@ namespace Finance.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Counterparty counterparty = db.Counterparties.Find(id);
+            klt counterparty = orestDb.klt.Find(id);
             if (counterparty == null)
             {
                 return HttpNotFound();
@@ -42,87 +49,26 @@ namespace Finance.Controllers
             return View(counterparty);
         }
 
+        protected int addNewCounterpartyToOrestDb(klt counterparty)
+        {
+            counterparty.idp = 15;
+            counterparty.sld = 0;
+            counterparty.grp = 0;
+
+            //tempClient.id = counterparty.IdOrest;
+
+            //tempClient.nds = Convert.ToInt32(counterparty.VATPayer);
+
+            orestDb.klt.Add(counterparty);
+            orestDb.SaveChanges();
+            return Convert.ToInt32(counterparty.id);
+        }
+
         // GET: Counterparties/Create
         public ActionResult Create()
         {
-            ViewBag.OwneshipTypeId = new SelectList(db.OwnershipTypes, "Id", "OwnershipTypeName");
+           
             return View();
-        }
-
-        public ActionResult ImportFromOrestToFinance(int? orestCounterpartyId)
-        {
-            if (orestCounterpartyId != null)
-            {
-                klt orestEntity = orestDb.klt.Where(i => i.id == orestCounterpartyId).First();
-                if (db.Counterparties.Where(c => c.Name == orestEntity.name).Count() == 0)
-                {
-                    Counterparty financeEntity = new Counterparty();
-                    financeEntity.Name = orestEntity.name;
-                    financeEntity.AccountNumber = orestEntity.chet;
-                    financeEntity.ActualAddress = orestEntity.adft;
-                    financeEntity.BankMFO = orestEntity.mfob;
-                    financeEntity.BankName = orestEntity.bank;
-                    financeEntity.CodVATPayer = orestEntity.knds;
-                    financeEntity.Comment = orestEntity.comt;
-                    financeEntity.ContactPerson = orestEntity.cont;
-                    financeEntity.Discount = orestEntity.per;
-                    financeEntity.EDRPO = orestEntity.okpo;
-                    financeEntity.FullName = orestEntity.full;
-                    financeEntity.IdOrest = orestEntity.id;
-                    db.Counterparties.Add(financeEntity);
-                    db.SaveChanges();
-                    int financeEntityid = db.Counterparties.Where(c => c.Name == financeEntity.Name).First().Id;
-                    return RedirectToAction("Edit", new { id = financeEntityid });
-                }
-                else
-                {
-                    ViewBag.SameNameInBothDb = "Компания с таким именем уже существует в базе Finance";
-                    return View("Index", db.Counterparties.ToList());
-                }
-
-            }
-            else
-                return View("orestCounterpartyId == null");
-
-        }
-        public ActionResult Import()
-        {
-            var OrestClients = orestDb.klt.ToList();          // клиенты из бызы Orest
-            var FinanceClients = db.Counterparties.ToList(); // клиенты из бызы Finance
-
-            //OrestClients.Where - выбрать из базы Orest тех контрагентов, у которыз
-            //FinanceClients.Select(b => b.IdOrest).ToList() - получить список из id контрагентов новый базы
-            //.Contains(c.id) - проверить - содержи ли этот список (см. выше) id текущего контрагента из старой базы
-            //Если нет, он попадёт в список NewClients (в выборка Where).
-
-            var NewClients = OrestClients.Where(c => !FinanceClients.Select(b => b.IdOrest).ToList().Contains(c.id));
-
-            //        db.Customers
-            //.Where(c => !db.Blacklists
-            //    .Select(b => b.CusId)
-            //    .Contains(c.CusId)
-            //);
-
-            foreach (var item in NewClients)
-            {
-                Counterparty tempClient = new Counterparty();
-                tempClient.Name = item.name;
-                tempClient.AccountNumber = item.chet;
-                tempClient.ActualAddress = item.adft;
-                tempClient.BankMFO = item.mfob;
-                tempClient.BankName = item.bank;
-                tempClient.CodVATPayer = item.knds;
-                tempClient.Comment = item.comt;
-                tempClient.ContactPerson = item.cont;
-                tempClient.Discount = item.per;
-                tempClient.EDRPO = item.okpo;
-                tempClient.FullName = item.full;
-                tempClient.IdOrest = item.id;
-                db.Counterparties.Add(tempClient);
-                db.SaveChanges();
-            }
-
-            return RedirectToAction("Index");
         }
 
         // POST: Counterparties/Create
@@ -130,19 +76,15 @@ namespace Finance.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name,FullName,VATPayer,CodVATPayer,VATCertificateNumber,BankName,AccountNumber,BankMFO,EDRPO,LegalAdress,ActualAddress,PhoneNumber,ContactPerson,Comment,Discount,OwneshipTypeId")] Counterparty counterparty)
+        public JsonResult Create(klt counterparty)
         {
 
             if (ModelState.IsValid)
             {
-                db.Counterparties.Add(counterparty);
-                db.SaveChanges();
-                ViewBag.OwneshipTypeId = new SelectList(db.OwnershipTypes, "Id", "OwnershipTypeName", counterparty.OwneshipTypeId);
-                return null;
+                int addedCounterparyId = addNewCounterpartyToOrestDb(counterparty);
+                return Json(new { Id = addedCounterparyId, Name = counterparty.name });
             }
-
-            ViewBag.OwneshipTypeId = new SelectList(db.OwnershipTypes, "Id", "OwnershipTypeName", counterparty.OwneshipTypeId);
-            return PartialView(counterparty);
+            return Json(counterparty);
         }
 
         // GET: Counterparties/Edit/5
@@ -152,13 +94,18 @@ namespace Finance.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Counterparty counterparty = db.Counterparties.Find(id);
-            if (counterparty == null)
+            //Counterparty counterparty = db.Counterparties.Find(id);
+            var OrestKlt = orestDb.klt.Find(id);
+            if (OrestKlt == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OwneshipTypeId = new SelectList(db.OwnershipTypes, "Id", "OwnershipTypeName", counterparty.OwneshipTypeId);
-            return View(counterparty);
+
+       
+
+            //ViewBag.OwneshipTypeId = new SelectList(db.OwnershipTypes, "Id", "OwnershipTypeName", counterparty.OwneshipTypeId);
+
+            return View(OrestKlt);
         }
 
         // POST: Counterparties/Edit/5
@@ -166,69 +113,83 @@ namespace Finance.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,IdOrest,OwneshipTypeId,Name,FullName,VATPayer,CodVATPayer,VATCertificateNumber,BankName,AccountNumber,BankMFO,EDRPO,LegalAdress,ActualAddress,PhoneNumber,ContactPerson,Comment,Discount")] Counterparty counterparty)
+        public ActionResult Edit(klt counterparty)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(counterparty).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details/" + counterparty.Id);
+                return RedirectToAction("Details/" + counterparty.id);
             }
-            ViewBag.OwneshipTypeId = new SelectList(db.OwnershipTypes, "Id", "OwnershipTypeName", counterparty.OwneshipTypeId);
+ 
             return View(counterparty);
+        }
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            klt counterparty = orestDb.klt.Find(id);
+            return View(counterparty);
+        }
+
+
+        public ActionResult AddToArchive(int id)
+        {
+            try
+            {
+                RemovedCounterparty removedCounterparty = new RemovedCounterparty();
+                //removedCounterparty.RemovedKlt = orestDb.klt.Find(id);
+                removedCounterparty.OrestCounterpartyName = orestDb.klt.Find(id).name;
+                removedCounterparty.OrestCounterpartyId = orestDb.klt.Find(id).id;
+                removedCounterparty.WhoRemoveIt = User.Identity.Name;
+                removedCounterparty.WhenRemoved = DateTime.Now;
+                db.RemovedCounterpartys.Add(removedCounterparty);
+                db.SaveChanges();
+                TempData["MessageAddToArchive"] ="Компания " + orestDb.klt.Find(id).name + " успешно удалена в архив.";
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["MessageAddToArchive"] = "Ошибка удаления компании " + ex.Message;
+                return RedirectToAction("Index");
+            }
+            
         }
 
         // GET: Counterparties/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Counterparty counterparty = db.Counterparties.Find(id);
-            if (counterparty == null)
-            {
-                return HttpNotFound();
-            }
-            return View(counterparty);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    Counterparty counterparty = db.Counterparties.Find(id);
+        //    if (counterparty == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(counterparty);
+        //}
 
-        // POST: Counterparties/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Counterparty counterparty = db.Counterparties.Find(id);
-            db.Counterparties.Remove(counterparty);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// POST: Counterparties/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult DeleteConfirmed(int id)
+        //{
+        //    Counterparty counterparty = db.Counterparties.Find(id);
+        //    db.Counterparties.Remove(counterparty);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         public ActionResult CounterpartySearch(string request)
         {
-            CounterpartySearchUnionModel UnionModel = new CounterpartySearchUnionModel();
+            List<klt> OrestCounterparties = orestDb.klt.Where(i => i.name.Contains(request)).OrderByDescending(a => a.id).Take(100).ToList();
 
-            UnionModel.FinanceCounterparties = db.Counterparties.Where(c => c.Name.Contains(request)).Take(100).ToList();
-
-            UnionModel.OrestCounterparties = orestDb.klt.Where(c => c.name.Contains(request)).Take(100).ToList();
-
-            foreach (var i in UnionModel.OrestCounterparties.ToList())
-            {
-                foreach (var c in UnionModel.FinanceCounterparties.ToList())
-                {
-                    if (i.id == c.IdOrest)
-                    {
-                        UnionModel.OrestCounterparties.Remove(i);
-                        break;
-                    }
-                }
-            }
-
-
-            if (UnionModel.OrestCounterparties == null)
-                return HttpNotFound("База данных Орест недоступна");
-
-            return PartialView(UnionModel);
+            return View(OrestCounterparties);
+            //if (OrestCounterparties.Count() != 0)
+            //    return View(OrestCounterparties);
+            //else
+            //    return View("Совпадений не найдено.");
         }
 
         public class ModelUnionCompany
@@ -242,51 +203,17 @@ namespace Finance.Controllers
         public JsonResult SearchAutocomplete(string request)
         {
 
-           
-
-
-            //          1: Employees e = new Employees();
-            //          2:  
-            // 3: XmlReader[] sReaders = new XmlReader[]{ XmlReader.Create(
-            // 4:     Assembly.GetExecutingAssembly().GetManifestResourceStream("Employees.ssdl"))};
-            // 5:  
-            // 6: XmlReader[] mReaders = new XmlReader[]{ XmlReader.Create(
-            // 7:     Assembly.GetExecutingAssembly().GetManifestResourceStream("Employees.msl"))};
-            // 8:  
-            // 9: StoreItemCollection sCollection = new StoreItemCollection(sReaders);
-            //10: EdmItemCollection cCollection = e.MetadataWorkspace.GetItemCollection(
-            //11:     DataSpace.CSpace) as EdmItemCollection;
-            //12:  
-            //13: StorageMappingItemCollection csCollection =
-            //14:     new StorageMappingItemCollection(cCollection, sCollection, mReaders);
-            //15:  
-            //16: e.MetadataWorkspace.RegisterItemCollection(sCollection);
-            //17: e.MetadataWorkspace.RegisterItemCollection(csCollection);
-            //18:  
-            //19: EntityContainer container =
-            //20:     e.MetadataWorkspace.GetItem<EntityContainer>(
-            //21:         "TestModelStoreContainer", 
-            //22:         DataSpace.SSpace);            
-            //23:                     
-            //24: EntitySetBase set = container.BaseEntitySets["Person"];
-            //25:  
-            //26: typeof(EntitySetBase).GetField(
-            //27:     "_schema",
-            //28:     BindingFlags.NonPublic | BindingFlags.Instance).SetValue(set, "dbo");
-            //29:           
-            //30: var q = from p in e.Person
-            //31:         select p;
-            //32:  
-            //33: Console.WriteLine(e.Person.ToTraceString());
-            //34: Console.WriteLine(q.First().Age);
-
             //Db.Configuration.ProxyCreationEnabled = false;
 
             //var Companies = Db.Counterparties.Where(i => i.Name.StartsWith(request)).ToList();
+
             List<ModelUnionCompany> CompaniesNames = new List<ModelUnionCompany>();
-            CompaniesNames.AddRange(from N in db.Counterparties
-                                    where N.Name.ToLower().Contains(request.ToLower())
-                                    select new ModelUnionCompany() { Name = N.Name, Id = N.Id, TypeDb = 1, IdOrest = N.IdOrest });
+
+            //Исключил запрос к db поскольку все компании беруться и добавляются только в orestDb
+            //CompaniesNames.AddRange(from N in db.Counterparties
+            //                        where N.Name.ToLower().Contains(request.ToLower())
+            //                        select new ModelUnionCompany() { Name = N.Name, Id = N.Id, TypeDb = 1, IdOrest = N.IdOrest });
+            ////Исключил запрос к db поскольку все компании беруться и добавляются только в orestDb
 
             //var oldCompanies = dbOrest.Database.SqlQuery<ModelUnionCompany>("SELECT id, name FROM   klt WHERE(name LIKE '%"+ request  + "%')");
 
@@ -331,6 +258,13 @@ namespace Finance.Controllers
 
             return Json(CompaniesNames.Take(100), JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult StepBack()
+        {
+            var stepBack = Request.UrlReferrer.ToString();
+            return Redirect(Request.UrlReferrer.ToString());
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -1,0 +1,11 @@
+﻿.pulse-ring {
+    content: '';
+    width: 42px;
+    height: 33px;
+    border: 10px solid #F00;
+    /*border-radius: 50%;*/
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    animation: pulsate infinite 1s;
+}

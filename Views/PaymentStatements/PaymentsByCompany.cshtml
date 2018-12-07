@@ -1,0 +1,145 @@
+﻿@model IEnumerable<Finance.Models.PaymentStatement>
+
+<script>
+    setTimeout("location.reload(true);", 50000, );
+</script>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="MenuBar">
+    @Html.Partial("MenuBar", "PaymentStatements")
+</div>
+
+@if (!User.IsInRole("Developer") && !User.IsInRole("User"))
+{
+    <script>
+        $("#MenuBar").hide();
+    </script>
+}
+
+<div style="float:right;">
+    Вы вошли под логином: @User.Identity.Name
+</div>
+
+<h2>Список платежей по компании</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @*<a href='@Url.Action("Index")'>
+                <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" title="Сортировать по дате добавления" alt="Сортировать по дате добавления" />
+            </a>*@
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
+            Компания
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
+            Счет №
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.InvoiceDate)*@
+            Счет дата
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.InvoiceSumma)*@
+            Сумма
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.Comment)*@
+            Коммент.
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.InvoiceChecked)*@
+            <img src="~/pictures/approved-512-30x30.png" alt="Счет проверен" title="Счет проверен" />
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.PaymentApproved)*@
+            <img src="~/pictures/Approved-5-512-30x30.png" alt="К оплате" title="К оплате" />
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.PaymentDone)*@
+            <img src="~/pictures/PaymentDone-30x30.png" alt="Оплачен" title="Оплачен" />
+        </th>
+        <th>
+            @*@Html.DisplayNameFor(model => model.DocumentUrl)*@
+            Счет(файл)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr id=@item.Id.ToString() class='@(item.PaymentDone == false ?  "PaymentUndone" : "")'>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.KltId)*@
+                @item.Id.ToString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Counterparty.name)
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNumber)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.InvoiceDate, "{0:dd.MM.yyyy}", new { @class = "input-large" })*@
+                @item.InvoiceDate.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceSumma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td align="center" class="largerCheckbox">
+                @Html.DisplayFor(modelItem => item.InvoiceChecked)
+            </td>
+            <td align="center" class="largerCheckbox">
+                @Html.DisplayFor(modelItem => item.PaymentApproved)
+            </td>
+            <td align="center" class="largerCheckbox">
+                @Html.DisplayFor(modelItem => item.PaymentDone)
+            </td>
+            <td>
+                <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
+                    Открыть счет
+                </button>
+                @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
+            </td>
+            <td>
+                <a href='@Url.Action("Edit", new { id = item.Id })'>
+                    <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                </a>
+                @if (item.InvoiceChecked != true)
+                {
+                    <a href='@Url.Action("Delete", new { id = item.Id })'>
+                        <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                    </a>
+                }
+                else
+                {
+                    <a href='#' onclick="alert('Удаление не возможно пока документ проверен и подписан в оплату.')">
+                        <img src="~/pictures/CanNotRemove.png" alt="Удалить не возможно" title="Удалить не возможно" />
+                    </a>
+                }
+            </td>
+        </tr>
+
+    }
+
+</table>
+<script>
+    $(function () {
+        $("#InvoiceDate").datepicker(
+            {
+                dateFormat: "dd-mm-yy"
+            });
+
+    });
+</script>
+

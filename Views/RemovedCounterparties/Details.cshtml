@@ -1,0 +1,80 @@
+﻿@model Finance.Models.RemovedCounterparty
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Информация о компании из архива</h4>
+    <hr />
+    <table class="table">
+
+        <tr>
+            <td><p>Название</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.name)</p></td>
+        </tr>
+        <tr>
+            <td><p>Название полностью</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.full)</p></td>
+        </tr>
+        <tr>
+            <td><p>Плательщик НДС</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.nds)</p></td>
+        </tr>
+        <tr>
+            <td><p>ИНН</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.knds)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер свидетельсва плательщика НДС</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.snds)</p></td>
+        </tr>
+        <tr>
+            <td><p>Банк</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.bank)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер счета</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.chet)</p></td>
+        </tr>
+        <tr>
+            <td><p>МФО</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.mfob)</p></td>
+        </tr>
+        <tr>
+            <td><p>ЄДРПОУ</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.okpo)</p></td>
+        </tr>
+        <tr>
+            <td><p>Юр.Адрес</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.adur)</p></td>
+        </tr>
+        <tr>
+            <td><p>Физ.Адрес</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.adft)</p></td>
+        </tr>
+        <tr>
+            <td><p>Номер тел.</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.telf)</p></td>
+        </tr>
+        <tr>
+            <td><p>Контактное лицо</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.cont)</p></td>
+        </tr>
+        <tr>
+            <td><p>Комментарий</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.comt)</p></td>
+        </tr>
+        <tr>
+            <td><p>Скидка %</p></td>
+            <td><p>@Html.DisplayFor(model => model.RemovedKlt.per)</p></td>
+        </tr>
+    </table>
+<p>
+    <div>
+        @Html.ActionLink("Назад", null, null, null, new { href = Request.UrlReferrer })
+    </div>
+</p>

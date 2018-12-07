@@ -9,7 +9,7 @@ using Finance.Models;
 namespace Finance.Controllers
 {
 
-    [Authorize]  // Temporary commented. To do: Uncomment !!!
+    [Authorize]  
 
     public class HomeController : Controller
     {
@@ -19,6 +19,7 @@ namespace Finance.Controllers
          
         public ActionResult Index()
         {
+            Debug.Log("Entering to home page");
             if (!User.IsInRole("Developer") && !User.IsInRole("User"))
                 return RedirectToAction("Index", "PaymentStatements");
         

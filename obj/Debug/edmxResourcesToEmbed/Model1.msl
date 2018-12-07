@@ -27,5 +27,63 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="bank">
+      <EntityTypeMapping TypeName="orestModel.bank">
+        <MappingFragment StoreEntitySet="bank">
+          <ScalarProperty Name="mfob" ColumnName="mfob" />
+          <ScalarProperty Name="chet" ColumnName="chet" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bkh">
+      <EntityTypeMapping TypeName="orestModel.bkh">
+        <MappingFragment StoreEntitySet="bkh">
+          <ScalarProperty Name="datr" ColumnName="datr" />
+          <ScalarProperty Name="bank" ColumnName="bank" />
+          <ScalarProperty Name="brsh" ColumnName="brsh" />
+          <ScalarProperty Name="vlt" ColumnName="vlt" />
+          <ScalarProperty Name="del" ColumnName="del" />
+          <ScalarProperty Name="comt" ColumnName="comt" />
+          <ScalarProperty Name="prh" ColumnName="prh" />
+          <ScalarProperty Name="usr" ColumnName="usr" />
+          <ScalarProperty Name="klt" ColumnName="klt" />
+          <ScalarProperty Name="frm" ColumnName="frm" />
+          <ScalarProperty Name="dusr" ColumnName="dusr" />
+          <ScalarProperty Name="datd" ColumnName="datd" />
+          <ScalarProperty Name="ncht" ColumnName="ncht" />
+          <ScalarProperty Name="ndoc" ColumnName="ndoc" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="td" ColumnName="td" />
+          <ScalarProperty Name="tp" ColumnName="tp" />
+          <ScalarProperty Name="lg" ColumnName="lg" />
+          <ScalarProperty Name="op" ColumnName="op" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ksh">
+      <EntityTypeMapping TypeName="orestModel.ksh">
+        <MappingFragment StoreEntitySet="ksh">
+          <ScalarProperty Name="rsh" ColumnName="rsh" />
+          <ScalarProperty Name="del" ColumnName="del" />
+          <ScalarProperty Name="comt" ColumnName="comt" />
+          <ScalarProperty Name="usr" ColumnName="usr" />
+          <ScalarProperty Name="frm" ColumnName="frm" />
+          <ScalarProperty Name="vlt" ColumnName="vlt" />
+          <ScalarProperty Name="klt" ColumnName="klt" />
+          <ScalarProperty Name="dusr" ColumnName="dusr" />
+          <ScalarProperty Name="datd" ColumnName="datd" />
+          <ScalarProperty Name="ncht" ColumnName="ncht" />
+          <ScalarProperty Name="ndoc" ColumnName="ndoc" />
+          <ScalarProperty Name="num" ColumnName="num" />
+          <ScalarProperty Name="tp" ColumnName="tp" />
+          <ScalarProperty Name="lg" ColumnName="lg" />
+          <ScalarProperty Name="op" ColumnName="op" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

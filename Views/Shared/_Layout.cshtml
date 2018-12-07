@@ -1,14 +1,13 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="uk-UA">
 
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     @*<script src="//code.jquery.com/jquery-1.10.2.js"></script>*@
-    @*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@  
+    @*<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>*@
     <link href="~/CSS/MyStyles.css" rel="stylesheet" />
     <link href="~/CSS/MenuBar.css" rel="stylesheet" />
     <script src="~/Scripts/myPopUp.js"></script>
@@ -16,22 +15,31 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     @*<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>*@
+
+    <style>
+        .scroll-x {
+            overflow-x: scroll;
+            background-color: #F9F9F9;
+            width: 1160px;
+            height: 50px;
+        }
+    </style>
 </head>
 <body class="form-style">
     @*@Html.Partial("MenuBar")*@
     @RenderBody()
     <div>
         <hr />
-        <footer>
+        @*<footer>
             <p>Дата, время: @DateTime.Now</p>
-        </footer>
+        </footer>*@
     </div>
 
     <div id="modalWindow" style="display:none">
         <div id="WinLoader" style="width: 100%; height: 100%; display: none">
             <img style="margin: auto auto;" src="~/pictures/Loader.gif" />
         </div>  
-        <div id="windowContent" class="form-style">
+        <div id="windowContent">
         </div>
         
     </div>
@@ -46,7 +54,7 @@
         })
         
         function showModalWindow(Link) {
-            alert(Link);
+            //alert(Link);
             $("#modalWindow").fadeIn();
             $("#WinLoader").show();
             $("#windowContent").html('');

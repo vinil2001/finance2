@@ -1,0 +1,1 @@
+<add name="orestEntities" connectionString="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=185.67.3.212;user id=admin_usr;charset=utf8;password=iHJN0uT9;database=orest;persistsecurityinfo=True&quot;" providerName="System.Data.EntityClient" />

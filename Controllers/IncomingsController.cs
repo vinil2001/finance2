@@ -1,297 +1,73 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Finance.Models;
 
 namespace Finance.Controllers
 {
-    //[Authorize]
     public class IncomingsController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
-        private orestEntities OrestDb = new orestEntities();
 
+        ApplicationDbContext db = new ApplicationDbContext();
+        static orestEntities dbOrest = new orestEntities();
+
+        // В таблице bkn находятся такие типы записей (различающиеся полем tp):
+        // 1) Банк-приход (перевод внутри старны в грн) - bkh.tp = 1;
+        // 2) Банк-приход валюты при экспортных операциях - bkh.tp = 5;
+        // 3) Банк-расход (перевод внутри старны в грн) - bkh.tp = 2;
+        // 4) Банк-расход валюты при импортных операциях - bkh.tp = 4; 3 - заявка на покупку валюты на основе которой создается Банк-расход
+        // 5) Отгрузка без 100% оплаты экспорт - bkh.tp = 6; -- пока только в двух случаях
+        // У кассы-прихода ksh.tp = 1 !!!
+        // Учитывая выше указанную расшифровку мне надо выбрать записи где bkh.tp = 1 || bkh.tp =5
+        // tp - судя по всему имеет связь с таблицей _fin или fin или fin0 (одинаковые таблицы)
+        // Только таблицы с именами _fin или fin или fin0 имеют 6 рядков - совпадающих по кол-ву с кол-м типов операций tp
+        /*
+         SELECT  TABLE_NAME, TABLE_ROWS
+         FROM information_schema.TABLES
+        */
+        static List<IncomingsFromOrestdb> UnionOrestEntiry;
+
+        public List<IncomingsFromOrestdb> ReturnAllIncomingsFromOrestDb()
+        {
+            return dbOrest.Database.SqlQuery<IncomingsFromOrestdb>(
+                   @"SELECT  bkh.id AS BankIncomingId, bkh.ndoc AS DocumentNumbeInOrestDb, bkh.curs AS CurrencyRate, NULL AS PaymentSum, bkh.sd AS TotalPaymentSumm, bkh.ncht AS InvoiceNumber, bkh.datd AS DocumentCreated, bkh.dusr AS DucumentEdited, 
+                   bkh.klt AS PayerId, bkh.comt AS Comment, klt.name AS NameKlt, bank.name AS NameBank, '0' AS type
+                   FROM      bkh INNER JOIN
+                   klt ON bkh.klt = klt.id INNER JOIN
+                   bank ON bkh.bank = bank.id
+                   WHERE   (bkh.tp = 1) OR
+                   (bkh.tp = 5) OR
+                   (bkh.tp = 6)
+                   UNION
+                   SELECT  ksh.id AS KassaIncomingId, ksh.ndoc AS DocumentNumbeInOrestDb, ksh.curs AS CurrencyRate, ksh.sm AS PaymentSum, ksh.sd AS TotalPaymentSumm, ksh.ncht AS InvoiceNumber, ksh.datd AS DocumentCreated, ksh.dusr AS DucumentEdited, 
+                   ksh.klt AS PayerId, ksh.comt AS Comment, klt_1.name AS NameKlt, NULL AS NameBank, '1' AS type
+                   FROM      ksh INNER JOIN
+                   klt klt_1 ON ksh.klt = klt_1.id").ToList();
+        }
+       
         // GET: Incomings
         public ActionResult Index()
         {
-            //var incomings = db.Incomings.Include(i => i.Bank).Include(i => i.Counterparty).Include(i => i.IncomingCategory).Include(i => i.WayOfPayment);
-            //return View(incomings.ToList());
-            return View(db.Incomings.ToList());
+            UnionOrestEntiry = ReturnAllIncomingsFromOrestDb();
+            return View(UnionOrestEntiry.Where(a => a.DocumentCreated >= DateTime.Today.AddMonths(-1) && a.DocumentCreated <= DateTime.Today));
         }
 
-        // GET: Incomings/Details/5
-        public ActionResult Details(int? id)
+        public PartialViewResult SearchIncoming(string IncomingDataFrom, string IncomingDataTo, string searchRequest = null)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Incoming incoming = db.Incomings.Find(id);
-            if (incoming == null)
-            {
-                return HttpNotFound();
-            }
-            return View(incoming);
-        }
-
-        // GET: Incomings/Create
-        public ActionResult Create()
-        {
-            ViewBag.BankId = new SelectList(db.Banks, "Id", "BankName");
-            ViewBag.CounterpartyId = new SelectList(db.Counterparties, "Id", "Name");
-            ViewBag.IncomingCategoryId = new SelectList(db.IncomingCategorys, "Id", "IncomingCategoryName");
-            ViewBag.WayOfPaymentId = new SelectList(db.WayOfPayments, "Id", "WayOfPaymentName");
-            ViewBag.IncomingTypeId = new SelectList(db.IncomingTypes, "Id", "TypeName");
-            return View();
-        }
-
-        // POST: Incomings/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IncomingData,BankId,CounterpartyId,IncomingSum,IncomingCategoryId,IncomingTypeId,InvoiceNumber,InvoiceData,WayOfPaymentId")] Incoming incoming, int? CounterpartyTypeDb)
-        {
-            //ModelState.Remove("CounterpartyId");
-            //if (M)
-            //{
-            //    ViewBag.ErrorMessage = "Поле 'Плательщик' должно быть установлено";
-            //}
-            if (ModelState.IsValid)
-            {
-                if(CounterpartyTypeDb == 0) // dbOrest
-                {
-                    var orestClient = OrestDb.klt.Find(incoming.CounterpartyId);
-
-                    Counterparty tempClient = new Counterparty();
-                    tempClient.Name = orestClient.name;
-                    tempClient.AccountNumber = orestClient.chet;
-                    tempClient.ActualAddress = orestClient.adft;
-                    tempClient.BankMFO = orestClient.mfob;
-                    tempClient.BankName = orestClient.bank;
-                    tempClient.CodVATPayer = orestClient.knds;
-                    tempClient.VATCertificateNumber = orestClient.snds;
-                    tempClient.Comment = orestClient.comt;
-                    tempClient.ContactPerson = orestClient.cont;
-                    tempClient.Discount = orestClient.per;
-                    tempClient.EDRPO = orestClient.okpo;
-                    tempClient.FullName = orestClient.full;
-                    tempClient.IdOrest = orestClient.id;
-                    tempClient.VATPayer = !Convert.ToBoolean(orestClient.nds);
-
-                    db.Counterparties.Add(tempClient);
-
-                    incoming.Counterparty = tempClient;
-                  
-                }
-                db.Incomings.Add(incoming);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-          
-            ViewBag.BankId = new SelectList(db.Banks, "Id", "BankName", incoming.Bank);
-            ViewBag.CounterpartyId = new SelectList(db.Counterparties, "Id", "Name", incoming.CounterpartyId);
-            ViewBag.IncomingCategoryId = new SelectList(db.IncomingCategorys, "Id", "IncomingCategoryName", incoming.IncomingCategoryId);
-            ViewBag.WayOfPaymentId = new SelectList(db.WayOfPayments, "Id", "WayOfPaymentName");
-            ViewBag.IncomingTypeId = new SelectList(db.IncomingTypes, "Id", "TypeName");
-            return View(incoming);
-        }
-        public void GetCounterpartyName (string CounterpartyNameVal)
-        {
-            ViewBag.CounterpartyName = CounterpartyNameVal;
-            TempData["CounterpartyName"] = CounterpartyNameVal;
-        }
-        // GET: Incomings/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-
-            EditIncomingModel CurrentEditIncomingModel = new EditIncomingModel(db.Incomings.Find(id));
-
-            if (CurrentEditIncomingModel.EditedIncoming == null)
-            {
-                return HttpNotFound();
-            }
-            return View(CurrentEditIncomingModel);
-        }
-
-        // POST: Incomings/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditIncomingModel incoming, int? CounterpartyTypeDb)
-        {
-            if (ModelState.IsValid)
-            {
-                if (CounterpartyTypeDb == 0) // dbOrest
-                {
-                    var orestClient = OrestDb.klt.Find(incoming.EditedIncoming.CounterpartyId);
-
-                    Counterparty tempClient = new Counterparty();
-                    tempClient.Name = orestClient.name;
-                    tempClient.AccountNumber = orestClient.chet;
-                    tempClient.ActualAddress = orestClient.adft;
-                    tempClient.BankMFO = orestClient.mfob;
-                    tempClient.BankName = orestClient.bank;
-                    tempClient.CodVATPayer = orestClient.knds;
-                    tempClient.VATCertificateNumber = orestClient.snds;
-                    tempClient.Comment = orestClient.comt;
-                    tempClient.ContactPerson = orestClient.cont;
-                    tempClient.Discount = orestClient.per;
-                    tempClient.EDRPO = orestClient.okpo;
-                    tempClient.FullName = orestClient.full;
-                    tempClient.IdOrest = orestClient.id;
-                    tempClient.VATPayer = !Convert.ToBoolean(orestClient.nds);
-
-                    db.Counterparties.Add(tempClient);
-
-                    incoming.EditedIncoming.Counterparty = tempClient;
-
-                    db.Entry(incoming.EditedIncoming).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-
-                }
-                else
-                {
-                    incoming.EditedIncoming.Counterparty = db.Counterparties.Find(incoming.EditedIncoming.CounterpartyId);
-                    db.Entry(incoming.EditedIncoming).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-                //incoming.EditedIncoming.Counterparty = db.Counterparties.Find(incoming.EditedIncoming.CounterpartyId);
-                //if (incoming.EditedIncoming.Counterparty == null)
-                //{
-                //    //var id = incoming.EditedIncoming.CounterpartyId;
-                //    var orestClient = OrestDb.klt.Find(incoming.EditedIncoming.CounterpartyId);
-
-                //    Counterparty tempClient = new Counterparty();
-                //    tempClient.Name = orestClient.name;
-                //    tempClient.AccountNumber = orestClient.chet;
-                //    tempClient.ActualAddress = orestClient.adft;
-                //    tempClient.BankMFO = orestClient.mfob;
-                //    tempClient.BankName = orestClient.bank;
-                //    tempClient.CodVATPayer = orestClient.knds;
-                //    tempClient.Comment = orestClient.comt;
-                //    tempClient.ContactPerson = orestClient.cont;
-                //    tempClient.Discount = orestClient.per;
-                //    tempClient.EDRPO = orestClient.okpo;
-                //    tempClient.FullName = orestClient.full;
-                //    tempClient.IdOrest = orestClient.id;
-
-                //    db.Counterparties.Add(tempClient);
-
-                //    incoming.EditedIncoming.Counterparty = tempClient;
-                //    db.Entry(incoming.EditedIncoming).State = EntityState.Modified;
-                //    db.SaveChanges();
-                //    return RedirectToAction("Index");
-
-                //}
-                //else
-                //{
-                //    db.Entry(incoming.EditedIncoming).State = EntityState.Modified;
-                //    db.SaveChanges();
-                //    return RedirectToAction("Index");
-                //}       
-            }
-            ViewBag.BankId = new SelectList(db.Banks, "Id", "BankName", incoming.EditedIncoming.Bank);
-            ViewBag.CounterpartyId = new SelectList(db.Counterparties, "Id", "Name", incoming.EditedIncoming.CounterpartyId);
-            ViewBag.IncomingCategoryId = new SelectList(db.IncomingCategorys, "Id", "IncomingCategoryName", incoming.EditedIncoming.IncomingCategoryId);
-            ViewBag.WayOfPaymentId = new SelectList(db.WayOfPayments, "Id", "WayOfPaymentName", incoming.EditedIncoming.WayOfPaymentId);
-            ViewBag.IncomingTypeId = new SelectList(db.IncomingTypes, "Id", "TypeName", incoming.EditedIncoming.IncomingTypeId);
-            ViewBag.WayOfPaymentId = new SelectList(db.WayOfPayments, "Id", "WayOfPaymentName", incoming.EditedIncoming.WayOfPaymentId);
-            return View(incoming);
-        }
-
-        // GET: Incomings/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Incoming incoming = db.Incomings.Find(id);
-            if (incoming == null)
-            {
-                return HttpNotFound();
-            }
-            return View(incoming);
-        }
-
-        // POST: Incomings/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Incoming incoming = db.Incomings.Find(id);
-            db.Incomings.Remove(incoming);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        public ActionResult OrderBy(int triger, string orderBy)
-        {
-            if (triger == 0)
-            {
-                ViewBag.triger = 1;
-                if (orderBy == "IncomingData")
-                    return View("Index", db.Incomings.ToList().OrderBy(i => i.IncomingData));
-                else if (orderBy == "Counterparty")
-                    return View("Index", db.Incomings.ToList().OrderBy(i => i.Counterparty.Name));
-                else if (orderBy == "InvoiceData")
-                    return View("Index", db.Incomings.ToList().OrderBy(i => i.InvoiceData));
-                //else if (orderBy == "BankName")
-                //    return View("Index", db.Incomings.ToList().Where(i => i.Bank != null).OrderBy(i => i.Bank.BankName));
-                else if (orderBy == "IncomingCategoryName")
-                    return View("Index", db.Incomings.ToList().OrderBy(i => i.IncomingCategory.IncomingCategoryName));
-                else if (orderBy == "WayOfPaymentName")
-                    return View("Index", db.Incomings.ToList().OrderBy(i => i.WayOfPayment.WayOfPaymentName));
-                else
-                    return View("Index");
-            }
+            DateTime DataFrom = DateTime.ParseExact(IncomingDataFrom, "dd.MM.yyyy", null);
+            DateTime DataTo = DateTime.ParseExact(IncomingDataTo, "dd.MM.yyyy", null);
+            if (UnionOrestEntiry == null)
+                UnionOrestEntiry = ReturnAllIncomingsFromOrestDb();
+            var result = UnionOrestEntiry.Where(a => a.DocumentCreated >= DataFrom && a.DocumentCreated <= DataTo);
+            if(result == null)
+                UnionOrestEntiry = ReturnAllIncomingsFromOrestDb();
+            if (!string.IsNullOrWhiteSpace(searchRequest))
+                return PartialView(result.Where(i => i.NameKlt.Contains(searchRequest)));  
             else
-            {
-                ViewBag.triger = 0;
-                if (orderBy == "IncomingData")
-                    return View("Index", db.Incomings.ToList().OrderByDescending(i => i.IncomingData));
-                else if (orderBy == "Counterparty")
-                    return View("Index", db.Incomings.ToList().OrderByDescending(i => i.Counterparty.Name));
-                else if (orderBy == "InvoiceData")
-                    return View("Index", db.Incomings.ToList().OrderByDescending(i => i.InvoiceData));
-                else if (orderBy == "IncomingCategoryName")
-                    return View("Index", db.Incomings.ToList().OrderByDescending(i => i.IncomingCategory.IncomingCategoryName));
-                else if (orderBy == "WayOfPaymentName")
-                    return View("Index", db.Incomings.ToList().OrderByDescending(i => i.WayOfPayment.WayOfPaymentName));
-                else
-                    return View("Index");
-            }
-
+                return PartialView(result);
         }
-
-        public ActionResult GroupBy(string orderBy)
-        {
-                return View("Index", db.Incomings.GroupBy(i => i.Bank).SelectMany(r => r).ToList());
-             
-
-        }
-      
     }
 }
+ 

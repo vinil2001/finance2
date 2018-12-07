@@ -13,9 +13,22 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.Xml.Linq;
 using System.Data.Entity.Core.EntityClient;
 using System.Data.Common;
+using System.IO;
+using Finance.Models;
 
 namespace Finance
 {
+    public class Debug
+    {
+        public static void Log(string Message)
+        {
+            string result = DateTime.Now.ToString() + ": " + Message;
+            var stream = new StreamWriter(System.Web.HttpContext.Current.Server.MapPath("/Files/") + HttpContext.Current.User.Identity.Name + "_log.txt", true);
+            stream.WriteLine(result);
+            stream.Close();
+        }
+    }
+
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
@@ -29,43 +42,35 @@ namespace Finance
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //Database.SetInitializer(new FinanceDbInitialize());
-            //Finance.Models.DbInit.Init();
 
-
-
-            //var conceptualReader = XmlReader.Create(Assembly.GetExecutingAssembly().GetManifestResourceStream("Model1.csdl"));
-            //var mappingReader = XmlReader.Create(Assembly.GetExecutingAssembly().GetManifestResourceStream("Model1.msl"));
-            //var storageReader = XmlReader.Create(Assembly.GetExecutingAssembly().GetManifestResourceStream("Model1.ssdl"));
-
-            //XNamespace storageNS = "http://schemas.microsoft.com/ado/2009/11/edm/ssdl";
-
-            //var storageXml = XElement.Load(storageReader);
-            //var conceptualXml = XElement.Load(conceptualReader);
-            //var mappingXml = XElement.Load(mappingReader);
-
-            //foreach (var entitySet in storageXml.Descendants(storageNS + "EntitySet"))
+            //ApplicationDbContext db = new ApplicationDbContext();
+            //foreach (var i in db.PaymentStatements.Where(i => i.Id > 1284))
             //{
-            //    var schemaAttribute = entitySet.Attributes("Schema").FirstOrDefault();
-            //    //if (schemaAttribute != null)
-            //    //{
-            //    //    schemaAttribute.SetValue(schema);
-            //    //}
+            //    Payment payment = new Payment();
+            //    payment.InvoiceChecked = i.InvoiceChecked;
+            //    payment.PaymentApproved = i.PaymentApproved;
+            //    payment.PaymentPaymentDone = i.PaymentPaymentDone;
+            //    payment.InvoiceCheckedUser = i.InvoiceCheckedUser;
+            //    payment.PaymentApprovedUser = i.PaymentApprovedUser;
+            //    payment.PaymentPaymentDoneUser = i.PaymentPaymentDoneUser;
+            //    payment.Summa = i.InvoiceSumma;
+            //    payment.PaymentStatement = i;
+            //    db.Payments.Add(payment);
             //}
+            //db.SaveChanges();
 
-            //storageXml.Save("temp.ssdl");
-            //conceptualXml.Save("temp.csdl");
-            //mappingXml.Save("temp.msl");
+            // Наполнение таблицы  PaymentsDocument информацией о файлах в старых PaymentStatement.
+            // Старые PaymentStatements - данные внесенные до создания возможности загрузки нескольких файлов (PaymentsDocuments).
+            //ApplicationDbContext db = new ApplicationDbContext();
+            //foreach (var i in db.PaymentStatements)
+            //{
+            //    PaymentsDocument paymentDocument = new PaymentsDocument();
+            //    paymentDocument.DocumentUrl = i.DocumentUrl;
+            //    paymentDocument.PaymentStatement = i;
+            //    db.PaymentsDocuments.Add(paymentDocument);
+            //}
+            //db.SaveChanges();
 
-            //MetadataWorkspace workspace = new MetadataWorkspace(new List<String>(){
-            //                                                    @"temp.csdl",
-            //                                                    @"temp.ssdl",
-            //                                                    @"temp.msl"
-            //                                            }
-            //                                               , new List<Assembly>());
-
-
-            
         }
     }
 }

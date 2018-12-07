@@ -6,6 +6,9 @@
     <edmx:Diagrams>
       <Diagram DiagramId="4dd2e4c30e4f4816ba451aa01bb7d251" Name="Diagram1" ZoomLevel="64" >
         <EntityTypeShape EntityType="orestModel.klt" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="orestModel.bank" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="orestModel.bkh" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="orestModel.ksh" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

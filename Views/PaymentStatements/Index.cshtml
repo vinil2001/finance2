@@ -1,5 +1,11 @@
 ﻿@model IEnumerable<Finance.Models.PaymentStatement>
 
+<link href="~/CSS/Checkbox.css" rel="stylesheet" />
+
+<script>
+    setTimeout("location.reload(true);", 50000, );
+</script>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -18,129 +24,251 @@
 <div style="float:right;">
     Вы вошли под логином: @User.Identity.Name
 </div>
-@{
-    int orderBy;
-    if (ViewBag.TrigerOrderBy == 1)
-    {
-        orderBy = 1;
-    }
-    else
-    {
-        orderBy = 0;
-    }
-}
 
 <h2>Список платежей</h2>
-
-<p>
-    @Html.ActionLink("Добавить в оплату", "Create")
-</p>
-
-
-<table class="table">
-    <tr>
-        <th>
-            <a href='@Url.Action("Index", new { orderBy })'>
-                <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" alt="Сортировать по дате добавления" />
+@{ var currentControllerName = Request.Url.Segments.LastOrDefault().ToString();}
+<div>
+    <div class="col-md-3" style="float:left">
+        <a class="btn btn-default" href='@Url.Action("Create")'>
+            Добавить в оплату
+        </a>
+    </div>
+    <div class="col-md-6" style="float:left;">
+        <input style="border-radius: 4px; width:300px;" type="text" id="findByCompany" class="text-box single-line ui-autocomplete-input" />
+        <label>Поиск по компании</label>
+    </div>
+    <div class="sortByPayment col-md-3" style="float:left">
+        @if (currentControllerName == "sortByPayment")
+        {
+            <a href='@Url.Action("Index")' class="btn btn-default sortByPaymentActive">
+                    Отменить сортировку
             </a>
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
-            Компания
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
-            Счет №
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.InvoiceDate)*@
-            Счет дата
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.InvoiceSumma)*@
-            Сумма
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.Comment)*@
-            Коммент.
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.InvoiceChecked)*@
-            <img src="~/pictures/approved-512-30x30.png" alt="Счет проверен" title="Счет проверен" />
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.PaymentApproved)*@
-            <img src="~/pictures/Approved-5-512-30x30.png" alt="К оплате" title="К оплате" />
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.PaymentDone)*@
-            <img src="~/pictures/PaymentDone-30x30.png" alt="Оплачен" title="Оплачен" />
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.DocumentUrl)*@
-            Счет(файл)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.KltId)*@
-
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Counterparty_Id)
-
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvoiceNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvoiceDate, "{0:d MMM yyyy}", new { @class = "input-large" })
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.InvoiceSumma)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comment)
-        </td>
-        <td align="center">
-            @Html.DisplayFor(modelItem => item.InvoiceChecked)
-        </td>
-        <td align="center" class="largerCheckbox">
-            @Html.DisplayFor(modelItem => item.PaymentApproved)
-        </td>
-        <td align="center" class="largerCheckbox">
-            @Html.DisplayFor(modelItem => item.PaymentDone)
-        </td>
-        <td>
-            <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
-                Открыть счет
-            </button>
-            @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
-        </td>
-        <td>
-            <a href='@Url.Action("Edit", new { id = item.Id })'>
-                <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+        }
+        else
+        {
+            <a href="@Url.Action("sortByPayment")" class="btn btn-default">
+                Сортировать по оплате
             </a>
-            @*<a href='@Url.Action("Details", new { id = item.Id })'>
-                <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
-            </a>*@
-            <a href='@Url.Action("Delete", new { id = item.Id })'>
-                <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
-            </a>
-        </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>*@
-    </tr>
-    }
+        }
 
-</table>
+        @*</div>*@
+        <img src="~/pictures/sortByPayment.png" title="Сортировать по оплате" alt="Сортировать по оплате" />
+    </div>
+</div>
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                @*<a href='@Url.Action("Index")'>
+                        <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" title="Сортировать по дате добавления" alt="Сортировать по дате добавления" />
+                    </a>*@
+            </th>
+            <th>
+                Компания
+            </th>
+            <th>
+                Счет №
+            </th>
+            <th>
+                Счет дата
+            </th>
+            <th style="border:1px solid #ddd; text-align:center;">
+                Сумма сч.
+            </th>
+            <th style="border:1px solid #ddd; text-align:center;">
+                В оплату
+            </th>
+            <th style="border:1px solid #ddd; text-align:center;">
+                Оплачено
+            </th>
+            <th>
+                Коммент.
+            </th>
+            <th>
+                <img src="~/pictures/approved-512-30x30.png" alt="Счет проверен" title="Счет проверен" />
+            </th>
+            <th>
+                <img src="~/pictures/Approved-5-512-30x30.png" alt="К оплате" title="К оплате" />
+            </th>
+            <th>
+                <img src="~/pictures/PaymentDone-30x30.png" alt="Оплачен" title="Оплачен" />
+            </th>
+            <th>
+                Счет(файл)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr id=@item.Id.ToString() class='@(item.PaymentDone == false ? "PaymentUndone" : "")'>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.KltId)*@
+                @item.Id.ToString()
+            </td>
+            <td>
+                <a target="_blank" href='@Url.Action("PaymentsByCompany", new { companyId = item.KltId })' title="Все платежи по компании">
+                    @Html.DisplayFor(modelItem => item.Counterparty.name)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNumber)
+            </td>
+            <td>
+                @*@Html.DisplayFor(modelItem => item.InvoiceDate, "{0:dd.MM.yyyy}", new { @class = "input-large" })*@
+                @item.InvoiceDate.ToShortDateString()
+            </td>
+            <td class="h5" style="border:1px solid #ddd; text-align:center;">
+                @Html.DisplayFor(modelItem => item.InvoiceSumma) @item.GetCurrencyName
+            </td>
+
+            @{
+                decimal summ = 0;
+                decimal payedSumm = 0;
+                var paymentsList = item.Payments.Where(i => i.PaymentStatementId == item.Id);
+                foreach (var i in paymentsList)
+                {
+                    if (i.PaymentPaymentDone == false)
+                    {
+                        summ += i.Summa;
+                    }
+                    else
+                    {
+                        payedSumm += i.Summa;
+                    }
+                }
+
+                var summStr = summ.ToString() + " " + (item.Currency == null ? "грн" : item.Currency.CurrencyName);
+                var payedSummStr = payedSumm.ToString() + " " + item.GetCurrencyName;
+            }
+            @if (item.PaymentApproved == true && item.PaymentDone != true && summ != 0)
+            {
+
+                <td class="alerts-font" style="font-weight:bolder; border:1px solid #ddd; text-align:center;">
+                    @summStr
+                </td>
+            }
+            else
+            {
+                <td style="font-weight:bolder; border:1px solid #ddd; text-align:center;">
+                    @summStr
+                </td>
+            }
+
+            <td class="h5" style="border:1px solid #ddd; text-align:center;">
+                @payedSummStr
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td align="center">
+                @if (User.IsInRole("Sign1") || User.IsInRole("Developer"))
+                {
+                    <label class="container-checkbox">
+                        @if (item.PaymentApproved == true)
+                        {
+                            @Html.CheckBoxFor(model => item.InvoiceChecked, new { @onclick = "return false;" })
+                        }
+                        else
+                        {
+                            @Html.EditorFor(modelItem => item.InvoiceChecked, new { htmlAttributes = new { id = item.Id } })
+                        }
+                        <span class="checkmark"></span>
+                    </label>
+                }
+                else
+                {
+                    <label class="container-checkbox">
+                        @Html.CheckBoxFor(model => item.InvoiceChecked, new { @onclick = "return false;" })
+                        <span class="checkmark"></span>
+                    </label>
+                }
+
+            </td>
+            <td align="center">
+                @if (User.IsInRole("Sign1") || User.IsInRole("Developer"))
+                {
+                    <label class="container-checkbox">
+                        @if (item.PaymentDone == true)
+                        {
+                            @Html.CheckBoxFor(model => item.PaymentApproved, new { @onclick = "return false;" })
+                        }
+                        else
+                        {
+                            @Html.EditorFor(modelItem => item.PaymentApproved, new { htmlAttributes = new { id = item.Id } })
+                        }
+                        <span class="checkmark"></span>
+                    </label>
+                }
+                else
+                {
+                    <label class="container-checkbox">
+                        @Html.CheckBoxFor(model => item.PaymentApproved, new { @onclick = "return false;" })
+                        <span class="checkmark"></span>
+                    </label>
+                }
+
+            </td>
+            <td align="center">
+                @if (item.PaymentApproved == true && item.PaymentDone != true && summ != 0)
+                {
+                    <label class="container-checkbox">
+                        @Html.CheckBoxFor(model => item.PaymentDone, new { @onclick = "return false;" })
+                        <span class="checkmark alerts-border" title="Ожидает проведения платежа"></span>
+                    </label>
+                }
+                else
+                {
+                    <label class="container-checkbox">
+                        @Html.CheckBoxFor(model => item.PaymentDone, new { @onclick = "return false;" })
+                        <span class="checkmark"></span>
+                    </label>
+                }
+
+                @*@if ((User.IsInRole("Accountant") && item.PaymentApproved == true) || User.IsInRole("Sign1") || User.IsInRole("Developer"))
+            {
+                <label class="container-checkbox">
+                    @Html.EditorFor(modelItem => item.PaymentDone, new { htmlAttributes = new { id = item.Id } })
+                    <span class="checkmark"></span>
+                </label>
+            }
+            else
+            {
+                <label class="container-checkbox">
+                    @Html.CheckBoxFor(model => item.PaymentDone, new { @onclick = "return false;" })
+                    <span class="checkmark"></span>
+                </label>
+            }*@
+            </td>
+            <td>
+                <button type="button" onclick="window.open('@Url.Action("FileViewer", new { id=item.Id } )')" @*onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')"*@>
+                    Открыть счет
+                </button>
+                @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
+            </td>
+            <td>
+                <a href='@Url.Action("Edit", new { id = item.Id })'>
+                    <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                </a>
+                @if (item.InvoiceChecked != true)
+                {
+                    <a href='@Url.Action("Delete", new { id = item.Id })'>
+                        <img src='~/pictures/icons8-delete-2.png' alt='Удалить' title='Удалить' />
+                    </a>
+                }
+                else
+                {
+                    <a href='@Url.Action("Delete", new { id = item.Id })' onclick="event.preventDefault(); alert('Удаление не возможно пока документ проверен и подписан в оплату.')">
+                        <img src='~/pictures/CanNotRemove.png' alt='Удалить не возможно' title='Удаление запрещено' />
+                    </a>
+                }
+            </td>
+        </tr>
+
+        }
+    </table>
+</div>
 <script>
     $(function () {
         $("#InvoiceDate").datepicker(
@@ -149,4 +277,154 @@
             });
 
     });
+</script>
+<script>
+    var userIsInRoleSign1 = '@(User.IsInRole("Sign1") || User.IsInRole("Developer") ? "true" : "false")';
+
+    $("input[name='item.InvoiceChecked']").on("click", function (e) {
+        var id = $(e.target).attr("id");
+        var status = $(e.target).is(":checked");
+        var tagDelete = $(e.target).closest("td").next("td").next("td").next("td").next("td").children()[1];
+            if (status == true) {
+                tagDelete.innerHTML = "<img src='/pictures/CanNotRemove.png' alt= 'Удалить не возможно' title= 'Удаление запрещено' />";
+                tagDelete.onclick = function (e) {
+                    e.preventDefault();
+                    alert('Удаление не возможно пока документ проверен и подписан в оплату.');
+                };
+            }
+            else {
+                //var onclick = tagDelete.attributes[1].nodeValue;
+                //onclick = null;
+                var targetId = 'parseInt($(e.target).attr("id"))';
+                tagDelete.innerHTML = "<img src='/pictures/icons8-delete-2.png' alt='Удалить' title='Удалить' />";
+                tagDelete.onclick = function () {
+
+                };
+            }
+
+
+            //var groupCheckboxes = $('#' + id).find('.check-box');
+            //var el = groupCheckboxes[1];
+            //alert(groupCheckboxes[0]);
+
+            var NextCheckboxStatus = $('#' + id + ' input[name="item.PaymentApproved"]').is(":checked");
+
+            if (userIsInRoleSign1 == "true" && NextCheckboxStatus != true) {
+                $.ajax({
+                    url: "/PaymentStatements/SetInvoiceChecked?id=" + id + "&status=" + status,
+                    type: "GET",
+                    success: function (data) {
+                        alert(data);
+                    },
+                    error: function (data) {
+                        alert(SetInvoiceChecked + "ERROR");
+                    }
+                })
+            }
+            else {
+                $(e.target).prop("checked", true);
+                alert("Изменение статуса запрещено. Для изменения статуса данного этапа, снимите с проводки следующий этап. ")
+            }
+    })
+
+    $("input[name='item.PaymentApproved']").on("change", function (e) {
+        var id = $(e.target).attr("id");
+        var status = $(e.target).is(":checked");
+
+        var PaymentApprovedCurrentStatus = $('#' + id + ' input[name="item.PaymentApproved"]').is(":checked");
+        var PaymentDoneCheckboxStatus = $('#' + id + ' input[name="item.PaymentDone"]').is(":checked");
+        var InvoiceCheckedCheckboxStatus = $('#' + id + ' input[name="item.InvoiceChecked"]').is(":checked");
+
+        if (userIsInRoleSign1 == "true" && PaymentDoneCheckboxStatus != true && InvoiceCheckedCheckboxStatus == true) {
+
+            var paymentDoneCheckBox = $('#' + id + ' input[name="item.PaymentDone"]').next();
+            if (paymentDoneCheckBox.hasClass('alerts-border')) {
+                paymentDoneCheckBox.removeClass('alerts-border');
+                $($("#" + id).children()[5]).removeClass('alerts-font');
+            }            
+            else if ($("#" + id).children()[5].innerText != "0,00 грн") {
+                paymentDoneCheckBox.addClass('alerts-border');
+                var tdSummToPay = $("#" + id).children()[5];
+                $(tdSummToPay).addClass('alerts-font');
+            }
+
+            $.ajax({
+                url: "/PaymentStatements/SetPaymentApproved?id=" + id + "&status=" + status,
+                type: "GET",
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        }
+        else {
+            $(e.target).prop("checked", !PaymentApprovedCurrentStatus);
+            alert("Изменение статуса запрещено. Для изменения статуса данного этапа, снимите с проводки следующий этап. ")
+        }
+    })
+
+    var userIsInRoleAccountant = '@(User.IsInRole("Sign1") || User.IsInRole("Developer") || User.IsInRole("Accountant") ? "true" : "false")';
+
+    $("input[name='item.PaymentDone']").on("change", function (e) {
+        var id = $(e.target).attr("id");
+        var status = $(e.target).is(":checked");
+
+        var PaymentDoneCurrentStatus = $('#' + id + ' input[name="item.PaymentDone"]').is(":checked");
+        var PaymentApprovedCheckboxStatus = $('#' + id + ' input[name="item.PaymentApproved"]').is(":checked");
+
+        if (userIsInRoleAccountant == "true" && PaymentApprovedCheckboxStatus != false) {
+            $.ajax({
+                url: "/PaymentStatements/SetPaymentDone?id=" + id + "&status=" + status,
+                type: "GET",
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data);
+                }
+            })
+        }
+        else {
+            $(e.target).prop("checked", !PaymentDoneCurrentStatus);
+            alert("Изменение статуса запрещено. Для изменения статуса данного этапа, снимите с проводки следующий этап. ")
+        }
+    })
+
+</script>
+
+<script>
+    $(document).ready(function () {
+        var h = $(".table").width();
+        $(document.body).width(h);
+
+        var CompanyNameAutocomplete = $("#findByCompany").autocomplete({
+            source: function (request, response) {
+                var request = $("#findByCompany").val();
+                $.ajax({
+                    url: '/PaymentStatements/GetCompaniesByName/',
+                    type: "POST", //Типа HTML-запроса
+                    dataType: "json",
+                    data: {
+                        request: request,
+                    },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return { label: item.name, id: item.id };
+                        }))                        
+                    },
+                    error: function () {
+                        alert('Нет связи с базой данных');
+                    }
+                })
+            },
+            select: function (event, ui) {
+                var companyId = ui.item.id;
+                //alert("select" + companyId);
+                window.open('/PaymentStatements/PaymentsByCompany/?companyId=' + companyId);
+            },
+        });
+    })
+
 </script>

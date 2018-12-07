@@ -1,0 +1,3 @@
+- Как происходит конект к dbOrest? Через Web.config?
+- Connection string name="orestEntities" сформирован автоматически при создании модели Model1.edmx?
+Или Connection string name="orestEntities" был модицифицирован при создании Model1.edmx?

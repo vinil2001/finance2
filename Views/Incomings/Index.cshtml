@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Finance.Models.Incoming>
+﻿@model IEnumerable<Finance.Models.IncomingsFromOrestdb>
 
 @{
     ViewBag.Title = "List";
@@ -21,108 +21,185 @@
 <br />
 <h2>Входящие средства</h2>
 <br />
-@*<button>
-    @Html.ActionLink("Создать новый", "Create")
-</button>*@
-<button type="button" onclick="location.href='@Url.Action("Create")'">
-    Создать новый
-</button>
-<br /><br />
-<table class="table">
-    <tr>
-        <th>
-            @{orderBy = "Counterparty";}
-            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
-                <p>Плательщик <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
-            </a>
-        </th>
-        <th>
-            <p>Сумма</p>
-        </th>
-        <th>
-            @{orderBy = "IncomingData";}
-            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
-                <p>Дата платежа <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
-            </a>
-        </th>
-        <th>
-            <p>Номер счета</p>
-        </th>
-        <th>
-            @{orderBy = "InvoiceData";}
-            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
-                <p>Дата счета <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
-            </a>
-        </th>
-        <th>
-            @{orderBy = "BankName";}
-            <a href='@Url.Action("GroupBy", new { ViewBag.triger, orderBy })'>
-                <p>Банк <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
-            </a>
-        </th>
-        <th>
-            @{orderBy = "IncomingCategoryName";}
-            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
-                <p>Категория <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
-            </a>
-        </th>
-        <th>
-            @{orderBy = "WayOfPaymentName";}
-            <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
-                <p>Способ оплаты <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
-            </a>
-        </th>
-        <th>
-            <p>Операции</p>
-        </th>
-    </tr>
+<div style="overflow:auto">
+    <table class="table" id="incomingsTable">
+        <thead>
+            <tr>
+                <th id="Counterparty">
+                    Плательщик
+                </th>
+                <th id="IncomingSum">
+                    <p>Сумма</p>
+                </th>
+                <th id="IncomingData">
+                    <p>Дата платежа</p>
+                    </a>
+                </th>
+                <th id="InvoiceNum">
+                    <p>Номер счета</p>
+                </th>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td style="width: 20%;">
-                @Html.DisplayFor(modelItem => item.Counterparty.Name)
-            </td>
-            <td style="width: 10%;">
-                @Html.DisplayFor(modelItem => item.IncomingSum)
-            </td>
-            <td style="width: 11%;">
-                @Html.DisplayFor(modelItem => item.IncomingData)
-            </td>
-            <td style="width: 8%;">
-                @Html.DisplayFor(modelItem => item.InvoiceNumber)
-            </td>
-            <td style="width: 11%;">
-                @Html.DisplayFor(modelItem => item.InvoiceData)
-            </td>
-            <td style="width: 10%;">
-                @Html.DisplayFor(modelItem => item.Bank.BankName)
-            </td>
-            <td style="width: 10%;">
-                @Html.DisplayFor(modelItem => item.IncomingCategory.IncomingCategoryName)
-            </td>
-            <td style="width: 10%;">
-                @Html.DisplayFor(modelItem => item.WayOfPayment.WayOfPaymentName)
-            </td>
-            <td style="width: 10%;">
-                <a href='@Url.Action("Edit", new { id = item.Id })'>
-                    <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
-                </a>
-                <a href='@Url.Action("Details", new { id = item.Id })'>
-                    <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
-                </a>
-                <a href='@Url.Action("Delete", new { id = item.Id })'>
-                    <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
-                </a>
-                @*@Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Детальнее", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Удалить", "Delete", new { id = item.Id })*@
-            </td>
-        </tr>
+                <th id="BankName">
+                    @{orderBy = "BankName";}
+                    <a href='@Url.Action("GroupBy", new { ViewBag.triger, orderBy })'>
+                        <p>Банк <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+                    </a>
+                </th>
+                <th id="IncomingCategoryName">
+                    @{orderBy = "IncomingCategoryName";}
+                    <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
+                        <p>Категория <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+                    </a>
+                </th>
+                <th id="WayOfPaymentName">
+                    @{orderBy = "WayOfPaymentName";}
+                    <a href='@Url.Action("OrderBy", new { ViewBag.triger, orderBy })'>
+                        <p>Способ оплаты <img src="~/pictures/arrowupdown_icon-icons.com_61201s.png" /></p>
+                    </a>
+                </th>
+                <th id="Actions">
+                    <p>Операции</p>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <p>
+                        <input oninput="Search(event)" id="PayerNameInput" type="text" />
+                    </p>
+                </th>
+                <th></th>
+                <th style="width:10%">
+
+                    @Html.TextBox("IncomingDataFrom", DateTime.Now.AddMonths(-1).ToString("dd.MM.yyyy"), new { onchange = "Search(event)" })
+                    @Html.TextBox("IncomingDataTo", DateTime.Now.ToString("dd.MM.yyyy"), new { onchange = "Search(event)" })
+                    @*<input class="form-control text-box single-line hasDatepicker" data-val="true" data-val-date="The field InvoiceDate must be a date." data-val-required="Обязательное поле для заполнения" id="InvoiceDate" name="InvoiceDate" type="datetime" value="08.09.2018">*@
+                    @*<input class="form-control text-box single-line hasDatepicker" onchange="Search(event)" id="IncomingDataFrom" type="datetime" @*value="@DateTime.Now.AddMonths(-1).ToString("dd.MM.yyyy")" />*@
+                    @*<input class="form-control text-box single-line hasDatepicker" onchange="Search(event)" id="IncomingDataTo" type="datetime" value="@DateTime.Now.ToString("dd.MM.yyyy")"/>*@
+                </th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="MainLoader" style="width: 100%; height: 100%">
+            <tr>
+                <td>
+                    <img style="display:block; margin: auto;" src="~/pictures/Coolors-1s-200px.gif" />
+                </td>
+            </tr>
+        </tbody>
+        <tbody id="IncomingsList">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="width: 20%;">
+                        @Html.DisplayFor(modelItem => item.NameKlt)
+                    </td>
+                    <td style="width: 10%;">
+                        @Html.DisplayFor(modelItem => item.TotalPaymentSumm)
+                    </td>
+                    <td style="width: 10%;">
+                        @Html.DisplayFor(modelItem => item.DocumentCreated)
+                        @*@Html.TextBoxFor(modelItem => item.DocumentCreated, "{0:dd/MM/yyyy}", new { @readonly = true })*@
+                    </td>
+                    <td style="width: 15%;">
+                        @Html.DisplayFor(modelItem => item.InvoiceNumber)
+                    </td>
+
+                    <td style="width: 10%;">
+                        @Html.DisplayFor(modelItem => item.NameBank)
+                    </td>
+                    <td style="width: 10%;">
+                        @*@Html.DisplayFor(modelItem => item.IncomingCategory.IncomingCategoryName)*@
+                    </td>
+                    <td style="width: 10%;">
+                        @*@Html.DisplayFor(modelItem => item.WayOfPayment.WayOfPaymentName)*@
+                    </td>
+                    <td style="width: 15%;">
+                        @*<a href='@Url.Action("Edit", new { id = item.Id })'>
+                            <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+                        </a>
+                        <a href='@Url.Action("Details", new { id = item.Id })'>
+                            <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+                        </a>
+                        <a href='@Url.Action("Delete", new { id = item.Id })'>
+                            <img src="~/pictures/icons8-delete-2.png" alt="Удалить" title="Удалить" />
+                        </a>*@
+                        @*@Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Детальнее", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Удалить", "Delete", new { id = item.Id })*@
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#MainLoader").hide();
+        $("#IncomingDataFrom ").datepicker({
+            dateFormat: 'dd.mm.yy'
+        })
+
+        $("#IncomingDataTo ").datepicker({
+            dateFormat: 'dd.mm.yy'
+        })
+     
+    });
+
+</script>
+<script>
+    // Ловить все ивенты на странице (on "input", on "change" и др.),
+    // реагировать соответсвенно отсылая запрос в метод SearchIncoming контроллера Incomings.
+    // Возращать список (выбоку) данных соотвествующих запросу.
+
+    var searchResult = null;
+    var ajaxRequestsPool = [];
+
+    function Search() {
+
+        $("#IncomingsList").html('');
+        $("#MainLoader").show();
+
+        var link = "/Incomings/SearchIncoming";
+        var searchRequest = $("#PayerNameInput").val();
+        var IncomingDataFrom = $('#IncomingDataFrom').val();
+        var IncomingDataTo = $('#IncomingDataTo').val();
+
+        if (searchResult != null) // если пользователь ввел новый символ сразу за предыдущим
+        {
+            searchResult.abort();// убиваем рез.старого запроса
+        }
+
+        searchResult = $.ajax({
+            url: link,
+            data: {
+                'searchRequest': searchRequest,
+                'IncomingDataFrom': IncomingDataFrom,
+                'IncomingDataTo': IncomingDataTo
+            },
+            success: function (data) {
+                $("#IncomingsList").html(data);
+                $("#MainLoader").hide();
+                var allNames = $('td[name="companyName"]');
+                for (var i = 0; i < allNames.length; i++) {
+                    var startIndex = allNames[i].innerHTML.indexOf(searchRequest);
+                    if (startIndex == -1) {
+                        startIndex = allNames[i].innerHTML.indexOf(searchRequest.toUpperCase());
+                    }
+                    var beforeRequestWord = allNames[i].innerHTML.substring(0, startIndex);
+                    var openSpan = "<span class='highlightSymbols'>";
+                    var responseWord = allNames[i].innerHTML.substring(startIndex, (startIndex + searchRequest.length));
+                    var closeSpan = "</span>";
+                    var afterRequestWord = allNames[i].innerHTML.substring((startIndex + searchRequest.length), allNames[i].innerHTML.length);
+                    allNames[i].innerHTML = beforeRequestWord + openSpan + responseWord + closeSpan + afterRequestWord;
+                }
+            }
+        })
     }
 
-</table>
 
-<script>
-    $("#referenceBooks").addClass('active');
 </script>

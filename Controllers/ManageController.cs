@@ -11,7 +11,7 @@ using Finance;
 
 namespace Finance2.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ManageController : Controller
     {
         private ApplicationSignInManager _signInManager;

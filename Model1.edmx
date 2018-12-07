@@ -5,6 +5,50 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="orestModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bank">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="chet" Type="varchar" MaxLength="255" />
+          <Property Name="mfob" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sd' in the table 'def.orest.bkh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'bnds' in the table 'def.orest.bkh' was excluded.
+warning 6005: The data type 'ufloat' is currently not supported for the target Entity Framework version; the column 'curs' in the table 'def.orest.bkh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'svl' in the table 'def.orest.bkh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'scm' in the table 'def.orest.bkh' was excluded.
+warning 6005: The data type 'ufloat' is currently not supported for the target Entity Framework version; the column 'curs2' in the table 'def.orest.bkh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'svl2' in the table 'def.orest.bkh' was excluded.
+warning 6005: The data type 'ufloat' is currently not supported for the target Entity Framework version; the column 'curs3' in the table 'def.orest.bkh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sdv' in the table 'def.orest.bkh' was excluded.-->
+        <EntityType Name="bkh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="op" Type="usmallint" />
+          <Property Name="lg" Type="usmallint" />
+          <Property Name="tp" Type="usmallint" />
+          <Property Name="td" Type="usmallint" />
+          <Property Name="num" Type="uint" />
+          <Property Name="ndoc" Type="varchar" MaxLength="255" />
+          <Property Name="ncht" Type="text" />
+          <Property Name="datd" Type="date" />
+          <Property Name="dusr" Type="datetime" Precision="0" />
+          <Property Name="frm" Type="uint" />
+          <Property Name="klt" Type="uint" />
+          <Property Name="usr" Type="uint" />
+          <Property Name="prh" Type="uint" />
+          <Property Name="comt" Type="text" />
+          <Property Name="del" Type="usmallint" />
+          <Property Name="vlt" Type="uint" />
+          <Property Name="brsh" Type="uint" />
+          <Property Name="bank" Type="uint" />
+          <Property Name="datr" Type="date" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'bls' in the table 'def.orest.klt' was excluded.-->
         <EntityType Name="klt">
@@ -32,8 +76,36 @@ warning 6005: The data type 'udouble' is currently not supported for the target 
           <Property Name="sld" Type="double" />
           <Property Name="dsld" Type="char" MaxLength="10" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sm' in the table 'def.orest.ksh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sd' in the table 'def.orest.ksh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'curs' in the table 'def.orest.ksh' was excluded.-->
+        <EntityType Name="ksh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="op" Type="usmallint" />
+          <Property Name="lg" Type="usmallint" />
+          <Property Name="tp" Type="usmallint" />
+          <Property Name="num" Type="uint" />
+          <Property Name="ndoc" Type="varchar" MaxLength="255" />
+          <Property Name="ncht" Type="text" />
+          <Property Name="datd" Type="date" />
+          <Property Name="dusr" Type="datetime" Precision="0" />
+          <Property Name="klt" Type="uint" />
+          <Property Name="vlt" Type="uint" />
+          <Property Name="frm" Type="uint" />
+          <Property Name="usr" Type="uint" />
+          <Property Name="comt" Type="text" />
+          <Property Name="del" Type="usmallint" />
+          <Property Name="rsh" Type="uint" />
+        </EntityType>
         <EntityContainer Name="orestModelStoreContainer">
+          <EntitySet Name="bank" EntityType="Self.bank" Schema="orest" store:Type="Tables" />
+          <EntitySet Name="bkh" EntityType="Self.bkh" Schema="orest" store:Type="Tables" />
           <EntitySet Name="klt" EntityType="Self.klt" Schema="orest" store:Type="Tables" />
+          <EntitySet Name="ksh" EntityType="Self.ksh" Schema="orest" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -41,6 +113,9 @@ warning 6005: The data type 'udouble' is currently not supported for the target 
       <Schema Namespace="orestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="orestEntities" annotation:LazyLoadingEnabled="true" >
           <EntitySet Name="klt" EntityType="orestModel.klt" />
+          <EntitySet Name="bank" EntityType="orestModel.bank" />
+          <EntitySet Name="bkh" EntityType="orestModel.bkh" />
+          <EntitySet Name="ksh" EntityType="orestModel.ksh" />
         </EntityContainer>
         <EntityType Name="klt">
           <Key>
@@ -66,6 +141,61 @@ warning 6005: The data type 'udouble' is currently not supported for the target 
           <Property Name="nds" Type="Int32" />
           <Property Name="sld" Type="Double" />
           <Property Name="dsld" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bank">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="chet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="mfob" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="bkh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="op" Type="Int32" />
+          <Property Name="lg" Type="Int32" />
+          <Property Name="tp" Type="Int32" />
+          <Property Name="td" Type="Int32" />
+          <Property Name="num" Type="Int64" />
+          <Property Name="ndoc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ncht" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="datd" Type="DateTime" />
+          <Property Name="dusr" Type="DateTime" />
+          <Property Name="frm" Type="Int64" />
+          <Property Name="klt" Type="Int64" />
+          <Property Name="usr" Type="Int64" />
+          <Property Name="prh" Type="Int64" />
+          <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="del" Type="Int32" />
+          <Property Name="vlt" Type="Int64" />
+          <Property Name="brsh" Type="Int64" />
+          <Property Name="bank" Type="Int64" />
+          <Property Name="datr" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="ksh">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="op" Type="Int32" />
+          <Property Name="lg" Type="Int32" />
+          <Property Name="tp" Type="Int32" />
+          <Property Name="num" Type="Int64" />
+          <Property Name="ndoc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ncht" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="datd" Type="DateTime" />
+          <Property Name="dusr" Type="DateTime" />
+          <Property Name="klt" Type="Int64" />
+          <Property Name="vlt" Type="Int64" />
+          <Property Name="frm" Type="Int64" />
+          <Property Name="usr" Type="Int64" />
+          <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="del" Type="Int32" />
+          <Property Name="rsh" Type="Int64" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -95,6 +225,64 @@ warning 6005: The data type 'udouble' is currently not supported for the target 
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="idp" ColumnName="idp" />
                 <ScalarProperty Name="grp" ColumnName="grp" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bank">
+            <EntityTypeMapping TypeName="orestModel.bank">
+              <MappingFragment StoreEntitySet="bank">
+                <ScalarProperty Name="mfob" ColumnName="mfob" />
+                <ScalarProperty Name="chet" ColumnName="chet" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bkh">
+            <EntityTypeMapping TypeName="orestModel.bkh">
+              <MappingFragment StoreEntitySet="bkh">
+                <ScalarProperty Name="datr" ColumnName="datr" />
+                <ScalarProperty Name="bank" ColumnName="bank" />
+                <ScalarProperty Name="brsh" ColumnName="brsh" />
+                <ScalarProperty Name="vlt" ColumnName="vlt" />
+                <ScalarProperty Name="del" ColumnName="del" />
+                <ScalarProperty Name="comt" ColumnName="comt" />
+                <ScalarProperty Name="prh" ColumnName="prh" />
+                <ScalarProperty Name="usr" ColumnName="usr" />
+                <ScalarProperty Name="klt" ColumnName="klt" />
+                <ScalarProperty Name="frm" ColumnName="frm" />
+                <ScalarProperty Name="dusr" ColumnName="dusr" />
+                <ScalarProperty Name="datd" ColumnName="datd" />
+                <ScalarProperty Name="ncht" ColumnName="ncht" />
+                <ScalarProperty Name="ndoc" ColumnName="ndoc" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="td" ColumnName="td" />
+                <ScalarProperty Name="tp" ColumnName="tp" />
+                <ScalarProperty Name="lg" ColumnName="lg" />
+                <ScalarProperty Name="op" ColumnName="op" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ksh">
+            <EntityTypeMapping TypeName="orestModel.ksh">
+              <MappingFragment StoreEntitySet="ksh">
+                <ScalarProperty Name="rsh" ColumnName="rsh" />
+                <ScalarProperty Name="del" ColumnName="del" />
+                <ScalarProperty Name="comt" ColumnName="comt" />
+                <ScalarProperty Name="usr" ColumnName="usr" />
+                <ScalarProperty Name="frm" ColumnName="frm" />
+                <ScalarProperty Name="vlt" ColumnName="vlt" />
+                <ScalarProperty Name="klt" ColumnName="klt" />
+                <ScalarProperty Name="dusr" ColumnName="dusr" />
+                <ScalarProperty Name="datd" ColumnName="datd" />
+                <ScalarProperty Name="ncht" ColumnName="ncht" />
+                <ScalarProperty Name="ndoc" ColumnName="ndoc" />
+                <ScalarProperty Name="num" ColumnName="num" />
+                <ScalarProperty Name="tp" ColumnName="tp" />
+                <ScalarProperty Name="lg" ColumnName="lg" />
+                <ScalarProperty Name="op" ColumnName="op" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

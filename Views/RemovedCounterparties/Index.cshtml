@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Finance.Models.RemovedCounterparty>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Архив удаленных компаний</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            №
+        </th>
+        <th>
+            Название
+        </th>
+        <th>
+            Кто удалил
+        </th>
+        <th>
+            Дата и время удаления
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td name="OrestCounterpartyId" id="@item.OrestCounterpartyId">
+                @Html.DisplayFor(modelItem => item.OrestCounterpartyId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrestCounterpartyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WhoRemoveIt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WhenRemoved)
+            </td>
+            <td>
+                <a href='@Url.Action("RestoreFromArchive", new { id = item.RemovedCounterpartyId })' onclick="if (confirm('Востановить компанию из архива?')){return true;}else{event.stopPropagation(); event.preventDefault();};">
+                    <img src="~/pictures/RestoreFromBin25x25.png" alt="Восстановить" title="Восстановить" />
+                </a>
+            </td>
+            <td>
+                <a href='@Url.Action("Details", new { id = item.RemovedCounterpartyId })'>
+                    <img src="~/pictures/icons8-information-2.png" alt="Детальнее" title="Детальнее" />
+                </a>
+            </td>
+        </tr>
+
+        }
+    </table>
+<div>
+    @*@Html.ActionLink("Назад", null, null, null, new { href = Request.UrlReferrer })*@
+    @Html.ActionLink("Назад", "Index", "Counterparties")
+</div>
+

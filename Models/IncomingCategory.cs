@@ -10,7 +10,11 @@ namespace Finance.Models
     {
         public int Id { get; set; }
         public string IncomingCategoryName { get; set; }
-        public virtual ICollection<Incoming> Incomings { get; set; }
+        public virtual IncomingCategory ParentIncomingCategory { get; set; }
+        public virtual ICollection<IncomingCategory> IncomingCategories { get; set; }
+
+        //public int ParentIncomingCategory { get; set; }
+        //public virtual ICollection<Incoming> Incomings { get; set; }
 
     }
 }

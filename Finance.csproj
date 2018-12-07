@@ -53,6 +53,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -86,11 +89,15 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MySql.Data, Version=6.10.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>packages\MySql.Data.6.10.6\lib\net452\MySql.Data.dll</HintPath>
+    <Reference Include="MySql.Data, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.12\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <HintPath>packages\MySql.Data.Entity.6.9.11\lib\net45\MySql.Data.Entity.EF6.dll</HintPath>
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.9.8\Assemblies\v4.5\MySql.Data.Entity.EF6.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.EntityFramework.8.0.12\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
@@ -212,20 +219,28 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="bank.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="bkh.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BanksController.cs" />
     <Compile Include="Controllers\CounterpartiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncomingCategoriesController.cs" />
     <Compile Include="Controllers\IncomingsController.cs" />
-    <Compile Include="Controllers\IncomingTypesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentStatementsController.cs" />
+    <Compile Include="Controllers\RemovedCounterpartiesController.cs" />
     <Compile Include="Controllers\WayOfPaymentsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="klt.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ksh.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201710050651207_First.cs" />
@@ -328,6 +343,174 @@
     <Compile Include="Migrations\201803310954364_AddCountrapartyNameToPaymentStatement.Designer.cs">
       <DependentUpon>201803310954364_AddCountrapartyNameToPaymentStatement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804140722299_applicationUserManaget.cs" />
+    <Compile Include="Migrations\201804140722299_applicationUserManaget.Designer.cs">
+      <DependentUpon>201804140722299_applicationUserManaget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804140729559_backToApplicationUser.cs" />
+    <Compile Include="Migrations\201804140729559_backToApplicationUser.Designer.cs">
+      <DependentUpon>201804140729559_backToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804150936001_CounterparyNameRequired.cs" />
+    <Compile Include="Migrations\201804150936001_CounterparyNameRequired.Designer.cs">
+      <DependentUpon>201804150936001_CounterparyNameRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804151801008_InvoiceSummaToString.cs" />
+    <Compile Include="Migrations\201804151801008_InvoiceSummaToString.Designer.cs">
+      <DependentUpon>201804151801008_InvoiceSummaToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804151803551_InvoiceSummaToDecimal.cs" />
+    <Compile Include="Migrations\201804151803551_InvoiceSummaToDecimal.Designer.cs">
+      <DependentUpon>201804151803551_InvoiceSummaToDecimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804261807304_whoAddThisAndWhoMadeLastChanges.cs" />
+    <Compile Include="Migrations\201804261807304_whoAddThisAndWhoMadeLastChanges.Designer.cs">
+      <DependentUpon>201804261807304_whoAddThisAndWhoMadeLastChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806181338351_RemovedCounterpary.cs" />
+    <Compile Include="Migrations\201806181338351_RemovedCounterpary.Designer.cs">
+      <DependentUpon>201806181338351_RemovedCounterpary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806181442000_RemovedCounterpartyIdToLong.cs" />
+    <Compile Include="Migrations\201806181442000_RemovedCounterpartyIdToLong.Designer.cs">
+      <DependentUpon>201806181442000_RemovedCounterpartyIdToLong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808110751447_BigUpdate.cs" />
+    <Compile Include="Migrations\201808110751447_BigUpdate.Designer.cs">
+      <DependentUpon>201808110751447_BigUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808120516003_RemoveSearchUnionModel.cs" />
+    <Compile Include="Migrations\201808120516003_RemoveSearchUnionModel.Designer.cs">
+      <DependentUpon>201808120516003_RemoveSearchUnionModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808141639532_DeleteRemovedCounterparty.cs" />
+    <Compile Include="Migrations\201808141639532_DeleteRemovedCounterparty.Designer.cs">
+      <DependentUpon>201808141639532_DeleteRemovedCounterparty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808141649036_AddRemovedCounterparty.cs" />
+    <Compile Include="Migrations\201808141649036_AddRemovedCounterparty.Designer.cs">
+      <DependentUpon>201808141649036_AddRemovedCounterparty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808141653057_Test1.cs" />
+    <Compile Include="Migrations\201808141653057_Test1.Designer.cs">
+      <DependentUpon>201808141653057_Test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808141809586_OrestCounterpartyIdToLong.cs" />
+    <Compile Include="Migrations\201808141809586_OrestCounterpartyIdToLong.Designer.cs">
+      <DependentUpon>201808141809586_OrestCounterpartyIdToLong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808170515388_RemovedCounterpartyName.cs" />
+    <Compile Include="Migrations\201808170515388_RemovedCounterpartyName.Designer.cs">
+      <DependentUpon>201808170515388_RemovedCounterpartyName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808170523266_add_RemovedCounterparty.Comment.cs" />
+    <Compile Include="Migrations\201808170523266_add_RemovedCounterparty.Comment.Designer.cs">
+      <DependentUpon>201808170523266_add_RemovedCounterparty.Comment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808181158041_RemoveOldIncomings.cs" />
+    <Compile Include="Migrations\201808181158041_RemoveOldIncomings.Designer.cs">
+      <DependentUpon>201808181158041_RemoveOldIncomings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808181205466_AddNewIncomings.cs" />
+    <Compile Include="Migrations\201808181205466_AddNewIncomings.Designer.cs">
+      <DependentUpon>201808181205466_AddNewIncomings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809120606546_PartialPayment.cs" />
+    <Compile Include="Migrations\201809120606546_PartialPayment.Designer.cs">
+      <DependentUpon>201809120606546_PartialPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809140522232_Back.cs" />
+    <Compile Include="Migrations\201809140522232_Back.Designer.cs">
+      <DependentUpon>201809140522232_Back.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809140606432_GoToNewVersion.cs" />
+    <Compile Include="Migrations\201809140606432_GoToNewVersion.Designer.cs">
+      <DependentUpon>201809140606432_GoToNewVersion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809140609170_WhenEditedRemoved.cs" />
+    <Compile Include="Migrations\201809140609170_WhenEditedRemoved.Designer.cs">
+      <DependentUpon>201809140609170_WhenEditedRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151236558_AddPaymentTable.cs" />
+    <Compile Include="Migrations\201809151236558_AddPaymentTable.Designer.cs">
+      <DependentUpon>201809151236558_AddPaymentTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151243237_AddPaymentTableChangeWho.cs" />
+    <Compile Include="Migrations\201809151243237_AddPaymentTableChangeWho.Designer.cs">
+      <DependentUpon>201809151243237_AddPaymentTableChangeWho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809151255197_AddPaymentTableAllowNullDateTime.cs" />
+    <Compile Include="Migrations\201809151255197_AddPaymentTableAllowNullDateTime.Designer.cs">
+      <DependentUpon>201809151255197_AddPaymentTableAllowNullDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809170601568_PaymentStatementUpdate.cs" />
+    <Compile Include="Migrations\201809170601568_PaymentStatementUpdate.Designer.cs">
+      <DependentUpon>201809170601568_PaymentStatementUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809170627417_PaymentStatementBack.cs" />
+    <Compile Include="Migrations\201809170627417_PaymentStatementBack.Designer.cs">
+      <DependentUpon>201809170627417_PaymentStatementBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809170838393_test2.cs" />
+    <Compile Include="Migrations\201809170838393_test2.Designer.cs">
+      <DependentUpon>201809170838393_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809170849434_PaymentStatementsAddPaymentList.cs" />
+    <Compile Include="Migrations\201809170849434_PaymentStatementsAddPaymentList.Designer.cs">
+      <DependentUpon>201809170849434_PaymentStatementsAddPaymentList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809170900287_Payment-PaymentStatementId.cs" />
+    <Compile Include="Migrations\201809170900287_Payment-PaymentStatementId.Designer.cs">
+      <DependentUpon>201809170900287_Payment-PaymentStatementId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809190546132_PaymentStatementsChanging1.cs" />
+    <Compile Include="Migrations\201809190546132_PaymentStatementsChanging1.Designer.cs">
+      <DependentUpon>201809190546132_PaymentStatementsChanging1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809190549008_PaymentStatementsChanging2.cs" />
+    <Compile Include="Migrations\201809190549008_PaymentStatementsChanging2.Designer.cs">
+      <DependentUpon>201809190549008_PaymentStatementsChanging2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809190559323_Currency.cs" />
+    <Compile Include="Migrations\201809190559323_Currency.Designer.cs">
+      <DependentUpon>201809190559323_Currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809211842003_PaymentUpdates.cs" />
+    <Compile Include="Migrations\201809211842003_PaymentUpdates.Designer.cs">
+      <DependentUpon>201809211842003_PaymentUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809211851166_PaymentStatementCurrency.cs" />
+    <Compile Include="Migrations\201809211851166_PaymentStatementCurrency.Designer.cs">
+      <DependentUpon>201809211851166_PaymentStatementCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809220719503_DublicatePayDone.cs" />
+    <Compile Include="Migrations\201809220719503_DublicatePayDone.Designer.cs">
+      <DependentUpon>201809220719503_DublicatePayDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809231318256_RenamePaymentFields.cs" />
+    <Compile Include="Migrations\201809231318256_RenamePaymentFields.Designer.cs">
+      <DependentUpon>201809231318256_RenamePaymentFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809240710339_Test3.cs" />
+    <Compile Include="Migrations\201809240710339_Test3.Designer.cs">
+      <DependentUpon>201809240710339_Test3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810060818064_AddPaymentDocuments.cs" />
+    <Compile Include="Migrations\201810060818064_AddPaymentDocuments.Designer.cs">
+      <DependentUpon>201810060818064_AddPaymentDocuments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810100626006_RemoveCurrency.cs" />
+    <Compile Include="Migrations\201810100626006_RemoveCurrency.Designer.cs">
+      <DependentUpon>201810100626006_RemoveCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810101757130_AddCurrency.cs" />
+    <Compile Include="Migrations\201810101757130_AddCurrency.Designer.cs">
+      <DependentUpon>201810101757130_AddCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810200727488_CheckAddCurrencyId.cs" />
+    <Compile Include="Migrations\201810200727488_CheckAddCurrencyId.Designer.cs">
+      <DependentUpon>201810200727488_CheckAddCurrencyId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -344,25 +527,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccNumber.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Bank.cs" />
-    <Compile Include="Models\DbInit.cs" />
-    <Compile Include="Models\EditIncomingModel.cs" />
-    <Compile Include="Models\FinanceDbContext.cs" />
+    <Compile Include="Models\Currency.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Incoming.cs" />
     <Compile Include="Models\IncomingCategory.cs" />
-    <Compile Include="Models\IncomingType.cs" />
+    <Compile Include="Models\IncomingsFromOrestdb.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\CounterpartySearchUnionModel.cs" />
     <Compile Include="Models\Outgoing.cs" />
     <Compile Include="Models\OutgoingsCategory.cs" />
     <Compile Include="Models\OutgoingsType.cs" />
-    <Compile Include="Models\OwnershipType.cs" />
-    <Compile Include="Models\Counterparty.cs" />
+    <Compile Include="Models\Payment.cs" />
+    <Compile Include="Models\PaymentsDocument.cs" />
     <Compile Include="Models\PaymentStatement.cs" />
+    <Compile Include="Models\RemovedCounterparty.cs" />
     <Compile Include="Models\WayOfPayment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -372,7 +551,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="CSS\Checkbox.css" />
     <Content Include="CSS\MenuBar.css" />
+    <Content Include="CSS\pulse-ring.css" />
+    <Content Include="CSS\responstable.css" />
+    <Content Include="CSS\Table.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -421,6 +604,16 @@
     <Content Include="pictures\plus_icon.jpg" />
     <Content Include="pictures\plus_icon2.png" />
     <None Include="Scripts\jquery-1.11.3.intellisense.js" />
+    <Content Include="Scripts\inputmask\bindings\inputmask.binding.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.js" />
+    <Content Include="Scripts\inputmask\dependencyLibs\inputmask.dependencyLib.js" />
+    <Content Include="Scripts\inputmask\global\window.js" />
+    <Content Include="Scripts\inputmask\inputmask.date.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.extensions.js" />
+    <Content Include="Scripts\inputmask\inputmask.js" />
+    <Content Include="Scripts\inputmask\inputmask.numeric.extensions.js" />
+    <Content Include="Scripts\inputmask\jquery.inputmask.js" />
     <Content Include="Scripts\jquery-1.11.3.js" />
     <Content Include="Scripts\jquery-1.11.3.min.js" />
     <Content Include="Scripts\jquery-1.11.3.min.map" />
@@ -428,10 +621,22 @@
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.inputmask.bundle.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\min\inputmask\bindings\inputmask.binding.min.js" />
+    <Content Include="Scripts\min\inputmask\dependencyLibs\inputmask.dependencyLib.jqlite.min.js" />
+    <Content Include="Scripts\min\inputmask\dependencyLibs\inputmask.dependencyLib.jquery.min.js" />
+    <Content Include="Scripts\min\inputmask\dependencyLibs\inputmask.dependencyLib.min.js" />
+    <Content Include="Scripts\min\inputmask\global\window.min.js" />
+    <Content Include="Scripts\min\inputmask\inputmask.date.extensions.min.js" />
+    <Content Include="Scripts\min\inputmask\inputmask.extensions.min.js" />
+    <Content Include="Scripts\min\inputmask\inputmask.min.js" />
+    <Content Include="Scripts\min\inputmask\inputmask.numeric.extensions.min.js" />
+    <Content Include="Scripts\min\inputmask\jquery.inputmask.min.js" />
+    <Content Include="Scripts\min\jquery.inputmask.bundle.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="CSS\MyStyles.css" />
     <Content Include="Scripts\myPopUp.js" />
@@ -441,6 +646,7 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\selectFile.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -457,7 +663,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -506,7 +714,6 @@
     <Content Include="Views\IncomingCategories\Delete.cshtml" />
     <Content Include="Views\IncomingCategories\Details.cshtml" />
     <Content Include="Views\IncomingCategories\Edit.cshtml" />
-    <Content Include="Views\IncomingCategories\Index.cshtml" />
     <Content Include="Views\IncomingTypes\Create.cshtml" />
     <Content Include="Views\IncomingTypes\Delete.cshtml" />
     <Content Include="Views\IncomingTypes\Details.cshtml" />
@@ -528,10 +735,18 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\PaymentStatements\PaymentsByCompany.cshtml" />
+    <Content Include="Views\RemovedCounterparties\Details.cshtml" />
+    <Content Include="Views\RemovedCounterparties\Edit.cshtml" />
+    <Content Include="Views\RemovedCounterparties\Index.cshtml" />
+    <Content Include="Views\Incomings\SearchIncoming.cshtml" />
+    <Content Include="Views\PaymentStatements\_PartialPartOfPayment.cshtml" />
+    <Content Include="Views\PaymentStatements\FileViewer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\" />
+    <Folder Include="Views\Owin\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
@@ -613,6 +828,132 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803310954364_AddCountrapartyNameToPaymentStatement.resx">
       <DependentUpon>201803310954364_AddCountrapartyNameToPaymentStatement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804140722299_applicationUserManaget.resx">
+      <DependentUpon>201804140722299_applicationUserManaget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804140729559_backToApplicationUser.resx">
+      <DependentUpon>201804140729559_backToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804150936001_CounterparyNameRequired.resx">
+      <DependentUpon>201804150936001_CounterparyNameRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804151801008_InvoiceSummaToString.resx">
+      <DependentUpon>201804151801008_InvoiceSummaToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804151803551_InvoiceSummaToDecimal.resx">
+      <DependentUpon>201804151803551_InvoiceSummaToDecimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804261807304_whoAddThisAndWhoMadeLastChanges.resx">
+      <DependentUpon>201804261807304_whoAddThisAndWhoMadeLastChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181338351_RemovedCounterpary.resx">
+      <DependentUpon>201806181338351_RemovedCounterpary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806181442000_RemovedCounterpartyIdToLong.resx">
+      <DependentUpon>201806181442000_RemovedCounterpartyIdToLong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808110751447_BigUpdate.resx">
+      <DependentUpon>201808110751447_BigUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808120516003_RemoveSearchUnionModel.resx">
+      <DependentUpon>201808120516003_RemoveSearchUnionModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808141639532_DeleteRemovedCounterparty.resx">
+      <DependentUpon>201808141639532_DeleteRemovedCounterparty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808141649036_AddRemovedCounterparty.resx">
+      <DependentUpon>201808141649036_AddRemovedCounterparty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808141653057_Test1.resx">
+      <DependentUpon>201808141653057_Test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808141809586_OrestCounterpartyIdToLong.resx">
+      <DependentUpon>201808141809586_OrestCounterpartyIdToLong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808170515388_RemovedCounterpartyName.resx">
+      <DependentUpon>201808170515388_RemovedCounterpartyName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808170523266_add_RemovedCounterparty.Comment.resx">
+      <DependentUpon>201808170523266_add_RemovedCounterparty.Comment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808181158041_RemoveOldIncomings.resx">
+      <DependentUpon>201808181158041_RemoveOldIncomings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808181205466_AddNewIncomings.resx">
+      <DependentUpon>201808181205466_AddNewIncomings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809120606546_PartialPayment.resx">
+      <DependentUpon>201809120606546_PartialPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809140522232_Back.resx">
+      <DependentUpon>201809140522232_Back.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809140606432_GoToNewVersion.resx">
+      <DependentUpon>201809140606432_GoToNewVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809140609170_WhenEditedRemoved.resx">
+      <DependentUpon>201809140609170_WhenEditedRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151236558_AddPaymentTable.resx">
+      <DependentUpon>201809151236558_AddPaymentTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151243237_AddPaymentTableChangeWho.resx">
+      <DependentUpon>201809151243237_AddPaymentTableChangeWho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809151255197_AddPaymentTableAllowNullDateTime.resx">
+      <DependentUpon>201809151255197_AddPaymentTableAllowNullDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809170601568_PaymentStatementUpdate.resx">
+      <DependentUpon>201809170601568_PaymentStatementUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809170627417_PaymentStatementBack.resx">
+      <DependentUpon>201809170627417_PaymentStatementBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809170838393_test2.resx">
+      <DependentUpon>201809170838393_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809170849434_PaymentStatementsAddPaymentList.resx">
+      <DependentUpon>201809170849434_PaymentStatementsAddPaymentList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809170900287_Payment-PaymentStatementId.resx">
+      <DependentUpon>201809170900287_Payment-PaymentStatementId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190546132_PaymentStatementsChanging1.resx">
+      <DependentUpon>201809190546132_PaymentStatementsChanging1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190549008_PaymentStatementsChanging2.resx">
+      <DependentUpon>201809190549008_PaymentStatementsChanging2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190559323_Currency.resx">
+      <DependentUpon>201809190559323_Currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809211842003_PaymentUpdates.resx">
+      <DependentUpon>201809211842003_PaymentUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809211851166_PaymentStatementCurrency.resx">
+      <DependentUpon>201809211851166_PaymentStatementCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809220719503_DublicatePayDone.resx">
+      <DependentUpon>201809220719503_DublicatePayDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809231318256_RenamePaymentFields.resx">
+      <DependentUpon>201809231318256_RenamePaymentFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809240710339_Test3.resx">
+      <DependentUpon>201809240710339_Test3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810060818064_AddPaymentDocuments.resx">
+      <DependentUpon>201810060818064_AddPaymentDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810100626006_RemoveCurrency.resx">
+      <DependentUpon>201810100626006_RemoveCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810101757130_AddCurrency.resx">
+      <DependentUpon>201810101757130_AddCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810200727488_CheckAddCurrencyId.resx">
+      <DependentUpon>201810200727488_CheckAddCurrencyId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

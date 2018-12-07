@@ -9,6 +9,8 @@ namespace Finance.Models
     {
         public int Id { get; set; }
         public string WayOfPaymentName { get; set; } // карточка, б/н др.
-        public virtual ICollection<Incoming> Incomings { get; set; }
+
+        public virtual WayOfPayment ParentWayOfPayment { get; set; }
+        public virtual ICollection<WayOfPayment> WayOfPayments { get; set; }
     }
 }

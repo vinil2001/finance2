@@ -13,7 +13,9 @@ using Finance.Models;
 
 namespace Finance2.Controllers
 {
-    //[Authorize]
+
+
+    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -159,6 +161,7 @@ namespace Finance2.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    UserManager.FindByName("asdas");
                     UserManager.AddToRole(user.Id, "Employer");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     

@@ -34,6 +34,12 @@ public partial class orestEntities : DbContext
 
     public virtual DbSet<klt> klt { get; set; }
 
+    public virtual DbSet<bank> bank { get; set; }
+
+    public virtual DbSet<bkh> bkh { get; set; }
+
+    public virtual DbSet<ksh> ksh { get; set; }
+
 }
 
 }

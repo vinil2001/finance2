@@ -2,6 +2,9 @@
 <Schema Namespace="orestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="orestEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="klt" EntityType="orestModel.klt" />
+    <EntitySet Name="bank" EntityType="orestModel.bank" />
+    <EntitySet Name="bkh" EntityType="orestModel.bkh" />
+    <EntitySet Name="ksh" EntityType="orestModel.ksh" />
   </EntityContainer>
   <EntityType Name="klt">
     <Key>
@@ -27,5 +30,60 @@
     <Property Name="nds" Type="Int32" />
     <Property Name="sld" Type="Double" />
     <Property Name="dsld" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="bank">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="chet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mfob" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="bkh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="op" Type="Int32" />
+    <Property Name="lg" Type="Int32" />
+    <Property Name="tp" Type="Int32" />
+    <Property Name="td" Type="Int32" />
+    <Property Name="num" Type="Int64" />
+    <Property Name="ndoc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ncht" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="datd" Type="DateTime" />
+    <Property Name="dusr" Type="DateTime" />
+    <Property Name="frm" Type="Int64" />
+    <Property Name="klt" Type="Int64" />
+    <Property Name="usr" Type="Int64" />
+    <Property Name="prh" Type="Int64" />
+    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="del" Type="Int32" />
+    <Property Name="vlt" Type="Int64" />
+    <Property Name="brsh" Type="Int64" />
+    <Property Name="bank" Type="Int64" />
+    <Property Name="datr" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="ksh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="op" Type="Int32" />
+    <Property Name="lg" Type="Int32" />
+    <Property Name="tp" Type="Int32" />
+    <Property Name="num" Type="Int64" />
+    <Property Name="ndoc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ncht" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="datd" Type="DateTime" />
+    <Property Name="dusr" Type="DateTime" />
+    <Property Name="klt" Type="Int64" />
+    <Property Name="vlt" Type="Int64" />
+    <Property Name="frm" Type="Int64" />
+    <Property Name="usr" Type="Int64" />
+    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="del" Type="Int32" />
+    <Property Name="rsh" Type="Int64" />
   </EntityType>
 </Schema>

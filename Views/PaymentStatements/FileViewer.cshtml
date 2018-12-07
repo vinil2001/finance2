@@ -1,0 +1,51 @@
+﻿@model string[]
+
+@{
+    ViewBag.Title = "FileViewer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="Viewer">
+
+</div>
+
+@foreach (var i in Model)
+{
+    string extension = i.Substring(i.LastIndexOf('.'));
+    if (extension.Contains("doc") ||
+        extension.Contains("xls") ||
+        extension.Contains("ods") ||
+        extension.Contains("docx") ||
+        extension.Contains("xlsx"))
+    {
+    <div>
+        <iframe width="100%" height="700px" frameborder="0" scrolling="no" src="http://view.officeapps.live.com/op/view.aspx?src=http://mfinance2.1gb.ua/@i.Remove(0, 1)&AllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+    </div>
+    }
+    else if (extension.Contains("pdf"))
+    {
+        <embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://mfinance2.1gb.ua/@i.Remove(0, 1)" width="100%" height="700px">
+
+    }
+    else
+    {
+        <img width="100%" src="http://mfinance2.1gb.ua/@i.Remove(0, 1)" />
+    }
+}
+
+@*<script>
+    $.ajax({
+        url: "http://view.officeapps.live.com/op/view.aspx?src=http://mfinance2.1gb.ua/" + '@Model[0]',
+        crossDomain: true,
+        type: "GET",
+        success: function (data) {
+            alert(data);
+            $('#Viewer').html(data);
+        },
+        error: function (data) {
+            alert(data);
+        }
+    })
+</script>*@
+
+
