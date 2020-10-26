@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Finance.Models.SheetDetail>
+
+@{
+    ViewBag.Title = "GetAllDetailsPrices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    tr:nth-child(2n+1){
+        background-color: aliceblue;
+    }
+    .rows:hover {
+        cursor: pointer;
+        background-color: #ccc;
+    }
+</style>
+<h2>Справочник деталей</h2>
+
+<input type="button" value="Все расcчеты" onclick="location.href='@Url.Action("GetAllCalculations", "SheetDetailsCalculation")'" />
+<p>
+    @Html.ActionLink("Создать новый", "Index")
+</p>
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.DetailNumber)
+            </th>*@
+        <th>
+            Деталь
+        </th>
+        <th>
+            Длинна, мм
+        </th>
+        <th>
+            Ширина, мм
+        </th>
+        <th>
+            Толшина, мм
+        </th>
+        <th>
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="rows" onclick="location.href='@Url.Action("GetDetailCalculationIfo", "SheetDetailsCalculation", new {detailId = item.Id})'">
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.DetailNumber)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailLength)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailWidth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailThickness)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Просмотреть", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

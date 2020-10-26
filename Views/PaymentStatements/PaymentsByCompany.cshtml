@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Finance.Models.PaymentStatement>
 
 <script>
-    setTimeout("location.reload(true);", 50000, );
+    setTimeout("location.reload(true);", 300000, );
 </script>
 
 @{
@@ -106,9 +106,19 @@
                 @Html.DisplayFor(modelItem => item.PaymentDone)
             </td>
             <td>
-                <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
-                    Открыть счет
-                </button>
+                @if (item.PaymentsDocuments.Count == 0)
+                {
+                    <button type="button" onclick="alert('Файл отсутствует.')">
+                        Открыть счет
+                    </button>
+                }
+                else
+                {
+                    <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')">
+                        Открыть счет
+                    </button>
+                }
+
                 @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
             </td>
             <td>

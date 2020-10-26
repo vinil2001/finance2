@@ -1,0 +1,47 @@
+﻿.mainTable {
+    display: grid;
+    grid-template-columns: minmax(200px, 400px) minmax(200px, 400px);
+    grid-gap: 10px;
+    /*align-content: center;*/
+    border: solid 2px;
+    padding: 20px;
+    margin: 20px;
+    width: fit-content;
+}
+
+.partialPaymentsTable {
+    display: grid;
+    grid-template-columns: minmax(100px, 200px) minmax(100px, 200px) minmax(100px, 200px) minmax(100px, 200px);
+    grid-gap: 10px;
+    border: solid 2px;
+    padding: 10px;
+    margin: 20px;
+    width: fit-content;
+}
+
+.mainTableLineStyle {
+    background-color: lightblue;
+    margin: 10px;
+    padding: 10px;
+}
+
+.textToCenter{
+    text-align: center;
+}
+
+.payments {
+    margin: 40px 20px 10px 20px;
+}
+
+.buttonBlock {
+    display: grid;
+    grid-template-columns: minmax(200px, 400px) minmax(200px, 400px);
+    padding: 10px;
+    margin: 20px;
+}
+
+.bottomBorder {
+    border-bottom: solid 1px lightblue;
+    margin: 10px;
+    padding: 10px;
+}

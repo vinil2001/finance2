@@ -17,6 +17,8 @@ namespace Finance.Models
         [Required(ErrorMessage = "Плательщик должен быть выбран. Если плательщик новый, нажмите + для его добавления")]
         public long KltId { get; set; }
 
+        public long OrestPrhId { get; set; } // prh.id - счет фактура поставщика
+
         [Display(Name = "Плательщик")]
         [NotMapped]
         public klt Counterparty
@@ -30,6 +32,22 @@ namespace Finance.Models
         }
 
         public virtual List<Payment> Payments { get; set; }
+
+        //[NotMapped]
+        //public SelectList Banks { get; set; }
+        [NotMapped]
+        public List<bank> getBanks
+        {
+            get
+            {
+                orestEntities dbOrest = new orestEntities();                
+                return dbOrest.bank.ToList();
+            }
+            private set
+            {
+            }
+        }
+
 
         [Required(ErrorMessage = "Номер счета должен быть указан")]
         public string InvoiceNumber { get; set; }
@@ -58,40 +76,73 @@ namespace Finance.Models
                 }
                 else
                     return db.Currencies.Find(1).CurrencyName;
-               
+
             }
             private set { }
-}
+        }
+        [NotMapped]
+        public SelectList GetCurrencies
+        {
+            get
+            {
+                ApplicationDbContext db = new ApplicationDbContext();
+                return new SelectList(db.Currencies.ToList(), "Id", "CurrencyName");
 
-//[NotMapped]
-//public SelectList AllCurrencies {
-//    get {
-//            ApplicationDbContext db = new ApplicationDbContext();
-//            return new SelectList(db.Currencies, "Id", "CurrencyName");
-//        }
-//}     // для передачи из контроллера get в представление
-//[NotMapped]
-//public int SelectedCurrencyId { get; set; }
+            }
+            private set { }
+        }
 
-//[Required(ErrorMessage = "Обязательное поле для заполнения: Дайте общее описание товара/услуги.")]
-public string Comment { get; set; }
 
+        public string Comment { get; set; }
+
+        public DateTime? WhenCreated { get; set; }          // Когда создан
         public virtual ApplicationUser whoAddThis { get; set; }      // Кто добавил запись
         public virtual ApplicationUser whoMadeLastChanges { get; set; }     // Кто вносил посл.изменения
         public DateTime? WhenEdited { get; set; }          // Когда вносились изменения
 
-        //public string PaymentWhoAddThis { get; set; }      // Кто добавил запись
-        //public string PaymentwhoMadeLastChanges { get; set; }     // Кто вносил посл.изменения
-
-
         public bool InvoiceChecked { get; set; }           //Инвойс проверен по цене и содержанию
-        public bool PaymentApproved { get; set; }          // Платеж подтвержден руководителем (может быть подтвержден без проверки)
+        public bool PaymentApproved { get; set; }          // Платеж подтвержден руководителем (может быть подтвержден без проверки)        
         public bool PaymentDone { get; set; }              // Платеж выполнен (может осуществляться только после подтвеждения рук.)
 
         public virtual ApplicationUser InvoiceCheckedUser { get; set; }
         public virtual ApplicationUser PaymentApprovedUser { get; set; }
-            
+
         public string DocumentUrl { get; set; }
         public virtual List<PaymentsDocument> PaymentsDocuments { get; set; }
+
+        //[NotMapped]
+        //public string CheckMessage { get; set; }
+
+        [NotMapped]
+        public bool isInvoiceFound { get; set; }
+
+        //Показывает что общая сумма счёта правильная
+        [NotMapped]
+        public bool isInvoiceSummaCorrect { get; set; }
+
+        //Показывает что общая сумма платежей правильная (если у всех платежей флаг isPaymentSummaCorrect РАВЕН true)
+        [NotMapped]
+        public bool isInvoicePaymentsCorrect { get; set; }
+
+        //Показывает что все платежи по счёту проведены
+        [NotMapped]
+        public bool isInvoiceSummaComplete { get; set; }
+
+        [NotMapped]
+        public int SypplierInvoiceOrestId { get; set; } // id счета-фактуры поставщика - prh.tp = 5
+        [NotMapped]
+        public List<prh> GetAllPaymentsBySypplyerInvoiceOrestId // возвращает все платежи по текущему счету-фактуре поставщика
+        {
+            get
+            {
+                orestEntities dbOrest = new orestEntities();
+                return dbOrest.prh.Where(prh => prh.rsh == SypplierInvoiceOrestId).ToList();
+            }
+            private set
+            {
+
+            }
+        }
+
     }
 }

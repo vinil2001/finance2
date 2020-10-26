@@ -59,8 +59,8 @@ namespace Finance
             //}
             //db.SaveChanges();
 
-            // Наполнение таблицы  PaymentsDocument информацией о файлах в старых PaymentStatement.
-            // Старые PaymentStatements - данные внесенные до создания возможности загрузки нескольких файлов (PaymentsDocuments).
+            //Наполнение таблицы  PaymentsDocument информацией о файлах в старых PaymentStatement.
+            // Старые PaymentStatements -данные внесенные до создания возможности загрузки нескольких файлов(PaymentsDocuments).
             //ApplicationDbContext db = new ApplicationDbContext();
             //foreach (var i in db.PaymentStatements)
             //{

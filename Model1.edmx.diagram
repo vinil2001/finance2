@@ -4,11 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4dd2e4c30e4f4816ba451aa01bb7d251" Name="Diagram1" ZoomLevel="64" >
-        <EntityTypeShape EntityType="orestModel.klt" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="orestModel.bank" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="orestModel.bkh" Width="1.5" PointX="3.375" PointY="3.75" />
-        <EntityTypeShape EntityType="orestModel.ksh" Width="1.5" PointX="5.375" PointY="0.75" />
+      <Diagram DiagramId="3aae83952e2947438e1aa9b76b40c0c5" Name="Diagram1" ZoomLevel="86" ShowGrid="true">
+        <EntityTypeShape EntityType="orestModel.bank" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="orestModel.bkh" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="orestModel.klt" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="orestModel.ksh" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="orestModel.prh" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="orestModel.rsh" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="orestModel.bkp" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="orestModel.fin" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="orestModel.frm" Width="1.5" PointX="7.375" PointY="8.75" />
+        <EntityTypeShape EntityType="orestModel.imp" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="orestModel.kmt" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="orestModel.prih" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="orestModel.prp" Width="1.5" PointX="9.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -5,47 +5,83 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div id="Viewer">
-
-</div>
-
-@foreach (var i in Model)
-{
-    string extension = i.Substring(i.LastIndexOf('.'));
-    if (extension.Contains("doc") ||
-        extension.Contains("xls") ||
-        extension.Contains("ods") ||
-        extension.Contains("docx") ||
-        extension.Contains("xlsx"))
+@{
+    string LastUrl = "";
+    if (Request.UrlReferrer != null)
     {
-    <div>
-        <iframe width="100%" height="700px" frameborder="0" scrolling="no" src="http://view.officeapps.live.com/op/view.aspx?src=http://mfinance2.1gb.ua/@i.Remove(0, 1)&AllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
-    </div>
-    }
-    else if (extension.Contains("pdf"))
-    {
-        <embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://mfinance2.1gb.ua/@i.Remove(0, 1)" width="100%" height="700px">
-
-    }
-    else
-    {
-        <img width="100%" src="http://mfinance2.1gb.ua/@i.Remove(0, 1)" />
+        LastUrl = Request.UrlReferrer.Segments.LastOrDefault().ToString();
     }
 }
 
-@*<script>
-    $.ajax({
-        url: "http://view.officeapps.live.com/op/view.aspx?src=http://mfinance2.1gb.ua/" + '@Model[0]',
-        crossDomain: true,
-        type: "GET",
-        success: function (data) {
-            alert(data);
-            $('#Viewer').html(data);
-        },
-        error: function (data) {
-            alert(data);
+<div id="Viewer">
+
+</div>
+@{int index = 0;}
+@foreach (var i in Model)
+{
+
+    if (i != null)
+    {
+        <a id="Anchor_@index"></a>
+        <div style="font-weight: 600;">
+            <p>Имя файла: @i.Remove(0, 43)</p>
+        </div>
+        index++;
+
+        if (i.LastIndexOf('.') != -1)
+        {
+            string extension = i.Substring(i.LastIndexOf('.'));
+            if (extension.Contains("doc") ||
+            extension.Contains("xls") ||
+            extension.Contains(".xls") ||
+            extension.Contains("ods") ||
+            extension.Contains("docx") ||
+            extension.Contains("xlsx") ||
+            extension.Contains("XLS"))
+            {
+                <div>
+                    <iframe width="100%" height="700px" frameborder="0" scrolling="no" src="http://view.officeapps.live.com/op/view.aspx?src=http://mfinance2.1gb.ua/@i.Remove(0, 1)&AllowInteractivity=False&wdHideGridlines=True&wdHideHeaders=True&wdDownloadButton=True&wdInConfigurator=True"></iframe>
+                </div>
+            }
+            else if (extension.Contains("pdf") || extension.Contains("_pdf") || extension.Contains("PDF"))
+            {
+                @*<embed src="https://drive.google.com/viewerng/viewer?embedded=true&url=http://mfinance2.1gb.ua/@i.Remove(0, 1)" width="100%" height="700px">*@
+                <iframe width="100%" height="700px" frameborder="0" @*scrolling="no"*@ src="http://mfinance2.1gb.ua/@i.Remove(0, 1)"></iframe>
+            }
+            else /*if (extension.Contains("png") || extension.Contains("jpg") || extension.Contains("txt"))*/
+            {
+                <img width="100%" src="~/@i.Remove(0, 1).ToLower()" />
+            }
+            //else
+            //{
+            //    <p>Формат данного файла не поддерживается.</p>
+            //}
         }
-    })
-</script>*@
+        else
+        {
+            <h4>"В имени файла отсутствует '.' + расширение. Например .doc или .pdf"</h4>
+        }
+
+
+
+    }
+}
+
+
+
+@*<script>
+        $.ajax({
+            url: "http://view.officeapps.live.com/op/view.aspx?src=http://mfinance2.1gb.ua/" + '@Model[0]',
+            crossDomain: true,
+            type: "GET",
+            success: function (data) {
+                alert(data);
+                $('#Viewer').html(data);
+            },
+            error: function (data) {
+                alert(data);
+            }
+        })
+    </script>*@
 
 

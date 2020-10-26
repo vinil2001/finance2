@@ -1,0 +1,167 @@
+﻿@model IEnumerable<Finance.Models.SheetDetailsCalculation>
+<link href="~/CSS/getAllCalculations.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "GetAllCalculations";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Все расчеты</h2>
+<input type="button" value="Все детали" onclick="location.href='@Url.Action("GetAllDetails", "SheetDetailsCalculation")'" />
+<p>
+    @Html.ActionLink("Создать новый", "Index")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Номер счета
+        </th>
+        <th>
+            Дата расчета
+        </th>
+        <th>
+            Стоимость матер.без НДС
+        </th>
+        <th>
+            Стоимость порезки без НДС
+        </th>
+        <th>
+            Площадь листа
+        </th>
+        <th>
+            Толщина листа
+        </th>
+        <th>
+            Коэф.отхода
+        </th>
+        <th>
+            Дата расчета
+        </th>
+        <th style="text-align:center"> Действия </th>
+    </tr>
+
+    @{
+        int counter = 0;
+        string className;
+    }
+    @foreach (var item in Model)
+    {
+        counter++;
+        className = (counter % 2 == 0 ? "back_color_even" : "back_color_odd");
+        <tr style = "cursor: pointer; border: 2px solid black"  class=@className>
+            @*<td>@className</td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InvoiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaterialPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CuttingPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SheetThickness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WasteCoeficcient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CalculationDate)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "EditCalculation", new { id = item.Id }) |
+                @{string showHideDetailsLinkName = "showHideDetailsLinkName" + item.Id; }
+                <a name="@showHideDetailsLinkName" onclick="showDetails(id = @item.Id, event);" style="cursor: pointer">Просмотреть</a>
+                @*@Html.ActionLink("Просмотреть", "Details", new { onclick = "showDetails(id = item.Id);" })*@ |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+        <tr style="border: hidden" name="@item.Id" hidden>
+            <th scope="col">#</th>
+            <th scope="col"> Деталь </th>
+            <th scope="col"> Длинна </th>
+            <th scope="col"> Ширина </th>
+            <th scope="col"> Кол-во </th>
+            <th scope="col"> Цена (без НДС) </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        int detailNumber = 0;
+        foreach (var i in item.DetailsCalculation)
+        {
+            detailNumber++;
+            <tr name="@item.Id" hidden>
+                <th scope="row">@detailNumber</th>
+                <td>@i.Detail.DetailName</td>
+                <td>@i.Detail.DetailLength</td>
+                <td>@i.Detail.DetailWidth</td>
+                <td>@i.Amount</td>
+                <td>@i.DetailPrice</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+    }
+</table>
+<script>
+    //console.log($(".back_color").length);
+    //for (let i = 0; i < ($(".back_color").length); i+=2) {
+    //    var evenElement = $(".back_color")[i];
+    //    var oddElement = $(".back_color")[i+1];
+    //    $(evenElement).class(".back_color_even");
+    //    $(oddElement).addClass(".back_color_odd");
+    //}
+    //for (let j = 1; j < ($(".back_color").length); i += 2) {
+    //    var currentElement = $(".back_color")[j];
+    //    $(".back_color")[j].addClass(".back_color_odd");
+    //}
+
+    function showDetails(id, event) {
+        var hiddenTrCollection = $("tr[name=" + id + "]");
+        console.log(hiddenTrCollection);
+        var showHideDetailsLinkCollection = $("a[name=showHideDetailsLinkName" + id + "]");
+
+        if (showHideDetailsLinkCollection[0].innerHTML === "Просмотреть") {
+            hiddenTrCollection.each(function () {
+                $(this).show();
+                var parentElemBackgroundColor = $(event.target).parent().parent().css("background-color");
+                $(this).css("background-color", parentElemBackgroundColor);
+                $(this).css("border", "1px solid black");
+            });
+            showHideDetailsLinkCollection[0].innerHTML = "Скрыть";
+        } else {
+            $("tr[name=" + id + "]").each(function () {
+                $(this).hide();
+            })
+            showHideDetailsLinkCollection[0].innerHTML = "Просмотреть";
+        }
+
+    }
+
+    function showDetailsClickByRow(id, event) {
+        //var showHideLink = $(event.target).parent().children().last().children()[1];
+        //if (showHideLink.innerHTML === "Просмотреть") {
+        //    $("tr[name=" + id + "]").each(function () {
+        //        $(this).show();
+        //        var parentElemBackgroundColor = $(event.target).parent().parent().css("background-color");
+        //        $(this).css("background-color", parentElemBackgroundColor);
+        //        $(this).css("border", "1px solid black");
+        //    });
+        //    showHideLink.innerHTML = "Скрыть";
+        //}
+        //else {
+        //    $("tr[name=" + id + "]").each(function () {
+        //        $(this).hide();
+        //    });
+        //    showHideLink.innerHTML = "Просмотреть";
+        //}
+    }
+</script>
+

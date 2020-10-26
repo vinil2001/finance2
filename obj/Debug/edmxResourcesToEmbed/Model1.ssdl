@@ -45,6 +45,57 @@ warning 6005: The data type 'udouble' is currently not supported for the target 
     <Property Name="datr" Type="date" />
   </EntityType>
   <!--Errors Found During Generation:
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sm' in the table 'def.orest.bkp' was excluded.-->
+  <EntityType Name="bkp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="lg" Type="usmallint" />
+    <Property Name="bkh" Type="uint" />
+    <Property Name="rsh" Type="uint" />
+    <Property Name="nnlg" Type="varchar" MaxLength="255" />
+    <Property Name="datd" Type="date" />
+    <Property Name="comt" Type="text" />
+    <Property Name="snl" Type="double" />
+  </EntityType>
+  <EntityType Name="fin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="frm" Type="uint" />
+    <Property Name="tbl" Type="varchar" MaxLength="16" />
+    <Property Name="vlt" Type="uint" />
+    <Property Name="sm" Type="double" />
+  </EntityType>
+  <EntityType Name="frm">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="okpo" Type="varchar" MaxLength="255" />
+    <Property Name="knds" Type="varchar" MaxLength="255" />
+    <Property Name="snds" Type="varchar" MaxLength="255" />
+    <Property Name="chet" Type="varchar" MaxLength="255" />
+    <Property Name="bank" Type="varchar" MaxLength="255" />
+    <Property Name="mfob" Type="varchar" MaxLength="255" />
+    <Property Name="adft" Type="varchar" MaxLength="255" />
+    <Property Name="adur" Type="varchar" MaxLength="255" />
+    <Property Name="telf" Type="varchar" MaxLength="255" />
+    <Property Name="comt" Type="text" />
+    <Property Name="kod" Type="varchar" MaxLength="255" />
+    <Property Name="full" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="imp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <!--Errors Found During Generation:
 warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'bls' in the table 'def.orest.klt' was excluded.-->
   <EntityType Name="klt">
     <Key>
@@ -70,6 +121,15 @@ warning 6005: The data type 'udouble' is currently not supported for the target 
     <Property Name="nds" Type="usmallint" />
     <Property Name="sld" Type="double" />
     <Property Name="dsld" Type="char" MaxLength="10" />
+    <Property Name="bud" Type="usmallint" />
+  </EntityType>
+  <EntityType Name="kmt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="255" />
+    <Property Name="kmtgrp" Type="uint" />
   </EntityType>
   <!--Errors Found During Generation:
 warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sm' in the table 'def.orest.ksh' was excluded.
@@ -96,10 +156,125 @@ warning 6005: The data type 'udouble' is currently not supported for the target 
     <Property Name="del" Type="usmallint" />
     <Property Name="rsh" Type="uint" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'ufloat' is currently not supported for the target Entity Framework version; the column 'curs' in the table 'def.orest.prh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sd' in the table 'def.orest.prh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sp' in the table 'def.orest.prh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sg' in the table 'def.orest.prh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sr' in the table 'def.orest.prh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'bnds' in the table 'def.orest.prh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sr2' in the table 'def.orest.prh' was excluded.-->
+  <EntityType Name="prh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="op" Type="usmallint" />
+    <Property Name="lg" Type="usmallint" />
+    <Property Name="tp" Type="usmallint" />
+    <Property Name="num" Type="uint" />
+    <Property Name="ndoc" Type="varchar" MaxLength="255" />
+    <Property Name="ninv" Type="varchar" MaxLength="255" />
+    <Property Name="ndtm" Type="varchar" MaxLength="255" />
+    <Property Name="datd" Type="date" />
+    <Property Name="dati" Type="date" />
+    <Property Name="dusr" Type="datetime" Precision="0" />
+    <Property Name="frm" Type="uint" />
+    <Property Name="skl" Type="uint" />
+    <Property Name="klt" Type="uint" />
+    <Property Name="vlt" Type="uint" />
+    <Property Name="rsh" Type="uint" />
+    <Property Name="usr" Type="uint" />
+    <Property Name="comt" Type="text" />
+    <Property Name="del" Type="usmallint" />
+    <Property Name="usrf" Type="uint" />
+    <Property Name="brsh" Type="uint" />
+    <Property Name="comt2" Type="text" />
+    <Property Name="dtdp" Type="char" MaxLength="19" />
+  </EntityType>
+  <EntityType Name="prih">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="dat" Type="char" MaxLength="7" />
+    <Property Name="datd" Type="char" MaxLength="10" />
+    <Property Name="klt" Type="uint" />
+    <Property Name="chp" Type="varchar" MaxLength="255" />
+    <Property Name="idh" Type="uint" />
+    <Property Name="tbl" Type="varchar" MaxLength="10" />
+    <Property Name="sm" Type="double" />
+    <Property Name="nds" Type="double" />
+    <Property Name="imp" Type="uint" />
+    <Property Name="dchp" Type="char" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'np' in the table 'def.orest.prp' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'no' in the table 'def.orest.prp' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'cp' in the table 'def.orest.prp' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'cg' in the table 'def.orest.prp' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'cr' in the table 'def.orest.prp' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'cz' in the table 'def.orest.prp' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sz' in the table 'def.orest.prp' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'tzv' in the table 'def.orest.prp' was excluded.-->
+  <EntityType Name="prp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="prh" Type="uint" />
+    <Property Name="tov" Type="uint" />
+    <Property Name="untp" Type="uint" />
+    <Property Name="unto" Type="uint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'sd' in the table 'def.orest.rsh' was excluded.
+warning 6005: The data type 'udouble' is currently not supported for the target Entity Framework version; the column 'per' in the table 'def.orest.rsh' was excluded.-->
+  <EntityType Name="rsh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="op" Type="usmallint" />
+    <Property Name="lg" Type="usmallint" />
+    <Property Name="tp" Type="usmallint" />
+    <Property Name="td" Type="usmallint" />
+    <Property Name="stv" Type="usmallint" />
+    <Property Name="num" Type="uint" />
+    <Property Name="ndoc" Type="varchar" MaxLength="255" />
+    <Property Name="nnlg" Type="varchar" MaxLength="255" />
+    <Property Name="ndov" Type="text" />
+    <Property Name="name" Type="text" />
+    <Property Name="ncht" Type="uint" />
+    <Property Name="datd" Type="date" />
+    <Property Name="dato" Type="date" />
+    <Property Name="dusr" Type="datetime" Precision="0" />
+    <Property Name="pd" Type="double" />
+    <Property Name="prh" Type="uint" />
+    <Property Name="frm" Type="uint" />
+    <Property Name="skl" Type="uint" />
+    <Property Name="klt" Type="uint" />
+    <Property Name="usr" Type="uint" />
+    <Property Name="comt" Type="text" />
+    <Property Name="del" Type="usmallint" />
+    <Property Name="usrf" Type="uint" />
+    <Property Name="snl" Type="double" />
+    <Property Name="dogsp" Type="int" />
+    <Property Name="bank" Type="int" />
+  </EntityType>
   <EntityContainer Name="orestModelStoreContainer">
     <EntitySet Name="bank" EntityType="Self.bank" Schema="orest" store:Type="Tables" />
     <EntitySet Name="bkh" EntityType="Self.bkh" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="bkp" EntityType="Self.bkp" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="fin" EntityType="Self.fin" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="frm" EntityType="Self.frm" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="imp" EntityType="Self.imp" Schema="orest" store:Type="Tables" />
     <EntitySet Name="klt" EntityType="Self.klt" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="kmt" EntityType="Self.kmt" Schema="orest" store:Type="Tables" />
     <EntitySet Name="ksh" EntityType="Self.ksh" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="prh" EntityType="Self.prh" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="prih" EntityType="Self.prih" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="prp" EntityType="Self.prp" Schema="orest" store:Type="Tables" />
+    <EntitySet Name="rsh" EntityType="Self.rsh" Schema="orest" store:Type="Tables" />
   </EntityContainer>
 </Schema>

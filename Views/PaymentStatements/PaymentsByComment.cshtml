@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Finance.Models.PaymentStatement>
+
+@{
+    ViewBag.Title = "PaymentsByComment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="MenuBar">
+    @Html.Partial("MenuBar", "PaymentStatements")
+</div>
+
+<br />
+<h2>Платежи по комментарию: @Model.ToList()[0].Comment</h2>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Компания
+        </th>
+        <th>
+            Номер счета
+        </th>
+        <th>
+            Дата счета
+        </th>
+        <th>
+            Сумма счета
+        </th>
+        <th>
+            Комментарий
+        </th>
+        <th>
+            Счет проверен
+        </th>
+        <th>
+            Счет в оплату
+        </th>
+        <th>
+            Оплачен
+        </th>
+        <th>
+            Открыть счет
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <a target="_blank" href='@Url.Action("PaymentsByCompany", new { companyId = item.KltId })' title="Все платежи по компании">
+                @Html.DisplayFor(modelItem => item.Counterparty.name)
+            </a>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceSumma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvoiceChecked)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentApproved)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentDone)
+        </td>
+        <td>
+            <button type="button" onclick="window.open('@Url.Action("FileViewer", new { id = item.Id })')">
+                Открыть счет
+            </button>
+        </td>
+        <td>
+            <a href='@Url.Action("Edit", new { id = item.Id })'>
+                <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
+            </a>
+            @if (item.InvoiceChecked != true)
+            {
+                <a href='@Url.Action("Delete", new { id = item.Id })'>
+                    <img src='~/pictures/icons8-delete-2.png' alt='Удалить' title='Удалить' />
+                </a>
+            }
+            else
+            {
+                <a href='@Url.Action("Delete", new { id = item.Id })' onclick="event.preventDefault(); alert('Удаление не возможно пока документ проверен и подписан в оплату.')">
+                    <img src='~/pictures/CanNotRemove.png' alt='Удалить не возможно' title='Удаление запрещено' />
+                </a>
+            }
+        </td>
+    </tr>
+}
+
+</table>

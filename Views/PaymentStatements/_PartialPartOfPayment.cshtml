@@ -1,61 +1,95 @@
 ﻿@model Finance.Models.Payment
 
-<div class="form-group" style="z-index:1;">
-    <div id="@Model.Id" name="paymentId" class="col-md-1" style="padding: 0px"></div>
+<div id="@Model.Id" class="" name="paymentId" hidden></div>
 
-    @Html.LabelFor(model => model.Summa, "Платеж", htmlAttributes: new { style = "padding-left: 0px", @class = "control-label col-md-2" })
-    <div class="col-md-2" style="padding-left: 0px">
-        @if (Model.PaymentPaymentDone == true)
-        {
-            @Html.EditorFor(model => model.Summa, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
-        }
-        else
-        {
-            @Html.EditorFor(model => model.Summa, new { htmlAttributes = new { @class = "form-control" } })
-        }
-        @Html.ValidationMessageFor(model => model.Summa, "", new { @class = "text-danger" })
-    </div>
-    <div class="col-md-3" style="padding-left: 0px;">
-        @Html.EditorFor(model => model.PaymentComment, new { htmlAttributes = new { @class = "form-control", title = "Комментарий", placeholder = "Комментарий" } })
-        @Html.ValidationMessageFor(model => model.PaymentComment, "", new { @class = "text-danger" })
-    </div>
-
-    <div class="col-md-1" style="padding-left: 0px;">
-        <input class="form-control text-box single-line" disabled name="percentage" />
-    </div>
-
-    <div class="col-md-2" style="padding-left: 0px;">
-        <div class="form-control" style="padding: 0px 4px; background-color: inherit">
-            <div style="float:left">
-                @Html.LabelFor(model => model.PaymentPaymentDone, "Оплачен", htmlAttributes: new { @style = "padding-top: 8px" })
-            </div>
-
-            <div style="float: right">
-                <div class="checkbox" style="padding-top: 4px; padding-right: 4px;">
-                    @if (User.IsInRole("Sign1") || User.IsInRole("Developer") || User.IsInRole("Accountant"))
-                    {
-                        <label class="container-checkbox">
-                            @Html.CheckBoxFor(model => model.PaymentPaymentDone, new { @onclick = "SetPaymentDone(event)" })
-                            <span class="checkmark"></span>
-                        </label>
-                    }
-                    else
-                    {
-                        <label class="container-checkbox">
-                            @Html.CheckBoxFor(model => model.PaymentPaymentDone, new { @onclick = "return false;" })
-                            <span class="checkmark"></span>
-                        </label>
-                    }
-                    @Html.ValidationMessageFor(model => model.PaymentPaymentDone, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-    </div>
-    @if (Model.PaymentPaymentDone != true)
+<div class="ppItem ppItem2">
+    @if (Model.PaymentPaymentDone == true)
     {
-        <div style="padding-left: 24px;">
-            <img onclick="DeletePay(event); PartialPaymentsSumm(); SumChange(); " style="cursor: pointer; width:44px; height:34px;" src="/pictures/remove-icon-png-7133-100x100.png" alt="Удалить" title="Удалить">
-        </div>
+        @Html.EditorFor(model => model.Summa, new { htmlAttributes = new { @class = "ppItem ppItem3", @readonly = true } })
     }
-
+    else
+    {
+        @Html.EditorFor(model => model.Summa, new { htmlAttributes = new { @class = "ppItem ppItem3", onchange = "sumaRoundUp(event); SumChange();" } })
+    }
+    @Html.ValidationMessageFor(model => model.Summa, "", new { @class = "text-danger" })
 </div>
+
+<div class="ppItem ppItem4">
+    <input class="" disabled name="percentage" />
+</div>
+
+<div class="ppItem ppItem6">
+    @Html.LabelFor(model => model.PartialPaymentChecked, "Проверен", htmlAttributes: new { @class = "" })
+    @if (User.IsInRole("Sign1") || User.IsInRole("Developer") || User.IsInRole("Accountant"))
+    {
+        <label class="container-checkbox">
+            @Html.CheckBoxFor(model => model.PartialPaymentChecked, new { @onclick = "SetPaymentChecked(event)" })
+            <span class="checkmark"></span>
+        </label>
+    }
+    else
+    {
+        <label class="container-checkbox">
+            @Html.CheckBoxFor(model => model.PartialPaymentChecked, new { @onclick = "return false;" })
+            <span class="checkmark"></span>
+        </label>
+    }
+    @Html.ValidationMessageFor(model => model.PartialPaymentChecked, "", new { @class = "text-danger" })
+</div>
+
+<div class="ppItem ppItem8">
+    @Html.LabelFor(model => model.PartialPaymentApproved, "В оплату", htmlAttributes: new { @class = "" })
+    @if (User.IsInRole("Sign1") || User.IsInRole("Developer") || User.IsInRole("Accountant"))
+    {
+        <label class="container-checkbox">
+            @Html.CheckBoxFor(model => model.PartialPaymentApproved, new { @onclick = "SetPaymentApproved(event)" })
+            <span class="checkmark"></span>
+        </label>
+    }
+    else
+    {
+        <label class="container-checkbox">
+            @Html.CheckBoxFor(model => model.PartialPaymentApproved, new { @onclick = "return false;" })
+            <span class="checkmark"></span>
+        </label>
+    }
+    @Html.ValidationMessageFor(model => model.PartialPaymentApproved, "", new { @class = "text-danger" })
+</div>
+
+<div class="ppItem ppItem10">
+    @Html.LabelFor(model => model.PaymentPaymentDone, "Оплачен")
+    @if (User.IsInRole("Sign1") || User.IsInRole("Developer")@*|| User.IsInRole("Accountant")*@)
+{
+<label class="container-checkbox">
+    @Html.CheckBoxFor(model => model.PaymentPaymentDone, new { @onclick = "SetPaymentDone(event)" })
+    <span class="checkmark"></span>
+</label>
+}
+else if (User.IsInRole("Accountant"))
+{
+<label class="container-checkbox">
+    @Html.CheckBoxFor(model => model.PaymentPaymentDone, new { @onclick = "alert('Система установит платеж в стаус - \"Проведен\" автоматически, после проводки документа банк-расхода в ОРЕСТе.'); return false;" })
+    <span class="checkmark"></span>
+</label>
+}
+else
+{
+<label class="container-checkbox">
+    @Html.CheckBoxFor(model => model.PaymentPaymentDone, new { @onclick = "return false;" })
+    <span class="checkmark"></span>
+</label>
+}
+    @Html.ValidationMessageFor(model => model.PaymentPaymentDone, "", new { @class = "text-danger" })
+</div>
+
+@Html.DropDownListFor(m => m.MySQLBankId, new SelectList(Model.getBanks, "id", "name", "Выберите банк"))
+
+@Html.HiddenFor(m=>m.OrestPaymentId)
+
+<div id="removeImg" name="removeImg">
+    <img onclick="DeletePay(event); /*PartialPaymentsSumm(event);*/ SumChange(this.value); " style="cursor: pointer; width:44px; height:34px;" src="/pictures/remove-icon-png-7133-100x100.png" alt="Удалить" title="Удалить">
+</div>
+
+
+
+

@@ -1,108 +1,137 @@
 ﻿@model Finance.Models.PaymentStatement
-
+<link href="~/CSS/DeletePaymentStatement.css" rel="stylesheet" />
 @{
+    /**/
+
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="payments">
+    @Html.ActionLink("Назад", "Index")
+</div>
 
-<h2>Удаление</h2>
+<h2 class="payments">Удаление</h2>
+<hr />
 
-<h5>Вы уверены что хотите удалить это?</h5>
-<div>
-    @*<h4>Платежная ведомость</h4>*@
-    <hr />
-    <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.KltId)
-        </dt>*@
+@if (ViewBag.Message != null)
+{
+    <div style="z-index: 100; background-color: gray;">
+        @ViewBag.Message
+    </div>
+}
 
-        @*<dd>
-            @Html.DisplayFor(model => model.KltId)
-        </dd>*@
+<div class="mainTable">
+    <div class="mainTableLineStyle">
+        @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
+        № Счета:
+    </div>
+    <div class="mainTableLineStyle textToCenter">
+        @Html.DisplayFor(model => model.InvoiceNumber)
+    </div>
 
-        <dt>
-            @*@Html.DisplayNameFor(model => model.InvoiceNumber)*@
-            № Счета
-        </dt>
+    <div class="mainTableLineStyle">
+        @*@Html.DisplayNameFor(model => model.InvoiceDate)*@
+        Дата счета:
+    </div>
+    <div class="mainTableLineStyle textToCenter">
+        @Html.DisplayFor(model => model.InvoiceDate)
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.InvoiceNumber)
-        </dd>
+    <div class="mainTableLineStyle">
+        @*@Html.DisplayNameFor(model => model.InvoiceSumma)*@
+        Сумма счета:
+    </div>
+    <div class="mainTableLineStyle textToCenter">
+        @Html.DisplayFor(model => model.InvoiceSumma) @Model.Currency.CurrencyName
+    </div>
 
-        <dt>
-            @*@Html.DisplayNameFor(model => model.InvoiceDate)*@
-            Дата счета
-        </dt>
+    <div class="mainTableLineStyle">
+        @*@Html.DisplayNameFor(model => model.Comment)*@
+        Комментарий:
+    </div>
+    <div class="mainTableLineStyle textToCenter">
+        @Html.DisplayFor(model => model.Comment)
+    </div>
+</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.InvoiceDate)
-        </dd>
+<h4 class="payments">Платежи:</h4>
 
-        <dt>
-            @*@Html.DisplayNameFor(model => model.InvoiceSumma)*@
+<div class="partialPaymentsTable">
+    @for (var i = 0; i < Model.Payments.Count(); i++)
+    {
+        <div class="bottomBorder">
             Сумма
-        </dt>
+            <div class="">
+                @Html.DisplayFor(mod => mod.Payments[i].Summa) @Model.Currency.CurrencyName
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.InvoiceSumma)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.Comment)*@
-            Комментарий
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Comment)
-        </dd>
-
-        <dt>
+        <div class="bottomBorder">
             @*@Html.DisplayNameFor(model => model.InvoiceChecked)*@
             Проверен
-        </dt>
+            <div class="">
+                @Html.DisplayFor(mod => mod.Payments[i].PartialPaymentChecked)
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.InvoiceChecked)
-        </dd>
-
-        <dt>
+        <div class="bottomBorder">
             @*@Html.DisplayNameFor(model => model.PaymentApproved)*@
             В оплату
-        </dt>
+            <div class="">
+                @Html.DisplayFor(mod => mod.Payments[i].PartialPaymentApproved)
+            </div>
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.PaymentApproved)
-        </dd>
-
-        <dt>
+        <div class="bottomBorder">
             @*@Html.DisplayNameFor(model => model.PaymentDone)*@
             Оплачен
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PaymentDone)
-        </dd>
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.DocumentUrl)*@
-            @*Открыть счет*@
-        </dt>
-
-        <dd>
-            @*@Html.DisplayFor(model => model.DocumentUrl)*@
-            <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id = Model.Id })')">
-                Открыть счет
-            </button>
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Удалить" class="btn btn-default" /> |
-            @Html.ActionLink("Назад", "Index")
+            <div class="">
+                @Html.DisplayFor(mod => mod.Payments[i].PaymentPaymentDone)
+            </div>
         </div>
+
     }
 </div>
+
+@if (Model.PaymentsDocuments.Count > 0)
+{
+    <div class="payments">
+        <button type="button" onclick="window.open('@Url.Action("GetFileUrl", new { id = Model.Id })')">
+            Открыть счет
+        </button>
+    </div>
+}
+else
+{
+    <div class="payments">
+        <button type="button" onclick="alert('Файл отсутствует.')">
+            Открыть счет
+        </button>
+    </div>
+}
+
+<hr />
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div>
+    @if (Model.Payments.Find(p => p.PartialPaymentChecked == true) == null)
+    {
+        <div class="payments">
+            <input type="submit" value="Удалить" class="btn btn-danger" onSubmit="return confirm('Are you sure you wish to delete?');" />
+        </div>
+    }
+    else
+    {
+        <div class="payments">
+            <input type="button" value="Удалить" class="btn btn-danger" onclick="alert('Платеж проверен в оплату и не может быть удален!!!')" />
+        </div>
+    }
+
+    <div class="payments">
+        @Html.ActionLink("Назад", "Index")
+    </div>
+
+</div>
+}

@@ -10,6 +10,9 @@ using System.Web.Mvc;
 using Finance.Models;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity.Validation;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
 
 namespace Finance.Controllers
 {
@@ -19,62 +22,377 @@ namespace Finance.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private orestEntities OrestDb = new orestEntities();
 
-        //private ApplicationUserManager _userManager;
-        //public ApplicationUserManager UserManager
-        //{
-        //    get
-        //    {
-        //        return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-        //    }
-        //    private set
-        //    {
-        //        _userManager = value;
-        //    }
-        //}
+        public HttpClient GetAuthorizedHttpClient()
+        {
+            HttpClient client = new HttpClient();
+            client.DefaultRequestHeaders.Add("x-authorization", "3c7867b0c737e498882fa447629");
+            client.BaseAddress = new Uri("http://www.crmorest-api.net.ua/");
+            return client;
+        }
 
         // GET: PaymentStatements
-        public async Task<ActionResult> Index(List<PaymentStatement> SortedByPaymentList = null)
+        public async Task<ActionResult> Index(int pageNumber = 1, int itemsOnView = 50)
         {
-            if (SortedByPaymentList != null)
+            try
             {
-                return View(SortedByPaymentList);
+                ViewBag.errors = CheckPayments();
+                //SaveOrestInvoiceNumberToFinance();
             }
-            else
+            catch
             {
-                List<PaymentStatement> lastPayments = await db.PaymentStatements.OrderByDescending(i => i.Id).Take(100).ToListAsync();
-                var lastElementId = lastPayments.Last().Id;
-                List<PaymentStatement> unpaidPayments = await db.PaymentStatements.Where(i => i.PaymentDone == false && i.Id < lastElementId).ToListAsync();
-                
-                //foreach(var i in unpaidPayments)
-                //{
-                //    if (lastPayments.Find(j => j.Id == i.Id) != null)
-                //    {
-                //        unpaidPayments.Remove(i);
-                //    }
-                //}
-
-
-                List<PaymentStatement> paymentsPlusUnpaidPayments = new List<PaymentStatement>();
-                paymentsPlusUnpaidPayments.AddRange(lastPayments);
-                paymentsPlusUnpaidPayments.AddRange(unpaidPayments);
-                
-
-                return View(paymentsPlusUnpaidPayments);
-                //return View(await db.PaymentStatements.OrderBy(i => i.Id).Take(100).ToListAsync());
+                ViewBag.errors = "Ошибка";
             }
 
+            //List<PaymentStatement> lastPayments = await db.PaymentStatements.OrderByDescending(i => i.Id).Take(100).ToListAsync();
+            //var lastElementId = lastPayments.Last().Id;
+            //List<PaymentStatement> unpaidPayments = await db.PaymentStatements.Where(i => i.PaymentDone == false && i.Id < lastElementId).ToListAsync();
+
+            //List<PaymentStatement> paymentsPlusUnpaidPayments = new List<PaymentStatement>();
+            //paymentsPlusUnpaidPayments.AddRange(lastPayments);
+            //paymentsPlusUnpaidPayments.AddRange(unpaidPayments);
+
+            //return View(paymentsPlusUnpaidPayments.OrderBy(i => i.PaymentDone).ThenByDescending(j => j.Id).Take(100).ToList());
+
+            IEnumerable<PaymentStatement> paymentDosc = db.PaymentStatements.OrderBy(i => i.PaymentDone).ThenByDescending(j => j.Id);
+
+            PaginationPageInfo pageInfo = new PaginationPageInfo { PageNumber = pageNumber, PageSize = itemsOnView, TotalItems = paymentDosc.Count()};
+            PaymentStatementsViewModel ivm = new PaymentStatementsViewModel { PageInfo = pageInfo, PaymentDocumnets = paymentDosc.Skip((pageNumber - 1) * itemsOnView).Take(itemsOnView).ToList()};
+            return View(ivm);
         }
+
+        class ApiResponse<T>
+        {
+            public int numRows { get; set; }
+            public List<T> data { get; set; }
+        }
+
+        public List<OutgoingPayment> GetOutgoingPaymentsByDate(string startDate, string endDate)
+        {
+            HttpClient client = GetAuthorizedHttpClient();
+            var response = client.GetAsync(client.BaseAddress + "Api/?table=OutgoingPayment&beg="+ startDate + "&end="+ endDate + "&fields=OrestId,OrestDocumentNumber,OrestOurCompanyId,OrestClientId,OrestDocumentDate,OrestPaymentSum,OrestBankId,OrestSupplierInvoiceId,OrestDocumentStatus");
+            string stringResponse = response.Result.Content.ReadAsStringAsync().Result;
+            ApiResponse<OutgoingPayment> apiResponse = JsonConvert.DeserializeObject<ApiResponse<OutgoingPayment>>(stringResponse);
+
+            return apiResponse != null ? apiResponse.data : new List<OutgoingPayment>();
+        }
+
+        public OrestSupplierInvoice GetOrestSupplierInvoiceById(int id)
+        {
+            HttpClient client = GetAuthorizedHttpClient();
+            var response = client.GetAsync(client.BaseAddress + "Api/?table=OrestSupplierInvoice&searchID=" + id + " & fields=OrestId,OrestDocumentNumber,OrestInvoiceDate,OrestInvoiceSum,OrestDocumentStatus,OrestInvoiceNumber");
+            string stringResponse = response.Result.Content.ReadAsStringAsync().Result;
+            ApiResponse<OrestSupplierInvoice> suplierInvoice = JsonConvert.DeserializeObject<ApiResponse<OrestSupplierInvoice>>(stringResponse);
+
+            return suplierInvoice.data.FirstOrDefault();
+        }
+
+        public OutgoingPayment GetOutgoingPaymentById(int id)
+        {
+            HttpClient client = GetAuthorizedHttpClient();
+            var response = client.GetAsync(client.BaseAddress + "Api/?table=OutgoingPayment&searchID=" + id + "&fields=OrestId,OrestDocumentNumber,OrestOurCompanyId,OrestClientId,OrestDocumentDate,OrestPaymentSum,OrestBankId,OrestSupplierInvoiceId,OrestDocumentStatus");
+            string stringResponse = response.Result.Content.ReadAsStringAsync().Result;
+            ApiResponse<OutgoingPayment> outgoingPyments = JsonConvert.DeserializeObject<ApiResponse<OutgoingPayment>>(stringResponse);
+
+            return outgoingPyments.data.FirstOrDefault();
+        }
+
+        public List<OrestSupplierInvoice> GetOrestSupplierInvoiceByDate(string startDate, string endDate)
+        {
+            HttpClient client = GetAuthorizedHttpClient();
+            var response = client.GetAsync(client.BaseAddress + "Api/?table=OrestSupplierInvoice&beg=" + startDate + "&end=" + endDate + " & fields=OrestId,OrestDocumentNumber,OrestInvoiceDate,OrestInvoiceSum,OrestDocumentStatus,OrestInvoiceNumber,OrestClientId");
+            string stringResponse = response.Result.Content.ReadAsStringAsync().Result;
+            ApiResponse<OrestSupplierInvoice> suplierInvoice = JsonConvert.DeserializeObject<ApiResponse<OrestSupplierInvoice>>(stringResponse);
+
+                        
+            return suplierInvoice != null ? suplierInvoice.data : new List<OrestSupplierInvoice>();
+        }
+
+        public List<string> CheckPayments()
+        {
+            // Добавить проверку оплат инвойсов при импорте 
+            // Банк-расход валюты при импортных операциях -в API таблица - bkh-4
+            // Что считать номером инвойса (может состоять из нескольких проформ + номер инвойса становится известен уже после оплаты или отгрузки)?
+            // Возможно стоит привязаться к номеру спецификации к договору и сумме оплаты
+
+            // Если платеж был проведен в ОРЕСТе но при этом в Finance не был продтверден в Оплату -
+            // сообщить об ошибке!!!
+
+            // формат год/месяц/день, startDate=<endDate
+            string startDate = DateTime.Now.AddDays(-10).Date.ToString("yyyy.MM.dd");
+            string endDate = DateTime.Now.Date.ToString("yyyy.MM.dd");
+
+            // Получаем все исходящие платежы (банк-расходы) из Orest
+            
+            List<OutgoingPayment> outgoingPayments = GetOutgoingPaymentsByDate(startDate, endDate).GroupBy(i => i.OrestSupplierInvoiceId).Select(j => j.First()).ToList();
+
+            // Получаем все счета-фактуры поставщика из Orest
+            List<OrestSupplierInvoice> orestInvoices = GetOrestSupplierInvoiceByDate(DateTime.Now.AddYears(-1).Date.ToString("yyyy.MM.dd"), endDate);
+            // Получаем все платежи (за посл.6 мес.) из Orest
+            List<OutgoingPayment> orestOutgoingPayments = GetOutgoingPaymentsByDate(DateTime.Now.AddMonths(-6).Date.ToString("yyyy.MM.dd"), endDate);
+
+            foreach (var outPayment in outgoingPayments)
+            {              
+                OrestSupplierInvoice supplierInvoice = orestInvoices.Find(i=>i.OrestId == outPayment.OrestSupplierInvoiceId);
+
+                if (supplierInvoice != null)
+                {
+                    supplierInvoice.OutgoingPayments.AddRange(orestOutgoingPayments.Where(i=>i.OrestSupplierInvoiceId == outPayment.OrestSupplierInvoiceId));
+                    outPayment.OrestSupplierInvoice = supplierInvoice;
+                }
+            }
+            //db.SaveChanges();
+
+            var ouPayNumbList = outgoingPayments.OrderByDescending(o=>o.OrestSupplierInvoice.OrestInvoiceNumber).Select(i => i.OrestSupplierInvoice.OrestInvoiceNumber).ToList();
+            // Получаем все не завершенные платежи из finance
+            var paymentStatement = db.PaymentStatements.Where(i=>i.PaymentDone == false).ToList();
+            //var psInvNumbList = paymentStatement.OrderByDescending(o => o.InvoiceNumber).Select(i => i.InvoiceNumber).ToList();
+
+            foreach (var p in paymentStatement)
+            {
+                p.InvoiceNumber = p.InvoiceNumber.Trim();
+                db.Entry(p).State = EntityState.Modified;
+
+                //if (p.InvoiceNumber == "23424")
+                //    orestPaymentsIds = p.Payments.Select(i => i.OrestPaymentId).ToList();
+            }
+
+            List<string> errors = new List<string>();
+            if (outgoingPayments != null)
+            {
+                foreach (var outgoingPayment in outgoingPayments)
+                {
+                    //if (outgoingPayment.OrestSupplierInvoice.OrestInvoiceNumber.Trim() == "23424")
+                    //    ;
+
+                    DateTime invoiceDate = Convert.ToDateTime(outgoingPayment.OrestSupplierInvoice.OrestInvoiceDate);
+                    decimal invoiceSum = Convert.ToDecimal(outgoingPayment.OrestSupplierInvoice.OrestInvoiceSum);
+                    var invoice = paymentStatement.FirstOrDefault(a => a.InvoiceNumber == outgoingPayment.OrestSupplierInvoice.OrestInvoiceNumber.Trim() &&
+                    a.InvoiceDate == invoiceDate &&
+                    a.InvoiceSumma == invoiceSum &&
+                    a.KltId == outgoingPayment.OrestSupplierInvoice.OrestClientId
+                    );
+                    if (invoice != null)
+                    {
+                        foreach (var orestPayment in outgoingPayment.OrestSupplierInvoice.OutgoingPayments) 
+                        {
+                            if (orestPayment.OrestDocumentStatus == 1)
+                            {
+                                foreach (var payment in invoice.Payments)
+                                {
+                                    var checkedPayments = invoice.Payments.Find(i => i.OrestPaymentId == orestPayment.OrestId);
+                                    if (checkedPayments != null)
+                                        break;
+                                    if (Convert.ToDouble(payment.Summa) == orestPayment.OrestPaymentSum && payment.PaymentPaymentDone == false)
+                                    {
+                                        if (payment.MySQLBankId != orestPayment.OrestBankId)
+                                        {
+                                            //ViewBag.BankError = "Банки в системах ОРЕСТ:" + OrestDb.bank.Find(orestPayment.OrestBankId).name + " и MFINANCE: " + payment.MySQLBankName + " не совпадают. Счет:" + OrestDb.klt.Find(orestPayment.OrestClientId).name + ", № " + payment.PaymentStatement.InvoiceNumber + "; " + payment.PaymentStatement.InvoiceDate + ", - " + payment.PaymentStatement.InvoiceSumma;
+                                            errors.Add("Банки в системах ОРЕСТ:" + OrestDb.bank.Find(orestPayment.OrestBankId).name + " и MFINANCE: " + payment.MySQLBankName + " не совпадают. Счет:" + OrestDb.klt.Find(orestPayment.OrestClientId).name + ", № " + payment.PaymentStatement.InvoiceNumber + "; " + payment.PaymentStatement.InvoiceDate + ", - " + payment.PaymentStatement.InvoiceSumma);
+                                        }
+
+                                        if (payment.PartialPaymentApproved == true)
+                                        {
+                                            payment.OrestPaymentId = orestPayment.OrestId;
+                                            payment.PaymentPaymentDone = true;
+                                            //payment.orestOutgoingPaymentId = orestPayment.OrestId;
+                                            db.Entry(payment).State = EntityState.Modified;
+
+                                            db.SaveChanges();
+
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            //ViewBag.NotConfirmedPayment = "Не утвержденная оплата по счету: " + OrestDb.klt.Find(orestPayment.OrestClientId).name + ", № " + payment.PaymentStatement.InvoiceNumber + "; " + payment.PaymentStatement.InvoiceDate + ", - " + payment.PaymentStatement.InvoiceSumma;
+                                            errors.Add("Не утвержденная оплата по счету: " + OrestDb.klt.Find(orestPayment.OrestClientId).name + ", № " + payment.PaymentStatement.InvoiceNumber + "; " + payment.PaymentStatement.InvoiceDate + ", - " + payment.PaymentStatement.InvoiceSumma);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        invoice.OrestPrhId = outgoingPayment.OrestSupplierInvoice.OrestId;
+                        db.Entry(invoice).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    //else
+                    //{
+                    //    PaymentStatement lostPaymentStatement = db.PaymentStatements.FirstOrDefault(a => a.InvoiceNumber == orestInvoice.OrestInvoiceNumber.Trim() && a.PaymentDone != true);
+                    //    if (lostPaymentStatement == null)
+                    //        errors.Add("В finance не найден счет №: " + orestInvoice.OrestInvoiceNumber + "; " + orestInvoice.OrestInvoiceDate + "; " + orestInvoice.OrestInvoiceSum + "; ");
+                    //    else
+                    //    {
+                    //        lostPaymentStatement = db.PaymentStatements.FirstOrDefault(a => a.InvoiceDate == Convert.ToDateTime(orestInvoice.OrestInvoiceDate) &&
+                    //        a.InvoiceNumber == lostPaymentStatement.InvoiceNumber);
+
+                    //        if (lostPaymentStatement == null)
+                    //            errors.Add("В finance и Orest не совпадает дата счета №: " + orestInvoice.OrestInvoiceNumber + "; " + orestInvoice.OrestInvoiceDate + "; " + orestInvoice.OrestInvoiceSum + "; ");
+                    //        else
+                    //        {
+                    //            lostPaymentStatement = db.PaymentStatements.FirstOrDefault(a => a.InvoiceSumma == Convert.ToDecimal(orestInvoice.OrestInvoiceSum) &&
+                    //            a.InvoiceNumber == lostPaymentStatement.InvoiceNumber &&
+                    //            a.InvoiceDate == lostPaymentStatement.InvoiceDate);
+
+                    //            if (lostPaymentStatement == null)
+                    //                errors.Add("В finance и Orest не совпадает сумма счета №: " + orestInvoice.OrestInvoiceNumber + "; " + orestInvoice.OrestInvoiceDate + "; " + orestInvoice.OrestInvoiceSum + "; ");
+                    //            else
+                    //            {
+                    //                lostPaymentStatement = db.PaymentStatements.FirstOrDefault(a => a.InvoiceSumma == Convert.ToDecimal(orestInvoice.OrestInvoiceSum) &&
+                    //                a.InvoiceNumber == lostPaymentStatement.InvoiceNumber &&
+                    //                a.InvoiceDate == lostPaymentStatement.InvoiceDate &&
+                    //                a.KltId == lostPaymentStatement.KltId);
+                    //                if(lostPaymentStatement == null)
+                    //                    errors.Add("В finance и Orest не совпадает id Поставщика счета №: " + orestInvoice.OrestInvoiceNumber + "; " + orestInvoice.OrestInvoiceDate + "; " + orestInvoice.OrestInvoiceSum + "; ");
+                    //            }
+                    //        }
+                    //    }
+                    //}
+
+                }
+
+
+                //Для поиска несанкционированных платежей (те которые отсутствуют в finance но есть в Orest)
+                //Хранить в db finance id платежей из ОРЕСТа
+                //Если полатеж есть в Orest но его id отсутсвует в finance - ощибка
+                foreach (var op in outgoingPayments)
+                {
+                    var approvedPayment = db.Payments.FirstOrDefault(i => i.OrestPaymentId == op.OrestId);
+
+                    if (approvedPayment == null)
+                    {
+                        var orestSupInvoice = OrestDb.prh.FirstOrDefault(i => i.id == op.OrestSupplierInvoiceId);
+                        errors.Add("Несанкционированный платёж: " + OrestDb.klt.Find(op.OrestClientId).name + ", № " + orestSupInvoice.ninv + "; " + orestSupInvoice.datd + ", - " + op.OrestPaymentSum + "; " + OrestDb.bank.Find(op.OrestBankId).name);
+                    }
+                }
+
+                foreach (var ps in paymentStatement)
+                {
+                    //if (ps.InvoiceNumber == "Ц-000063091")
+                    //    ;
+                    decimal sum = 0;
+                    foreach (var payment in ps.Payments)
+                    {
+                        if (payment.PaymentPaymentDone == true)
+                            sum += payment.Summa;
+                        else
+                            ps.PaymentDone = false;                             
+                    }
+                    if (sum == ps.InvoiceSumma)
+                    {
+                        ps.InvoiceChecked = true;
+                        ps.PaymentApproved = true;
+                        ps.PaymentDone = true;
+
+                        db.Entry(ps).State = EntityState.Modified;
+                    }
+                    if (ps.OrestPrhId == 0 && ps.Payments.FirstOrDefault().PaymentPaymentDone == true)
+                    {
+                        //ViewBag.PaymentNotFound = "Не найден счет: #" + ps.InvoiceNumber + " дата" + ps.InvoiceDate + " компания" + ps.Counterparty.name + " сумма " + ps.InvoiceSumma + " комментарий" + ps.Comment + " файл" + ps.DocumentUrl;
+                        errors.Add("Не найден счет: #" + ps.InvoiceNumber + " дата" + ps.InvoiceDate + " компания" + OrestDb.klt.Find(ps.KltId) + " сумма " + ps.InvoiceSumma + " комментарий" + ps.Comment + " файл" + ps.DocumentUrl);
+                    }
+                }
+                db.SaveChanges();
+            }
+
+            //Проверка снятых с проводки банк-расходов!
+            //Получить все bkh где bkh.lg = 0 - документ не проведен
+            //Проверить есть ли в PaymentStatements соответствующий платеж. Если есть, изменить его статус - paymentDone = false;
+
+            DateTime date = DateTime.Now.AddYears(-1);
+            //// Получаем все не проведенные банк-расходы за последний год
+            var unfinishedPaymentsId = OrestDb.bkh.Where(p => p.tp == 2 && p.lg == 0 && p.dusr > date).Select(i => i.id).ToList();
+            List<OutgoingPayment> UnfinishedPayments = new List<OutgoingPayment>();
+            if (unfinishedPaymentsId.Count > 0)
+            {
+                foreach (var id in unfinishedPaymentsId)
+                {
+                    var unfinishedPayment = GetOutgoingPaymentById(Convert.ToInt32(id));
+                    var unPayment = db.PaymentStatements.FirstOrDefault(p => p.OrestPrhId == unfinishedPayment.OrestSupplierInvoiceId);
+                    if (unPayment != null)
+                    {
+                        unPayment.PaymentDone = false;
+                        foreach (var p in unPayment.Payments)
+                        {
+                            if (p.Summa == Convert.ToDecimal(unfinishedPayment.OrestPaymentSum))
+                                p.PaymentPaymentDone = false;
+                        }
+                        //ViewBag.PaymentError = "ПЛАТЕЖ ПО СЧЕТУ" + unPayment.Counterparty + " " + unPayment.InvoiceNumber + " " + unPayment.InvoiceDate + " ПРОВЕДЕН В MFINANCE СНЯТ С ПРОВОДКИ В СИСТЕМЕ OREST!!!";
+                        errors.Add("ПЛАТЕЖ ПО СЧЕТУ" + unPayment.Counterparty + " " + unPayment.InvoiceNumber + " " + unPayment.InvoiceDate + " ПРОВЕДЕН В MFINANCE СНЯТ С ПРОВОДКИ В СИСТЕМЕ OREST!!!");
+                    }
+                    else
+                    {
+                        //Обнаружен в Оресте платёж, счёт которого отсутствует в Финансе. 
+                        errors.Add("ПЛАТЕЖ ПО СЧЕТУ" + unPayment.Counterparty + " " + unPayment.InvoiceNumber + " " + unPayment.InvoiceDate + "Обнаружен в Оресте платёж, счёт которого отсутствует в Финансе.!!!");
+                    }
+                    db.Entry(unPayment).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                }
+            }
+
+            //if (UnfinishedPayments.Count > 0)
+            //{
+            //    foreach (var unfinishedPayment in UnfinishedPayments)
+            //    {
+            //        var unPayment = db.PaymentStatements.FirstOrDefault(p => p.OrestPrhId == unfinishedPayment.OrestSupplierInvoiceId);
+            //        if (unPayment != null)
+            //        {
+            //            unPayment.PaymentDone = false;
+            //            foreach (var p in unPayment.Payments)
+            //            {
+            //                if (p.Summa == Convert.ToDecimal(unfinishedPayment.OrestPaymentSum))
+            //                    p.PaymentPaymentDone = false;
+            //            }
+            //            //ViewBag.PaymentError = "ПЛАТЕЖ ПО СЧЕТУ" + unPayment.Counterparty + " " + unPayment.InvoiceNumber + " " + unPayment.InvoiceDate + " ПРОВЕДЕН В MFINANCE СНЯТ С ПРОВОДКИ В СИСТЕМЕ OREST!!!";
+            //            errors.Add("ПЛАТЕЖ ПО СЧЕТУ" + unPayment.Counterparty + " " + unPayment.InvoiceNumber + " " + unPayment.InvoiceDate + " ПРОВЕДЕН В MFINANCE СНЯТ С ПРОВОДКИ В СИСТЕМЕ OREST!!!");
+            //        }
+            //        else
+            //        {
+            //            //Обнаружен в Оресте платёж, счёт которого отсутствует в Финансе. 
+            //            errors.Add("ПЛАТЕЖ ПО СЧЕТУ" + unPayment.Counterparty + " " + unPayment.InvoiceNumber + " " + unPayment.InvoiceDate + "Обнаружен в Оресте платёж, счёт которого отсутствует в Финансе.!!!");
+            //        }
+            //        db.Entry(unPayment).State = EntityState.Modified;
+            //        db.SaveChanges();
+            //    }
+            //}
+            if (errors.Count == 0)
+                errors.Add("0-errors");
+            return errors;
+        }
+
+        public ActionResult PaymentsByComment(string comment)
+        {
+            var result = db.PaymentStatements.Where(p => p.Comment == comment).ToList().OrderByDescending(i => i.Id);
+            return View(db.PaymentStatements.Where(p => p.Comment == comment).ToList().OrderByDescending(i => i.Id));
+        }
+        public JsonResult GetPaymentsByComment(string request)
+        {
+            var result = db.PaymentStatements.Where(p => p.Comment.Contains(request)).Select(i=>i.Comment).Distinct().ToList();
+            var jsonresult = Json(result.Take(100), JsonRequestBehavior.AllowGet);
+            return Json(result.Take(100), JsonRequestBehavior.AllowGet);
+        }
+
 
         public ActionResult PaymentsByCompany(int companyId)
         {
             return View(db.PaymentStatements.Where(c => c.KltId == companyId).ToList().OrderByDescending(i => i.Id));
         }
 
-        public ActionResult sortByPayment()
+        public JsonResult GetCompaniesByName(string request)
         {
-            return View("Index", db.PaymentStatements.OrderBy(i => i.PaymentDone).ThenByDescending(j => j.Id).Take(100).ToList());
+            var counterparties = OrestDb.klt.Where(i => i.name.Contains(request)).ToList();
+
+            return Json(counterparties.Take(100), JsonRequestBehavior.AllowGet);
         }
 
+        //public ActionResult sortByPayment()
+        //{
+        //    return View("Index", db.PaymentStatements.OrderBy(i => i.PaymentDone).ThenByDescending(j => j.Id).Take(100).ToList());
+        //}
+
+        //public ActionResult SortByPaymentDate()
+        //{
+        //    return View("Index", db.PaymentStatements.OrderBy(i => i.Payments.Select(p => p.PaymentPaymentDone)));
+        //}
         // GET: PaymentStatements/Details/5
         public async Task<ActionResult> Details(int? id)
         {
@@ -100,7 +418,7 @@ namespace Finance.Controllers
             payment.Currency = new Currency();
             payment.Currency.Id = 1;  //UAH
             payment.Currency.CurrencyName = "UAH";
-            ViewBag.CurrenciesList = new SelectList(db.Currencies, "Id", "CurrencyName");
+            //ViewBag.CurrenciesList = new SelectList(db.Currencies, "Id", "CurrencyName");
             return View(payment);
         }
         // POST: PaymentStatements/Create
@@ -108,8 +426,8 @@ namespace Finance.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,KltId,InvoiceNumber,InvoiceDate,InvoiceSumma,Comment,InvoiceChecked,PaymentApproved,DocumentUrl,CurrencyId")]
-        PaymentStatement paymentStatement, decimal[] Summa, string[] PaymentComment, bool[] PaymentPaymentDone, HttpPostedFileBase[] UploadDocumentUrl)
+        public ActionResult Create([Bind(Include = "Id,KltId,InvoiceNumber,InvoiceDate,InvoiceSumma,Comment,DocumentUrl,CurrencyId")]
+        PaymentStatement paymentStatement, decimal[] Summa, bool[] PartialPaymentChecked, bool[] PartialPaymentApproved, bool[] PaymentPaymentDone, HttpPostedFileBase[] UploadDocumentUrl, int?[] MySQLBankId)
         {        
             if (paymentStatement.KltId == 0)
             {
@@ -118,11 +436,62 @@ namespace Finance.Controllers
                 {
                     //ViewBag.FileName = System.IO.Path.GetFileName(UploadDocumentUrl.FileName);
                 }
-            }            
-            
-            if (ModelState.IsValid)
+            }
+            var currentUser = db.Users.Where(a => a.UserName == User.Identity.Name).First();
+
+            paymentStatement.Payments = new List<Payment>();
+
+            if (Summa != null)
             {
-                var currentUser = db.Users.Where(a => a.UserName == User.Identity.Name).First();
+                int invoiceCheckedIndex = 0;
+                int invoiceApprovedIndex = 0;
+                int paymentDoneIndex = 0;
+
+                for (var i = 0; i < Summa.Length; i++)
+                {
+                    Payment payment = new Payment();
+
+                    payment.PaymentWhenEdited = DateTime.Now;
+                    payment.PaymentWhoAddThis = currentUser;
+                    payment.Summa = Summa[i];
+                    if(MySQLBankId != null)
+                    {
+                        var orestBank = OrestDb.bank.Find(MySQLBankId[i]);
+                        if (orestBank != null)
+                        {
+                            payment.MySQLBankName = orestBank.name;
+                            payment.MySQLBankId = orestBank.id;
+                        }
+                    }
+                    
+
+                    payment.PartialPaymentChecked = PartialPaymentChecked[invoiceCheckedIndex];
+                    if (PartialPaymentChecked[invoiceCheckedIndex] == true)
+                        invoiceCheckedIndex = invoiceCheckedIndex + 2;
+                    else
+                        invoiceCheckedIndex++;
+
+                    payment.PartialPaymentApproved = PartialPaymentApproved[invoiceApprovedIndex];
+                    if (PartialPaymentApproved[invoiceApprovedIndex] == true)
+                        invoiceApprovedIndex = invoiceApprovedIndex + 2;
+                    else
+                        invoiceApprovedIndex++;
+
+                    payment.PaymentPaymentDone = PaymentPaymentDone[paymentDoneIndex];
+                    if (PaymentPaymentDone[paymentDoneIndex] == true)
+                        paymentDoneIndex = paymentDoneIndex + 2;
+                    else
+                        paymentDoneIndex++;
+
+                    //payment.PaymentStatement = paymentStatement;
+
+                    paymentStatement.Payments.Add(payment);
+                }
+            }
+
+            if (ModelState.IsValid)
+            {       
+                
                 if (UploadDocumentUrl != null)
                 {
                     //// получаем имя файла
@@ -132,6 +501,8 @@ namespace Finance.Controllers
                     //paymentStatement.DocumentUrl = "/Files/" + fileName;
                     foreach (var file in UploadDocumentUrl)
                     {
+                        if (file == null)
+                            break;
                         // получаем имя файла
                         string fileName = Guid.NewGuid().ToString() + System.IO.Path.GetFileName(file.FileName);
                         // сохраняем файл в папку Files в проекте
@@ -156,48 +527,15 @@ namespace Finance.Controllers
                 paymentStatement.whoAddThis = currentUser; //await UserManager.FindByNameAsync(User.Identity.Name); 
                 paymentStatement.whoMadeLastChanges = currentUser;
                 paymentStatement.WhenEdited = DateTime.Now;
+                paymentStatement.WhenCreated = DateTime.Now;
                 paymentStatement.Currency = db.Currencies.Find(paymentStatement.CurrencyId);
 
-                //Payment payment = new Payment();
-                //payment.InvoiceChecked = paymentStatement.InvoiceChecked;
-                //payment.PaymentApproved = paymentStatement.PaymentApproved;
-                //payment.PaymentPaymentDone = paymentStatement.PaymentPaymentDone;
-                //payment.InvoiceCheckedUser = paymentStatement.InvoiceCheckedUser;
-                //payment.PaymentApprovedUser = paymentStatement.PaymentApprovedUser;
-                //payment.PaymentPaymentDoneUser = paymentStatement.PaymentPaymentDoneUser;
-                //payment.Summa = paymentStatement.InvoiceSumma;
-                //paymentStatement.Payments = new List<Payment>();
-                //paymentStatement.Payments.Add(payment);
-                //db.PaymentStatements.Add(paymentStatement);
-
-                paymentStatement.Payments = new List<Payment>();
-                int PaymentDoneIndex = 0;
-                int CommentIndex = 0;
-                if (Summa != null)
+                if (paymentStatement.PaymentDone)
                 {
-                    foreach (var sum in Summa)
-                    {
-                        Payment payment = new Payment();
-
-                        payment.Summa = sum;
-
-                        payment.PaymentComment = PaymentComment[CommentIndex];
-                        CommentIndex++;
-
-                        payment.PaymentPaymentDoneUser = currentUser;
-                        payment.PaymentWhoAddThis = currentUser;
-                        payment.PaymentWhenEdited = DateTime.Now;
-                        payment.PaymentwhoMadeLastChanges = currentUser;
-
-                        payment.PaymentPaymentDone = PaymentPaymentDone[PaymentDoneIndex];
-                        if (payment.PaymentPaymentDone == false)
-                            PaymentDoneIndex++;
-                        else
-                            PaymentDoneIndex += 2;
-
-                        paymentStatement.Payments.Add(payment);
-                    }
+                    paymentStatement.InvoiceChecked = true;
+                    paymentStatement.PaymentApproved = true;
                 }
+
                 db.PaymentStatements.Add(paymentStatement);
                 db.SaveChanges();
 
@@ -215,6 +553,37 @@ namespace Finance.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PaymentStatement paymentStatement = await db.PaymentStatements.FindAsync(id);
+
+            var invoiceOrest = await OrestDb.prh.FirstOrDefaultAsync(a => a.ninv == paymentStatement.InvoiceNumber&&a.datd == paymentStatement.InvoiceDate);
+
+            //Ищем в базе Орест редактируемый счёт и ставим флаг, показывающий найден счёт или нет:
+            paymentStatement.isInvoiceFound = invoiceOrest!=null;
+
+            if (paymentStatement.isInvoiceFound)
+            {
+                //paymentStatement.isInvoiceSummaCorrect = invoiceOrest.sd == paymentStatement.InvoiceSumma;
+                paymentStatement.isInvoicePaymentsCorrect = true;
+                //Получаем список платежей по счёту из ореста.
+                var paymentsOrest = OrestDb.bkh.Where(a => a.prh == invoiceOrest.id);
+                foreach (var payment in paymentStatement.Payments)
+                {
+                    //Если сумма платежа не верна
+                    if (!payment.isPaymentSummaCorrect)
+                        //тогда общая сумма счёта также не верна
+                        paymentStatement.isInvoicePaymentsCorrect = false;
+
+                    //payment.PaymentPaymentDone = paymentsOrest.FirstOrDefault(a => a.ndoc == payment.numberDocument).lg == 1;
+                }
+                await db.SaveChangesAsync();
+            }
+            else
+            {
+                paymentStatement.isInvoiceSummaCorrect = false;
+                paymentStatement.isInvoicePaymentsCorrect = false;
+            }
+
+            
+
             if (paymentStatement == null)
             {
                 return HttpNotFound();
@@ -229,10 +598,8 @@ namespace Finance.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,KltId,InvoiceNumber,InvoiceDate,InvoiceSumma,Comment,InvoiceChecked,PaymentApproved,DocumentUrl, CurrencyId")]
-        PaymentStatement paymentStatement, decimal[] Summa, string[] PaymentComment, bool[] PaymentPaymentDone, int[] UploadDocumentId, HttpPostedFileBase[] UploadDocumentUrl, string LastUrl)
-        {
-           
-          
+        PaymentStatement paymentStatement, decimal[] Summa, bool[] PartialPaymentChecked, bool[] PartialPaymentApproved, bool[] PaymentPaymentDone, int?[] UploadDocumentId, HttpPostedFileBase[] UploadDocumentUrl, string LastUrl, int?[] MySQLBankId, int[] OrestPaymentId)
+        {          
             if (ModelState.IsValid)
             {
                 PaymentStatement currentPaymentStatement = db.PaymentStatements.Find(paymentStatement.Id);
@@ -244,32 +611,51 @@ namespace Finance.Controllers
                 currentPaymentStatement.InvoiceDate = paymentStatement.InvoiceDate;
                 currentPaymentStatement.PaymentApproved = paymentStatement.PaymentApproved;
                 currentPaymentStatement.WhenEdited = DateTime.Now;
-               
-                // Проверяем были ли ранее загружены файлы (при Create)
+                currentPaymentStatement.PaymentDone = paymentStatement.PaymentDone;
 
-                if (currentPaymentStatement.PaymentsDocuments != null && currentPaymentStatement.PaymentsDocuments.Count != 0) 
+                //1. Удаляем все ранее добавленные файлы
+                if (currentPaymentStatement.PaymentsDocuments.Count != 0)
                 {
-                  
-                    db.SaveChanges();
+                    for (int i = 0; i < currentPaymentStatement.PaymentsDocuments.Count; i++)
+                    {
+                        if(UploadDocumentId == null)  // если удалены все ранее добавленные файлы
+                        {
+                            string fullPath = Server.MapPath(currentPaymentStatement.PaymentsDocuments[i].DocumentUrl);
+                            if (System.IO.File.Exists(fullPath))
+                            {
+                                System.IO.File.Delete(fullPath);
+                            }
+                            currentPaymentStatement.PaymentsDocuments.Remove(currentPaymentStatement.PaymentsDocuments[i]);
+                        }
+                        // если удалены некоторорые ранее добавленные файлы
+                        else if (UploadDocumentId.Contains(currentPaymentStatement.PaymentsDocuments[i].Id) == false)
+                        {
+                            string fullPath = Server.MapPath(currentPaymentStatement.PaymentsDocuments[i].DocumentUrl);
+                            if (System.IO.File.Exists(fullPath))
+                            {
+                                System.IO.File.Delete(fullPath);
+                            }
+                            currentPaymentStatement.PaymentsDocuments.Remove(currentPaymentStatement.PaymentsDocuments[i]);
+                        }                    
+                    }
                 }
-
                 //2.Сохраняем ново добавленные файлы из UploadDocumentUrl
-                if (UploadDocumentUrl != null)
-                {
+                if(UploadDocumentUrl.Length > 0)
                     foreach (var file in UploadDocumentUrl)
                     {
-                        // получаем имя файла
-                        string fileName = Guid.NewGuid().ToString() + System.IO.Path.GetFileName(file.FileName);
-                        // сохраняем файл в папку Files в проекте
-                        file.SaveAs(Server.MapPath("~/Files/" + fileName));
-                        PaymentsDocument paymentDocument = new PaymentsDocument();
-                        paymentDocument.DocumentUrl = "/Files/" + fileName;
-                        if (currentPaymentStatement.PaymentsDocuments == null)
-                            currentPaymentStatement.PaymentsDocuments = new List<PaymentsDocument>();
-                        currentPaymentStatement.PaymentsDocuments.Add(paymentDocument);
+                        if (file != null)
+                        {
+                            // получаем имя файла
+                            string fileName = Guid.NewGuid().ToString() + System.IO.Path.GetFileName(file.FileName);
+                            // сохраняем файл в папку Files в проекте
+                            file.SaveAs(Server.MapPath("~/Files/" + fileName));
+                            PaymentsDocument paymentDocument = new PaymentsDocument();
+                            paymentDocument.DocumentUrl = "/Files/" + fileName;
+                            if (currentPaymentStatement.PaymentsDocuments == null)
+                                currentPaymentStatement.PaymentsDocuments = new List<PaymentsDocument>();
+                            currentPaymentStatement.PaymentsDocuments.Add(paymentDocument);
+                        }
                     }
-
-                }
 
                 var currentUser = db.Users.Where(a => a.UserName == User.Identity.Name).First();
 
@@ -283,69 +669,97 @@ namespace Finance.Controllers
                 db.Payments.RemoveRange(currentPaymentStatement.Payments);
                 db.SaveChanges();
 
-
-                int PaymentDoneIndex = 0;
-                int CommentIndex = 0;
                 if (currentPaymentStatement.Payments == null)
                     currentPaymentStatement.Payments = new List<Payment>();
-                //db.Entry(paymentStatement).State = EntityState.Modified;
-                //db.SaveChanges();
+
+                paymentStatement.Payments = new List<Payment>();
 
                 if (Summa != null)
                 {
-                    foreach (var sum in Summa)
+                    int invoiceCheckedIndex = 0;
+                    int invoiceApprovedIndex = 0;
+                    int paymentDoneIndex = 0;
+
+                    for (var i = 0; i < Summa.Length; i++)
                     {
                         Payment payment = new Payment();
 
-                        payment.Summa = sum;
-
-                        payment.PaymentComment = PaymentComment[CommentIndex];
-                        CommentIndex++;
-
-                        payment.PaymentPaymentDoneUser = currentUser;
-                        payment.PaymentWhoAddThis = currentUser;
                         payment.PaymentWhenEdited = DateTime.Now;
-                        payment.PaymentwhoMadeLastChanges = currentUser;
-
-                        payment.PaymentPaymentDone = PaymentPaymentDone[PaymentDoneIndex];
-                        if (payment.PaymentPaymentDone == false)
-                            PaymentDoneIndex++;
-                        else
-                            PaymentDoneIndex += 2;
-                        currentPaymentStatement.Payments.Add(payment);
-                    }
-
-                    decimal PaymentsSumm = 0; // расчитываем сумму оплат
-                    foreach (var i in currentPaymentStatement.Payments.ToList())
-                    {
-                        if (i.PaymentPaymentDone == true)
+                        payment.PaymentWhoAddThis = currentUser;
+                        payment.Summa = Summa[i];
+                        payment.OrestPaymentId = OrestPaymentId[i];
+                        try
                         {
-                            PaymentsSumm += i.Summa;
-                            currentPaymentStatement.PaymentDone = true;
+                            var orestBank = OrestDb.bank.Find(MySQLBankId[i]);
+                            if (orestBank != null)
+                            {
+                                payment.MySQLBankName = orestBank.name;
+                                payment.MySQLBankId = orestBank.id;
+                            }
                         }
-                        else
-                            currentPaymentStatement.PaymentDone = false;
-                    }
+                        catch
+                        {
+                            return View(paymentStatement);
+                        }
+                        
+                       
 
-                    if (PaymentsSumm == currentPaymentStatement.InvoiceSumma)
-                    {
-                        currentPaymentStatement.PaymentDone = true;
+                        payment.PartialPaymentChecked = PartialPaymentChecked[invoiceCheckedIndex];
+                        if (PartialPaymentChecked[invoiceCheckedIndex] == true)
+                            invoiceCheckedIndex = invoiceCheckedIndex + 2;
+                        else
+                            invoiceCheckedIndex++;
+
+                        payment.PartialPaymentApproved = PartialPaymentApproved[invoiceApprovedIndex];
+                        if (PartialPaymentApproved[invoiceApprovedIndex] == true)
+                            invoiceApprovedIndex = invoiceApprovedIndex + 2;
+                        else
+                            invoiceApprovedIndex++;
+
+                        payment.PaymentPaymentDone = PaymentPaymentDone[paymentDoneIndex];
+                        if (PaymentPaymentDone[paymentDoneIndex] == true)
+                            paymentDoneIndex = paymentDoneIndex + 2;
+                        else
+                            paymentDoneIndex++;
+
+                        //payment.PaymentStatement = paymentStatement;
+
+                        paymentStatement.Payments.Add(payment);
                     }
-                    else
-                        currentPaymentStatement.PaymentDone = false;
+                    currentPaymentStatement.Payments = paymentStatement.Payments;
+
+                    //decimal PaymentsSumm = 0; // расчитываем сумму оплат
+                    //foreach (var i in currentPaymentStatement.Payments.ToList())
+                    //{
+                    //    if (i.PaymentPaymentDone == true)
+                    //    {
+                    //        PaymentsSumm += i.Summa;
+                    //        currentPaymentStatement.PaymentDone = true;
+                    //    }
+                    //    else
+                    //        currentPaymentStatement.PaymentDone = false;
+                    //}
+
+                    //if (PaymentsSumm == currentPaymentStatement.InvoiceSumma)
+                    //{
+                    //    currentPaymentStatement.PaymentDone = true; //оплачено 100%
+                    //}
+                    //else
+                    //    currentPaymentStatement.PaymentDone = false;
                 }
+
+                //if (currentPaymentStatement.PaymentDone)
+                //{
+                //    currentPaymentStatement.InvoiceChecked = true;
+                //    currentPaymentStatement.PaymentApproved = true;
+                //}
              
                 db.Entry(currentPaymentStatement).State = EntityState.Modified;
 
-  
-
-                //paymentStatement.DocumentUrl = db.PaymentStatements.Find(paymentStatement.Id).DocumentUrl;
-                //db.Entry(paymentStatement).State = EntityState.Modified;
-
                 db.SaveChanges();
+                return RedirectToAction("Index");
 
-                return RedirectToAction(LastUrl != "" ? LastUrl : "Index");
-
+                //return RedirectToAction(LastUrl != "" ? LastUrl : "Index");
             }
             return View(paymentStatement);
         }
@@ -362,7 +776,7 @@ namespace Finance.Controllers
 
         public ActionResult GetFileUrl(int? id)
         {
-            PaymentStatement paymentStatement = db.PaymentStatements.Find(id); ;
+            PaymentStatement paymentStatement = db.PaymentStatements.Find(id);
             //return Redirect(paymentStatement.DocumentUrl.ToString());
             var documents = paymentStatement.PaymentsDocuments;
             string[] allFilesUrl = new string[documents.Count()];
@@ -395,44 +809,15 @@ namespace Finance.Controllers
             //return Redirect(paymentStatement.DocumentUrl.ToString());
             var documents = paymentStatement.PaymentsDocuments;
             string[] allFilesUrl = new string[documents.Count()];
-            int index = 0;
-            foreach (var i in documents)
+            //int index = 0;
+            for(int i = 0; i < documents.Count; i++)
             {
-                allFilesUrl[index] = i.DocumentUrl;
-                index++;
+                if (documents[i].DocumentUrl != null)
+                    allFilesUrl[i] = documents[i].DocumentUrl;
+                else
+                    db.PaymentsDocuments.Remove(documents[i]);
             }
             return View(allFilesUrl);
-
-            // Пример из https://stackoverflow.com/questions/12713710/returning-multiple-files-from-mvc-action
-            //var outputStream = new MemoryStream();
-
-            //using (var zip = new ZipFile())
-            //{
-            //    zip.AddEntry("file1.txt", "content1");
-            //    zip.AddEntry("file2.txt", "content2");
-            //    zip.Save(outputStream);
-            //}
-
-            //outputStream.Position = 0;
-            //return File(outputStream, "application/zip", "filename.zip");
-
-        }
-
-        public string DeleteFile(int id, string documentUrl) // сделать запрос через Ajax
-        {
-            PaymentStatement paymentStatement = db.PaymentStatements.Find(id);
-            
-            string fullPath = Server.MapPath(documentUrl);
-            if (System.IO.File.Exists(fullPath))
-            {
-                System.IO.File.Delete(fullPath);
-            }
-            paymentStatement.DocumentUrl = null;
-            PaymentsDocument removingFile = paymentStatement.PaymentsDocuments.Where(i => i.DocumentUrl == documentUrl).FirstOrDefault();
-            paymentStatement.PaymentsDocuments.Remove(removingFile);
-            db.Entry(paymentStatement).State = EntityState.Modified;
-            db.SaveChanges();
-            return "Файл был удален";
         }
 
         // GET: PaymentStatements/Delete/5
@@ -456,9 +841,14 @@ namespace Finance.Controllers
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
             PaymentStatement paymentStatement = await db.PaymentStatements.FindAsync(id);
+            for (int i = 0; i < paymentStatement.PaymentsDocuments.Count; i++)
+            {
+                db.PaymentsDocuments.Remove(paymentStatement.PaymentsDocuments[i]);
+            }
             db.PaymentStatements.Remove(paymentStatement);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+
         }
 
         public string SetInvoiceChecked(int id, bool status)
@@ -489,26 +879,19 @@ namespace Finance.Controllers
             }
         }
 
-        public string SetPaymentDone(int id, bool status)
-        {
-            try
-            {
-                db.Payments.Find(id).PaymentPaymentDone = status;
-                db.SaveChanges();
-                return "Изменение сохранено";
-            }
-            catch (Exception ex)
-            {
-                return "Ошибка: " + ex.Message;
-            }
-        }
-
-        public JsonResult GetCompaniesByName(string request)
-        {
-            var counterparties = OrestDb.klt.Where(i => i.name.Contains(request)).ToList();
-
-            return Json(counterparties.Take(100), JsonRequestBehavior.AllowGet);
-        }
+        //public string SetPaymentDone(int id, bool status)
+        //{
+        //    try
+        //    {
+        //        db.Payments.Find(id).PaymentPaymentDone = status;
+        //        db.SaveChanges();
+        //        return "Изменение сохранено";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return "Ошибка: " + ex.Message;
+        //    }
+        //}
 
         protected override void Dispose(bool disposing)
         {

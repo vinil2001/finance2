@@ -32,7 +32,7 @@ function HideModalDiv()
 
 function OnClose() 
 {
-    if(window.opener != null && !window.opener.closed) 
+    if(window.opener !== null && !window.opener.closed) 
     {
         //alert("OnClose");
         window.opener.HideModalDiv();
@@ -40,11 +40,36 @@ function OnClose()
 }
 function OnCloseFromParent()
 {
-    if (popUpObj.window.opener != null && !popUpObj.window.closed)
+    if (popUpObj.window.opener !== null && !popUpObj.window.closed)
     {
         //alert("OnCloseFromParent");
         popUpObj.window.HideModalDiv();
     }
 }
 
+// Warning pop-up
 
+//function showModal(){
+//    var modal = document.getElementById("myModal");
+//    modal.style.display = "block";
+//}
+
+//// Warning modal
+
+//function warningModalWindow() {
+//    span = document.getElementsByClassName("close")[0];
+//    var modal = document.getElementById("myModal");
+//    showModal();
+//    span.onclick = function () {
+//        modal.style.display = "none";
+//    }
+//}
+
+//function hideWarningModalWindow(event) {
+//    var modal = document.getElementById("myModal");
+//    if (event !== undefined) {
+//        if (event.target === modal) {
+//            modal.style.display = "none";
+//        }
+//    }    
+//}

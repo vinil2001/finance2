@@ -1,0 +1,36 @@
+﻿.paymentProgressBarContainer {
+    color: #000;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    box-sizing: inherit;
+    width: 100px;
+}
+
+.paymentStausBar {
+    margin-right: auto;
+    color: #fff;
+    background-color: #2196F3;
+    padding: 0.01em 16px;
+    border-radius: 8px;
+}
+
+.imgCheckMarkPosition {
+    position: relative;
+    left: -105px;
+    top: -20px;
+    float: right;
+    width: 20px;
+    height: 20px;
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 2px;
+    background: sandybrown;
+}
+
+#menueUnderMainMenue {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
+    
+}

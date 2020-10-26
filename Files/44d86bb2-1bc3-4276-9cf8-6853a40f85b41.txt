@@ -1,0 +1,751 @@
+using DevExpress.XtraTreeList;
+using DevExpress.XtraTreeList.Nodes;
+using GEVParsing.models;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Data.Entity.Migrations;
+using System.Data.Entity;
+
+namespace GEVParsing
+{
+    public partial class Form1 : Form
+    {
+        //ChromeOptions options = new ChromeOptions();
+
+        //ChromeDriverService service = ChromeDriverService.CreateDefaultService();
+        //service.SuppressInitialDiagnosticInformation = true;
+
+        //IWebDriver driver = new ChromeDriver(service, options);
+        IWebDriver driver;
+        //private static List<Category> AllCategories = new List<Category>();
+        Context db = new Context();
+        Uri remoteServerUri;
+
+        public Form1()
+        {
+            InitializeComponent();
+
+            //treeList.OptionsSelection.MultiSelect = true;
+
+            //db.Categories.RemoveRange(db.Categories);
+            //db.SaveChanges();
+
+            Stream stream = new FileStream(@"driver.bin", FileMode.OpenOrCreate, FileAccess.Read, FileShare.None);
+
+            var ser = new BinaryFormatter();
+
+            try
+            {
+                var deser = ser.Deserialize(stream);
+                remoteServerUri = (Uri)ser.Deserialize(stream);
+                string sessionid = (string)ser.Deserialize(stream);
+                driver = new ReuseRemoteWebDriver(remoteServerUri, sessionid);
+                driver.Url = @"https://www.gev-online.de/ru/home";
+            }
+            catch
+            {
+
+            }
+         
+           
+         
+            if (driver == null || !(driver as ReuseRemoteWebDriver).isSuccess)
+            {
+                driver = new ChromeDriver();
+                driver.Url = @"https://www.gev-online.de/ru/home";
+                bool isPageReady = false;
+                do
+                {
+                    try
+                    {
+                        driver.FindElement(By.XPath(@".//a[@href='/ru/webshop/login?returnUrl=%2Fru%2Fhome']")).Click();
+                        driver.FindElement(By.XPath(@".//input[@id='Login']")).SendKeys("info@master-ua.com");
+                        driver.FindElement(By.XPath(@".//input[@id='Password']")).SendKeys("nomad82");
+                        driver.FindElement(By.XPath(@".//input[@id='btnLogIn']")).Click();
+                        isPageReady = true;
+                    }
+                    catch
+                    {
+                        Thread.Sleep(1000);
+                    }
+                } while (isPageReady == false);
+            }
+            groupBox1.Enabled = true;
+            stream.Close();
+
+            treeList.KeyFieldName = "Id";
+            treeList.ParentFieldName = "CategoryId";
+            treeList.DataSource = db.Categories.ToList();
+
+            ListBox.CheckForIllegalCrossThreadCalls = false;
+        }
+
+      
+
+        private void button2_Click(object sender, EventArgs e) 
+        {
+            // build tree
+           
+
+            //spaceObject.ID = treeList.AllNodesCount;
+            //spaceObject.ParentID = (treeList.FocusedNode != null) ? treeList.FocusedNode.Id : -1;
+            //Object[] category = new Object[] { "Test", DateTime.Now};
+
+            //TreeListNode newNode = treeList.AppendNode(category, null);
+
+            //// Using the newly added node
+            //treeList.FocusedNode = newNode;
+            //treeList.SetFocusedNode(newNode);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ReadOnlyCollection<IWebElement> HtmlCategories = driver.FindElements(By.ClassName("category"));
+
+            foreach (var item in HtmlCategories)
+            {
+                IWebElement ahref;
+                long id;
+                GetLinkAndCurrentCategoryId(item, out ahref, out id);
+                // Проверяем есть ли полученные категории в базе
+                if (db.Categories.Find(id) == null)
+                {
+                    Category current = new Category();
+                    current.GevURL = ahref.GetAttribute("href");
+                    current.Name = ahref.Text;
+                    current.GevImageURL = item.FindElement(By.CssSelector("img[src]")).GetAttribute("src");
+                    //Add:
+                    //public bool IsSaveToDB { get; set; }
+                    //public DateTime ParseDate { get; set; }
+                    current.Id = id;
+                    current.ParseDate = DateTime.Now;
+                    //current.ParentCategory = null;
+                    db.Categories.Add(current);
+                    db.SaveChanges();
+                }
+            }
+            //
+            GetAllSubCategories(db.Categories);
+            db.SaveChanges();
+            treeList.KeyFieldName = "Id";
+            treeList.ParentFieldName = "ParentCategoryId";
+           
+
+            treeList.DataSource = db.Categories.ToList();
+        }
+
+        private static void GetLinkAndCurrentCategoryId(IWebElement item, out IWebElement ahref, out long id)
+        {
+            ahref = item.FindElement(By.CssSelector("a[href]"));
+            id = Convert.ToInt64(ahref.GetAttribute("href").Split(new char[] { '/' }).Last());
+        }
+
+        private void GetAllSubCategories(IEnumerable<Category> Categories)
+        {
+
+            foreach (var currentCategory in Categories)
+            {
+
+                driver.Url = currentCategory.GevURL; //Переход в новую категорию
+
+                ReadOnlyCollection<IWebElement> HtmlCSubategories = driver.FindElements(By.ClassName("category"));
+                ReadOnlyCollection<IWebElement> HtmlProducts = driver.FindElements(By.ClassName("product-item"));
+
+                if (HtmlProducts.Count > 1)
+                {
+                    listBox1.Items.Add("Нашли товары");
+                }
+                else
+                if (HtmlCSubategories.Count > 1)
+                {
+                    
+                    foreach (var item in HtmlCSubategories)
+                    {
+                        // проверяем существует ли данная категория в базе
+
+                        if (item.TagName == "div")
+                        {
+                            IWebElement ahref;
+                            long id;
+                            GetLinkAndCurrentCategoryId(item, out ahref, out id);
+                            if (db.Categories.Find(id) == null)
+                            {
+                                Category current = new Category();
+                                current.GevURL = ahref.GetAttribute("href");
+                                current.Name = ahref.Text;
+                                current.GevImageURL = item.FindElement(By.CssSelector("img[src]")).GetAttribute("src");
+                                current.Id = Convert.ToInt64(current.GevURL.Split(new char[] { '/' }).Last());
+                                current.ParseDate = DateTime.Now;
+
+                                current.ParentCategory = currentCategory;
+                                currentCategory.ChildsCategories.Add(current);
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            foreach (var i in db.Categories.Where(a => a.CategoryId == null).ToList())
+            {
+                FindNotParseCategoriesAndParseIt(i);
+            }
+        }
+
+        private void FindNotParseCategoriesAndParseIt(Category i)
+        {
+            if (i.ChildsCategories.Count != 0)
+            {
+                foreach (var j in i.ChildsCategories)
+                {
+                    FindNotParseCategoriesAndParseIt(j);
+                }
+            }
+            else
+            {
+                ParseIt(i);
+            }
+        }
+
+        private void ParseIt(Category i)
+        {
+            driver.Url = i.GevURL; //Переход в новую категорию
+
+            ReadOnlyCollection<IWebElement> HtmlCSubategories = driver.FindElements(By.ClassName("category"));
+            ReadOnlyCollection<IWebElement> HtmlProducts = driver.FindElements(By.ClassName("product-item"));
+
+            if (HtmlProducts.Count > 1)
+            {
+                listBox1.Items.Add("Нашли товары");
+            }
+            else
+            if (HtmlCSubategories.Count > 1)
+            {
+                foreach (var item in HtmlCSubategories)
+                {
+
+                    if (item.TagName == "div")
+                    {
+                        var ahref = item.FindElement(By.CssSelector("a[href]"));
+                        Category current = new Category();
+                        current.GevURL = ahref.GetAttribute("href");
+                        current.Name = ahref.Text;
+                        current.GevImageURL = item.FindElement(By.CssSelector("img[src]")).GetAttribute("src");
+                        current.Id = Convert.ToInt64(current.GevURL.Split(new char[] { '/' }).Last());
+                        current.ParseDate = DateTime.Now;
+
+                        var parent = db.Categories.Find(i.Id);
+                        current.ParentCategory = parent;
+                        parent.ChildsCategories.Add(current);
+                        db.SaveChanges();
+                       
+                        
+                    }
+                }
+                foreach (var item in i.ChildsCategories)
+                {
+                    ParseIt(item);
+                }
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+          
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (driver == null) return; 
+
+            //Console.WriteLine(driver.SessionId.ToString());
+            var executorField = driver.GetType().GetField("executor", BindingFlags.NonPublic | BindingFlags.Instance);
+            if (executorField == null)
+            {
+                executorField = driver.GetType().BaseType.GetField("executor", BindingFlags.NonPublic | BindingFlags.Instance);
+            }
+
+            object executor = executorField.GetValue(driver);
+
+            try
+            {
+                var internalExecutorField = executor.GetType().GetField("internalExecutor", BindingFlags.Instance | BindingFlags.NonPublic);
+                object internalExecutor = internalExecutorField.GetValue(executor);
+
+                var remoteServerUriField = internalExecutor.GetType().GetField("remoteServerUri", BindingFlags.Instance | BindingFlags.NonPublic);
+                remoteServerUri = remoteServerUriField.GetValue(internalExecutor) as Uri;
+
+                var ser = new BinaryFormatter();
+                Stream stream = new FileStream(@"driver.bin", FileMode.Create, FileAccess.Write, FileShare.None);
+                ser.Serialize(stream, remoteServerUri);
+                ser.Serialize(stream, (driver as ChromeDriver).SessionId.ToString());
+
+                stream.Close();
+            }
+            catch { }
+            
+        }
+
+
+        List<ChromeDriver> driversPool = null;
+
+        //https://www.gev-online.com/ru/webshop/search/groups/001500004
+        private async void button1_ClickAsync(object sender, EventArgs e)
+        {
+            //Объявляем объект-счётчик ожидания задач, где указано количество задач, которые нужно дождаться
+            //перед тем, как продолжать выполнение основного потока.
+            //if (driversPool == null)
+            //    driversPool = AutorizeInDriversPool(CreateDriversPool());
+
+            await ParseCategoryAsync(CreateDriversPool(), @"https://www.gev-online.com/ru/webshop/search/groups/001500004?Products.pageSize=1000000", 001500004);
+           
+        }
+
+        private async Task ParseCategoryAsync( List<ChromeDriver> driversPool, string linkCategoryPage, long categoryId)
+        {
+            driver.Url = linkCategoryPage;
+            List<string> productLinks = GetProductLinks();
+            //int AmountPages = GetAmountPages();
+            //for (int j = 1; j <= AmountPages; j++)
+            //{
+            await ParsePageItemsAsync(productLinks, driversPool, categoryId);
+            //    if (j + 1 <= AmountPages)
+            //    {
+  
+            //        driver.Url = @"https://www.gev-online.com/ru/webshop/search/groups/001500004?Products.page=" + (j + 1);
+            //        productLinks = GetProductLinks();
+            //    }
+            //}
+        }
+
+        private async Task ParsePageItemsAsync(List<string> productLinks, List<ChromeDriver> driversPool, long categoryId)
+        {
+            //Пересоздаём счётчик ожидания задач, так как далее нужно
+            //будет запускать новый набор задач.
+          
+
+                bool[] isPageReadys = new bool[10];
+                bool[] isAutorizes = new bool[10];
+
+                for (int ii = 0; ii < productLinks.Count;)
+                {
+                    CountdownEvent CounterTasks = new System.Threading.CountdownEvent(10);
+                    List<Task> tasks = new List<Task>();
+
+                    for (int jj = 0; jj < 10 && ii < productLinks.Count; jj++, ii++)
+                    {
+                        int i = ii;
+                        int j = jj;
+
+
+
+                      
+                        tasks.Add(
+                            Task.Run(() =>
+                        {
+                            var newDriver = driversPool[j];
+
+
+                            listBox1.Items.Add("Try go to [" + i + "]" + productLinks[i]);
+                            newDriver.Url = productLinks[i];
+
+                            while (isAutorizes[j] == false)
+                            {
+                                do
+                                {
+                                    try
+                                    {
+                                        newDriver.FindElement(By.ClassName("login-lnk")).Click();
+                                        newDriver.FindElement(By.XPath(@".//input[@id='Login']")).SendKeys("info@master-ua.com");
+                                        newDriver.FindElement(By.XPath(@".//input[@id='Password']")).SendKeys("nomad82");
+                                        newDriver.FindElement(By.XPath(@".//input[@id='btnLogIn']")).Click();
+                                        isPageReadys[j] = true;
+                                    }
+                                    catch
+                                    {
+                                        Thread.Sleep(1000);
+
+                                    }
+                                } while (isPageReadys[j] == false);
+
+                                try
+                                {
+                                    newDriver.FindElement(By.ClassName("login-lnk"));
+                                    newDriver.Url = productLinks[i];
+                                }
+                                catch
+                                {
+                                    isAutorizes[j] = true;
+
+                                }
+                            }
+
+                        }
+                        ));
+
+
+                    }
+                
+                    if (ii == productLinks.Count)
+                    {
+                        await Task.WhenAll(tasks.ToArray());
+                        for (int i = 0; i < productLinks.Count % 10; i++)
+                        {
+                            ParseItem(driversPool[i], categoryId);
+                        }
+                    db.SaveChanges();
+                    break;
+                    }
+                    await Task.WhenAll(tasks.ToArray());
+                    for (int i = 0; i < 10; i++)
+                    {
+                        ParseItem(driversPool[i], categoryId);
+                    }
+                    db.SaveChanges();
+                // CounterTasks.Wait();
+            }
+            
+          
+            listBox1.Items.Add("Database updated");
+        }
+
+        private List<ChromeDriver> AutorizeInDriversPool(List<ChromeDriver> driversPool)
+        {
+            //Пересоздаём счётчик ожидания задач, так как далее нужно
+            //будет запускать новый набор задач.
+            CountdownEvent CounterTasks = new System.Threading.CountdownEvent(10);
+
+            bool[] isPageReadys = new bool[10];
+            bool[] isAutorizes = new bool[10];
+           
+            for (int ii = 0; ii < 10; ii++)
+            {
+                int i = ii;
+                //System.Threading.CountdownEvent handoff = new System.Threading.CountdownEvent(1);
+                Task.Run(() =>
+                {
+                 
+
+                    //handoff.Signal();
+                    var newDriver = driversPool[i];
+                    newDriver.Url = @"https://www.gev-online.de/ru/home";
+                    //bool isPageReady = false;
+                    //bool isAutorize = false;
+                    do
+                    {
+                        do
+                        {
+                            try
+                            {
+                                newDriver.FindElement(By.ClassName("login-lnk")).Click();
+                                newDriver.FindElement(By.XPath(@".//input[@id='Login']")).SendKeys("info@master-ua.com");
+                                newDriver.FindElement(By.XPath(@".//input[@id='Password']")).SendKeys("nomad82");
+                                newDriver.FindElement(By.XPath(@".//input[@id='btnLogIn']")).Click();
+                                isPageReadys[i] = true;
+                            }
+                            catch
+                            {
+                                Thread.Sleep(1000);
+                               
+                            }
+                        } while (isPageReadys[i] == false);
+
+                        try
+                        {
+                            newDriver.FindElement(By.ClassName("login-lnk"));
+                            newDriver.Url = @"https://www.gev-online.de/ru/home";
+                        }
+                        catch
+                        {
+                            isAutorizes[i] = true;
+                           
+                        }
+                    }
+                    while (isAutorizes[i] == false);
+
+
+                    CounterTasks.Signal();
+                });
+                //handoff.Wait();
+            }
+            CounterTasks.Wait();
+           
+            return driversPool;
+        }
+
+        private void ParseItem(ChromeDriver newDriver, long categoryId)
+        {
+            listBox1.Items.Add("begin parse");
+            //При выборочном удалении товаров из таблицы, при обновлении появляются дубликаты.
+            //Context taskDb = new Context();
+            //taskDb.Database.Initialize(true);
+          
+            IWebElement htmlProduct = null;
+            htmlProduct = newDriver.FindElement(By.ClassName("product-item"));
+
+            Product product = new Product();
+            IWebElement middle = htmlProduct.FindElement(By.ClassName("middle"));
+            product.GevId = middle.FindElement(By.TagName("b")).Text;
+            try
+            {
+                product.NetPrice = Convert.ToSingle(middle.FindElement(By.ClassName("p-value")).GetAttribute("data-val").Replace(".", ","));
+                htmlProduct.FindElement(By.CssSelector(".middle ~ .bottom > .availability > .green"));
+                product.Available = true;
+                listBox1.Items.Add("Available");
+            }
+            catch
+            {
+                product.Available = false;
+                listBox1.Items.Add("Not Available");
+            }
+                product.Name = htmlProduct.FindElement(By.TagName("h1")).Text;
+            //product.Category = await db.Categories.FindAsync(categoryId);
+            var detailsBlockArr = htmlProduct.FindElements(By.ClassName("details-block"));
+            if (detailsBlockArr.Count > 1)
+            {
+                string equipmentBrands = htmlProduct.FindElements(By.ClassName("details-block"))[1].FindElement(By.TagName("div")).Text;
+                string[] brands = equipmentBrands.Split(new char[1] { ',' });
+
+                foreach (string brandName in brands)
+                {
+                    var findBrand = db.EquipmentBrands.FirstOrDefault(a => a.Name == brandName.Trim());
+                    if (db.EquipmentBrands.Count(i => i.Name == brandName) == 0)
+                        if (findBrand == null)
+                        {
+                            EquipmentBrand newBrand = new EquipmentBrand();
+                            newBrand.Name = brandName.Trim();
+                            newBrand.Products = new List<Product>();
+                            newBrand.Products.Add(product);
+                            db.EquipmentBrands.Add(newBrand);
+                        }
+                        else
+                        {
+                            findBrand.Products.Add(product);
+                        }
+                }
+            }
+
+            foreach (var i in newDriver.FindElements(By.CssSelector(".table-condensed tr")))
+            {
+                var cols = i.FindElements(By.TagName("td"));
+
+                string parameterName = cols[0].Text;
+                string paremeterValue = cols[1].Text;
+
+                //listBox1.Items.Add(cols[0].Text + " - " + cols[1].Text);
+                var findProductInfo = db.DetailInfos.FirstOrDefault(j => j.Name == parameterName);
+                if (findProductInfo == null)
+                {
+                    DetailInfo newProductInfo = new DetailInfo();
+                    newProductInfo.Name = parameterName;
+                    DetailInfoProduct detailInfoProduct = new DetailInfoProduct();
+                    detailInfoProduct.Value = paremeterValue;
+                    detailInfoProduct.Product = product;
+                    detailInfoProduct.DetailInfo = newProductInfo;
+                }
+                else
+                {
+                    DetailInfoProduct detailInfoProduct = new DetailInfoProduct();
+                    detailInfoProduct.Value = paremeterValue;
+                    detailInfoProduct.Product = product;
+                    detailInfoProduct.DetailInfo = findProductInfo;
+                }
+            }
+           
+            product.GevURL = newDriver.Url;
+            product.GevSmallImageURL = htmlProduct.FindElement(By.CssSelector(".item-image img")).GetAttribute("src");
+            product.GevBigImageURL = htmlProduct.FindElement(By.CssSelector(".item-image img")).GetAttribute("data-zoom-image");
+            product.ParseDate = DateTime.Now;
+
+            var currentProduct = db.Products.FirstOrDefault(a => a.GevId == product.GevId);
+          
+            if (currentProduct == null)
+            {
+                //db.Products.Add(product);
+                db.Products.AddOrUpdate(product);
+                listBox1.Items.Add("Product added - " + product.GevId + ", " + product.Name);
+            }
+            else
+            if (currentProduct != null)
+            {
+                
+                //db.Products.Remove(currentProduct);
+                listBox1.Items.Add(currentProduct.GevId + "- dublicate");
+                //db.Products.Attach(currentProduct);
+                currentProduct.Available = product.Available;
+                currentProduct.GevBigImageURL = product.GevBigImageURL;
+                currentProduct.GevSmallImageURL = product.GevSmallImageURL;
+                currentProduct.GevURL = product.GevURL;
+                currentProduct.ListPrice = product.ListPrice;
+                currentProduct.Name = product.Name;
+                currentProduct.ParseDate = DateTime.Now;
+                currentProduct.SmallImageURL = product.SmallImageURL;
+
+                //db.Entry(currentProduct).State = EntityState.Modified;
+                //taskDb.Products.AddOrUpdate(product);
+                //db.Products.AddOrUpdate(currentProduct);
+                //DbContextFactory.Instance.InstanceContext.Entry(currentProduct).State = EntityState.Modified;
+               //db.Products.AddOrUpdate(currentProduct);
+                listBox1.Items.Add("Product update - " + product.GevId + ", " + product.Name);
+            }
+           
+           
+            listBox1.Items.Add("end parse");
+        }
+
+        private List<string> GetProductLinks()
+        {
+            var htmlProducts = driver.FindElements(By.ClassName("product-item"));
+
+            //Получаем количество и ссылки на товары на первой странице
+            List<string> productLinks = new List<string>();
+            foreach (var info_inner in htmlProducts)
+            {
+                if (info_inner.GetAttribute("class").Contains("special-offer"))
+                    continue;
+                try
+                {
+                    info_inner.FindElement(By.ClassName("info")).FindElement(By.ClassName("bottom")).FindElement(By.ClassName("availability")).FindElement(By.ClassName("red"));
+                    continue;
+                }
+                catch { };
+                string productLink = "";
+                try
+                {
+                    productLink = info_inner.FindElement(By.ClassName("info")).FindElement(By.ClassName("info-inner")).FindElement(By.ClassName("title")).FindElement(By.TagName("a")).GetAttribute("href");
+                } 
+                catch
+                {
+                    listBox1.Items.Add("Error: " + info_inner.GetAttribute("data-id"));
+                }
+                 
+                productLinks.Add(productLink);
+            }
+            listBox1.Items.Add(productLinks.Count + " items detected");
+            return productLinks;
+        }
+
+        //private int GetAmountPages()
+        //{
+        //    //Получаем количество страниц с товарами в этой категории
+        //    string href = driver.FindElement(By.CssSelector("a.last")).GetAttribute("href");
+        //    int AmountPages;
+        //    try
+        //    {
+        //        AmountPages = Convert.ToInt32(href.Split("=".ToArray())[1]);
+        //    }
+        //    catch
+        //    {
+        //        AmountPages = 1;
+        //    }
+
+        //    return AmountPages;
+        //}
+
+        private static List<ChromeDriver> CreateDriversPool()
+        {
+            List<ChromeDriver> driversPool = new List<ChromeDriver>();
+            //Это делается, чтобы дождаться создания всех 10 драйверов, перед тем как начинать
+            //их использование. 
+            System.Threading.CountdownEvent CounterTasks = new System.Threading.CountdownEvent(10);
+
+            for (int ii = 0; ii < 10; ii++)
+            {
+                //Запускаем текущую задачу
+                Task.Run(() =>
+                {
+                    //Создаём драйвер в отдельном потоке
+                    driversPool.Add(new ChromeDriver());
+                    //После того как драйвер создан отправляем сигнал в основной поток,
+                    //чтобы уменьшеить счётчик ожидания задач.
+                    //В данном случае - этот сигнал отправляется в конце выполнения задачи       
+                    CounterTasks.Signal();
+                });
+            }
+            //Ожидаем получения сигналов от всех задач.
+            CounterTasks.Wait();
+            return driversPool;
+        }
+
+
+
+        private void treeList_CustomNodeCellEdit(object sender, GetCustomNodeCellEditEventArgs e)
+        {
+
+        }
+
+        private void treeList_CellValueChanged(object sender, CellValueChangedEventArgs e)
+        {
+
+        }
+
+        private void treeList_AfterCheckNode(object sender, NodeEventArgs e)
+        {
+
+        }
+
+        private void treeList_NodeChanged(object sender, NodeChangedEventArgs e)
+        {
+            
+        }
+
+        private void treeList_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void treeList_CellValueChanging(object sender, CellValueChangedEventArgs e)
+        {
+            SetSelected(e.Node, e.Value);
+
+           
+        }
+
+        void SetSelected(TreeListNode node, object value )
+        {
+            foreach (TreeListNode i in node.Nodes)
+            {
+                i.SetValue("isChecked", value);
+                if (i.Nodes.Count != 0)
+                    SetSelected(i, value);
+            }
+            node.SetValue("isChecked", value);
+        }
+
+        private void treeList_SelectionChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void treeList_FocusedNodeChanged(object sender, FocusedNodeChangedEventArgs e)
+        {
+            listBox1.Items.Add(e.Node["Id"]);
+        }
+    }
+}

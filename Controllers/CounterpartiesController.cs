@@ -64,10 +64,21 @@ namespace Finance.Controllers
             return Convert.ToInt32(counterparty.id);
         }
 
+        class Nds
+        {
+            public int Value;
+            public string Text;
+        }
         // GET: Counterparties/Create
         public ActionResult Create()
         {
-           
+            Nds Nds = new Nds();
+            List<Nds> NdsVariantsList = new List<Nds>();
+            NdsVariantsList.Add(new Nds() { Value = 0, Text = "Нет" });
+            NdsVariantsList.Add(new Nds() { Value = 1, Text = "Да" });
+            SelectList nds = new SelectList(NdsVariantsList, "Value", "Text");
+
+            ViewBag.nds = nds;
             return View();
         }
 
@@ -78,7 +89,7 @@ namespace Finance.Controllers
         [ValidateAntiForgeryToken]
         public JsonResult Create(klt counterparty)
         {
-
+            //counterparty.nds = ndsVal;
             if (ModelState.IsValid)
             {
                 int addedCounterparyId = addNewCounterpartyToOrestDb(counterparty);

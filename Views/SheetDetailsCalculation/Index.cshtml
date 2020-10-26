@@ -1,0 +1,310 @@
+﻿
+@{
+    ViewBag.Title = "Расчет листовых деталей с порезкой";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/CSS/main.css" rel="stylesheet" />
+
+<head>
+    <title>Расчет для деталей с порезкой</title>
+</head>
+<body>
+    <div id="spinner" class="spinner">
+        <img src="~/pictures/Coolors-1s-200px.gif" />
+    </div>
+    <div id="panel"></div>
+    <input type="button" value="Все расcчеты" onclick="location.href='@Url.Action("GetAllCalculations", "SheetDetailsCalculation")'" />
+    <input type="button" value="Все детали" onclick="location.href='@Url.Action("GetAllDetails", "SheetDetailsCalculation")'" />
+    <hr />
+    <form action="/SheetDetailsCalculation/SaveCalculation" method="post">
+        <div class="col-md-12" style="border-bottom: solid 1px #eee; padding-bottom: 30px;">
+            <div class="inline col-md-8">
+                <h2>Новый расчет для деталей с порезкой</h2>
+                <label>Дата расчета</label>
+                <div>
+                    <input class="col-md-4 calcDate" id="datePicker" name="CalculationDate" required />
+                </div>
+            </div>
+            <div class="inline col-md-4 float-right">
+                <div>
+                    <label>№ Счета поставщика</label>
+                    <input id="InvoiceNumber" name="InvoiceNumber" class="form-control" required />
+                </div>
+                <div>
+                    <label>Дата счета</label>
+                    <input type="text" id="InvoiceDate" name="InvoiceDate" class="form-control" required />
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <label>Данные из счета</label>
+        <div class="alert alert-warning" id="wrong-symbol-alert">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <strong>Ошибка! В поле разрешено вводить только цифры, разделителем десятичных должна служить ','</strong>
+        </div>
+        <div style="border-bottom: solid 1px #eee; padding-bottom: 30px;" class="form-group col-md-12">
+            <div class="inline col-md-3">
+                <label>Сумма без НДС за метериал</label>
+                <input id="MaterialPrice" name="MaterialPrice" type="text" class="allowFloat form-control" required />
+            </div>
+            <div class="inline col-md-3">
+                <label>Сумма без НДС за порезку</label>
+                <input id="CuttingPrice" name="CuttingPrice" type="text" class="allowFloat form-control" required />
+            </div>
+            <div class="inline col-md-2">
+                <label>Площадь листа (м.кв.)</label>
+                <input id="Area" type="text" name="Area" class="allowFloat form-control" required />
+            </div>
+            <div class="inline col-md-2">
+                <label>Толщина матер., мм.</label>
+                <input id="SheetThickness" name="SheetThickness" type="text" class="allowFloat form-control" required />
+            </div>
+            <div class="inline col-md-2">
+                <label>Коэф.отхода</label>
+                <input readonly id="WasteCoeficcient" name="WasteCoeficcient" type="text" class="allowFloat form-control" />
+            </div>
+        </div>
+        <hr />
+        <br />
+        <label>Размеры и количество заготовок</label>
+        <div id="details">
+            <div class="col-md-12 form-group">
+                <div class="inline col-md-1">
+                    <label>№</label>
+                    <input name="DetailNumber" class="form-control" value="1" readonly />
+                </div>
+                <div class="inline col-md-2">
+                    <label>Название детали</label>
+                    <input name="DetailName" class="form-control DetailName" required />
+                    <input name="DetailId" id="DetailId" value="-1" hidden />
+                </div>
+                <div class="inline col-md-2">
+                    <label>Длинна мм.</label>
+                    <input name="DetailLength" class="allowFloat form-control" type="text" required />
+                </div>
+                <div class="inline col-md-2">
+                    <label>Ширина мм.</label>
+                    <input name="DetailWidth" class="allowFloat form-control" type="text" required />
+                </div>
+                <div class="inline col-md-1">
+                    <label>Кол-во шт.</label>
+                    <input name="DetailAmount" class="allowFloat form-control" type="text" required />
+                </div>
+                <div class="inline col-md-3">
+                    <label>Цена детали с порезкой без НДС</label>
+                    <input name="DetailPrice" class="form-control detail-price" readonly type="text" />
+                </div>
+                <div class="inline col-md-1">
+                    <label>Удалить</label>
+                    <button onclick='RemoveDetail(event)' type='button' class='btn btn-danger form-control'>X</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div onclick="AddDetail()" class="inline btn btn-primary" style="cursor: pointer;"> Добавить деталь </div>
+        </div>
+        <hr />
+        <br />
+        <button id="calculateButton" class="btn btn-success" style="margin-right: 50px;" onclick="Calculate(event)">Раccчитать</button>
+        <button id="save_btn" type='submit' class="btn btn-warning">Сохранить расчет</button>
+    </form>
+</body>
+
+<script type="text/javascript">
+
+    function FindeMatchesDetailNames() {
+        let detailsName = $("input[name='DetailName']");
+        let matches = [];
+
+        if (detailsName.length > 1)
+            matches = jQuery.unique(detailsName);
+
+        if (matches.length > 0) {
+            alert("Совпадение имен деталей! Все имена должны быть уникальными.");
+            $('#calculateButton').hide();
+        }
+        else {
+            $('#calculateButton').show();
+        }
+    }
+
+    $("#spinner").hide();
+    $('body').on('click keypress keyup paste', "input[name='DetailName']", function (event) {
+        //FindeMatchesDetailNames();
+        $(this).autocomplete({
+            source: function (request, response) {
+                var detailNameValue = $(this).attr("term");
+                $("#spinner").show();
+                $.ajax({
+                    url: "../SheetDetailsCalculation/GetDetailsByName/",
+                    data: { detailNameValue: detailNameValue },
+                    success: function (result) {
+                        if (result.length > 0) {
+                            response($.map(result, function (item) {
+                                return { label: item.DetailName, id: item.ID, detLength: item.DetailLength, detWidth: item.DetailWidth };
+                            }))
+                            $(event.target).css("z-index", "2");
+                            $(event.target).addClass("target");
+                            $("#panel").css("display", "initial");
+                        } else {
+                            $("#spinner").hide();
+                            $(event.target).css("z-index", "1");
+                            $(event.target).removeClass("target");
+                            $("#panel").css("display", "none");
+                        } 
+                    }
+                });
+            },
+            select: function (event, ui) {
+                $("#spinner").hide();
+                $(event.target).css("z-index", "1");
+                $(event.target).removeClass("target");
+                $("#panel").css("display", "none");
+                $(this).next('input').val(ui.item.id);
+                var detLength = $(this).closest('div').next('div').children('input');
+                var detWidth = $(this).closest('div').next('div').next('div').children('input');
+                detLength.val(ui.item.detLength.toString().replace('.', ','));
+                detWidth.val(ui.item.detWidth.toString().replace('.', ','));
+                detLength.prop('readonly', true);
+                detWidth.prop('readonly', true);
+                /*FindeMatchesDetailNames()*/;
+            }
+        });
+    });
+
+
+    $(function () {
+        $("#datePicker, #InvoiceDate").datepicker({
+            dateFormat: "dd-mm-yy"
+        }).datepicker('setDate', 'today');
+    });
+
+    function SaveButtonHide() {
+        $("#save_btn").hide();
+    }
+
+    function DetailsCount() {
+        return $("#details > div").length;
+    }
+
+    let detailNumber = 1;
+    function AddDetail() {
+        SaveButtonHide
+        $("#save_btn").hide();
+        detailNumber++;
+        var newDiv = document.createElement('div');
+        newDiv.classList.add('form-group', 'col-md-12');
+        let innerHTML = "<div class='inline col-md-1'><label></label><input name='DetailNumber' class='form-control' readonly /></div>";
+        innerHTML += "<div class='inline col-md-2'><label></label><input name='DetailName' class='form-control'/><input name='DetailId' id='DetailId' value='-1' hidden /></div>";
+        innerHTML += "<div class='inline col-md-2'><label></label><input name='DetailLength' class='allowFloat form-control' type='text'/></div>";
+        innerHTML += "<div class='inline col-md-2'><label></label><input name='DetailWidth' class='allowFloat form-control' type='text'/></div>";
+        innerHTML += "<div class='inline col-md-1'><label></label><input name='DetailAmount' class='allowFloat form-control' type='text'/></div>";
+        innerHTML += "<div class='inline col-md-3'><label></label><input name='DetailPrice' class='form-control detail-price' readonly type='text'/></div >";
+        innerHTML += "<div class='inline col-md-1'><label></label><button onclick='RemoveDetail(event)' type='button' class='btn btn-danger form-control'>X</button></div>";
+        newDiv.innerHTML = innerHTML;
+        newDiv.children[0].childNodes[1].setAttribute('value', detailNumber);
+        var details = document.getElementById("details");
+        var lastChild = details.lastChild;
+        details.insertBefore(newDiv, lastChild.nextSibling);
+        //Validation();
+    }
+    function RemoveDetail(e) {
+        SaveButtonHide();
+        if (DetailsCount() > 1) {
+            var a = e.target.parentNode.parentNode;
+            e.target.parentNode.parentNode.remove();
+            detailNumber--;
+            let detNumbers = $('input[name=DetailNumber]');
+            for (let i = 0; i < DetailsCount(); i++) {
+                $(detNumbers[i]).val(i + 1);
+            }
+        } else {
+            alert("Удаление последней детали запрещено. В расчете должна быть минимум одна деталь.");
+        }
+    }
+
+    SaveButtonHide();
+
+    function Validation() {
+        let inputsValueArray = $("input");
+        let formValidation = true;
+        for (let i = 0; i < inputsValueArray.length; i++) {
+            if ($(inputsValueArray[i]).val() == '' && (!$(inputsValueArray[i]).is('[readonly]') && !$(inputsValueArray[i]).is(':hidden'))) {
+                console.log("i: " + i);
+                $(inputsValueArray[i]).css("border", "2px dashed red");
+                formValidation = false;
+            }
+            else {
+                $(inputsValueArray[i]).css("border", "initial ");
+            }
+        }
+        if ($("#WasteCoeficcient").val() != "" && formValidation == true) {
+            $("#save_btn").show();
+        }
+        else {
+            alert("Заполните все поля отмеченные красным.");
+            $("#save_btn").hide();
+        }
+    }
+
+    function Calculate(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "../SheetDetailsCalculation/Calculation",
+            data: $('form').serialize(),
+            success: function (result) {
+                let count = 0;
+                let detailsPrices = [];
+                let wasteCoef = 0;
+                var detailPriceInputs = $('.detail-price');
+                $.each(result, function (key, val) {
+                    if (count == 1) {
+                        $("#WasteCoeficcient").val(val.toString().replace('.', ','));
+                        return;
+                    }
+                    detailsPrices = val;
+                    for (let i = 0; i < detailsPrices.length; i++) {
+                        $(detailPriceInputs[i]).val(detailsPrices[i].toString().replace('.', ','));
+                    }
+                    count++;
+                })
+                Validation();
+            },
+            error: function () {
+                Validation();
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        $("#wrong-symbol-alert").hide();
+    });
+
+    function WrongSymbolAlert() {
+        $("#wrong-symbol-alert").fadeTo(2500, 500).slideUp(500);
+    }
+
+    $('body').on('keypress keyup paste', 'input.allowFloat', function (event) {
+        if (event.which == 46 || (((event.which < 48 || event.which > 57) && event.key != ',')))
+            WrongSymbolAlert();
+        var repl = $(this).val($(this).val().replace(/[^0-9\,]/, ''));
+        if ($(this).val().indexOf(',') != -1 && event.which == 44) {
+            event.preventDefault();
+            WrongSymbolAlert();
+        }
+        SaveButtonHide();
+    });
+    //});
+    //$(".allowFloat").on("keypress keyup paste", function (event) {
+    //    //alert($(this).val());
+    //        $(this).val($(this).val().replace(/[^0-9\,]/, ''));
+    //        if ($(this).val().indexOf(',') != -1 && event.which == 44) {
+    //            event.preventDefault();
+    //        }
+    //    });
+
+
+</script>

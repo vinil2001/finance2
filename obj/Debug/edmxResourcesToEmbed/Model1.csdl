@@ -1,36 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="orestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="orestEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="klt" EntityType="orestModel.klt" />
-    <EntitySet Name="bank" EntityType="orestModel.bank" />
-    <EntitySet Name="bkh" EntityType="orestModel.bkh" />
-    <EntitySet Name="ksh" EntityType="orestModel.ksh" />
-  </EntityContainer>
-  <EntityType Name="klt">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="grp" Type="Int32" />
-    <Property Name="idp" Type="Int64" />
-    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="okpo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="knds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="snds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="chet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="bank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="mfob" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="adft" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="adur" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="telf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="cont" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-    <Property Name="per" Type="Int32" />
-    <Property Name="full" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <Property Name="nds" Type="Int32" />
-    <Property Name="sld" Type="Double" />
-    <Property Name="dsld" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="bank">
     <Key>
       <PropertyRef Name="id" />
@@ -65,6 +34,32 @@
     <Property Name="bank" Type="Int64" />
     <Property Name="datr" Type="DateTime" />
   </EntityType>
+  <EntityType Name="klt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="grp" Type="Int32" />
+    <Property Name="idp" Type="Int64" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="okpo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="knds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="snds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="chet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="bank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mfob" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="adft" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="adur" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cont" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="per" Type="Int32" />
+    <Property Name="full" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="nds" Type="Int32" />
+    <Property Name="sld" Type="Double" />
+    <Property Name="dsld" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="bud" Type="Int32" />
+  </EntityType>
   <EntityType Name="ksh">
     <Key>
       <PropertyRef Name="id" />
@@ -85,5 +80,163 @@
     <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
     <Property Name="del" Type="Int32" />
     <Property Name="rsh" Type="Int64" />
+  </EntityType>
+  <EntityType Name="prh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="op" Type="Int32" />
+    <Property Name="lg" Type="Int32" />
+    <Property Name="tp" Type="Int32" />
+    <Property Name="num" Type="Int64" />
+    <Property Name="ndoc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ninv" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ndtm" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="datd" Type="DateTime" />
+    <Property Name="dati" Type="DateTime" />
+    <Property Name="dusr" Type="DateTime" />
+    <Property Name="frm" Type="Int64" />
+    <Property Name="skl" Type="Int64" />
+    <Property Name="klt" Type="Int64" />
+    <Property Name="vlt" Type="Int64" />
+    <Property Name="rsh" Type="Int64" />
+    <Property Name="usr" Type="Int64" />
+    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="del" Type="Int32" />
+    <Property Name="usrf" Type="Int64" />
+    <Property Name="brsh" Type="Int64" />
+    <Property Name="comt2" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="dtdp" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="rsh">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="op" Type="Int32" />
+    <Property Name="lg" Type="Int32" />
+    <Property Name="tp" Type="Int32" />
+    <Property Name="td" Type="Int32" />
+    <Property Name="stv" Type="Int32" />
+    <Property Name="num" Type="Int64" />
+    <Property Name="ndoc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="nnlg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ndov" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="name" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="ncht" Type="Int64" />
+    <Property Name="datd" Type="DateTime" />
+    <Property Name="dato" Type="DateTime" />
+    <Property Name="dusr" Type="DateTime" />
+    <Property Name="pd" Type="Double" />
+    <Property Name="prh" Type="Int64" />
+    <Property Name="frm" Type="Int64" />
+    <Property Name="skl" Type="Int64" />
+    <Property Name="klt" Type="Int64" />
+    <Property Name="usr" Type="Int64" />
+    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="del" Type="Int32" />
+    <Property Name="usrf" Type="Int64" />
+    <Property Name="snl" Type="Double" />
+    <Property Name="dogsp" Type="Int32" />
+    <Property Name="bank" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="orestEntities" annotation:LazyLoadingEnabled="true" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <EntitySet Name="bank" EntityType="Self.bank" />
+    <EntitySet Name="bkh" EntityType="Self.bkh" />
+    <EntitySet Name="klt" EntityType="Self.klt" />
+    <EntitySet Name="ksh" EntityType="Self.ksh" />
+    <EntitySet Name="prh" EntityType="Self.prh" />
+    <EntitySet Name="rsh" EntityType="Self.rsh" />
+    <EntitySet Name="bkp" EntityType="orestModel.bkp" />
+    <EntitySet Name="fin" EntityType="orestModel.fin" />
+    <EntitySet Name="frm" EntityType="orestModel.frm" />
+    <EntitySet Name="imp" EntityType="orestModel.imp" />
+    <EntitySet Name="kmt" EntityType="orestModel.kmt" />
+    <EntitySet Name="prih" EntityType="orestModel.prih" />
+    <EntitySet Name="prp" EntityType="orestModel.prp" />
+  </EntityContainer>
+  <EntityType Name="bkp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="lg" Type="Int32" />
+    <Property Name="bkh" Type="Int64" />
+    <Property Name="rsh" Type="Int64" />
+    <Property Name="nnlg" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="datd" Type="DateTime" />
+    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="snl" Type="Double" />
+  </EntityType>
+  <EntityType Name="fin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="frm" Type="Int64" />
+    <Property Name="tbl" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="vlt" Type="Int64" />
+    <Property Name="sm" Type="Double" />
+  </EntityType>
+  <EntityType Name="frm">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="okpo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="knds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="snds" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="chet" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="bank" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mfob" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="adft" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="adur" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="telf" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="comt" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Name="kod" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="full" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="imp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="kmt">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="kmtgrp" Type="Int64" />
+  </EntityType>
+  <EntityType Name="prih">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="dat" Type="String" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="datd" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="klt" Type="Int64" />
+    <Property Name="chp" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idh" Type="Int64" />
+    <Property Name="tbl" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="sm" Type="Double" />
+    <Property Name="nds" Type="Double" />
+    <Property Name="imp" Type="Int64" />
+    <Property Name="dchp" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="prp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="prh" Type="Int64" />
+    <Property Name="tov" Type="Int64" />
+    <Property Name="untp" Type="Int64" />
+    <Property Name="unto" Type="Int64" />
   </EntityType>
 </Schema>

@@ -225,7 +225,11 @@
     <Compile Include="bkh.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="bkp.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\banksController.cs" />
     <Compile Include="Controllers\CounterpartiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IncomingCategoriesController.cs" />
@@ -233,11 +237,24 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentStatementsController.cs" />
     <Compile Include="Controllers\RemovedCounterpartiesController.cs" />
+    <Compile Include="Controllers\SheetDetailsCalculationController.cs" />
     <Compile Include="Controllers\WayOfPaymentsController.cs" />
+    <Compile Include="fin.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="frm.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="imp.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="klt.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="kmt.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="ksh.cs">
@@ -511,6 +528,122 @@
     <Compile Include="Migrations\201810200727488_CheckAddCurrencyId.Designer.cs">
       <DependentUpon>201810200727488_CheckAddCurrencyId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906040610059_calculation.cs" />
+    <Compile Include="Migrations\201906040610059_calculation.Designer.cs">
+      <DependentUpon>201906040610059_calculation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906040611487_calculation2.cs" />
+    <Compile Include="Migrations\201906040611487_calculation2.Designer.cs">
+      <DependentUpon>201906040611487_calculation2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906180631232_SheetDetailFiealdsSetRequered.cs" />
+    <Compile Include="Migrations\201906180631232_SheetDetailFiealdsSetRequered.Designer.cs">
+      <DependentUpon>201906180631232_SheetDetailFiealdsSetRequered.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906200543230_DetailThickness.cs" />
+    <Compile Include="Migrations\201906200543230_DetailThickness.Designer.cs">
+      <DependentUpon>201906200543230_DetailThickness.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908200651187_RemoveRelationBetweenShetDetailCalculationAndDetail.cs" />
+    <Compile Include="Migrations\201908200651187_RemoveRelationBetweenShetDetailCalculationAndDetail.Designer.cs">
+      <DependentUpon>201908200651187_RemoveRelationBetweenShetDetailCalculationAndDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908200653446_ManyToManyCalculationToDetail.cs" />
+    <Compile Include="Migrations\201908200653446_ManyToManyCalculationToDetail.Designer.cs">
+      <DependentUpon>201908200653446_ManyToManyCalculationToDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908211513446_DetailsCalculationsRelation.cs" />
+    <Compile Include="Migrations\201908211513446_DetailsCalculationsRelation.Designer.cs">
+      <DependentUpon>201908211513446_DetailsCalculationsRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908211534586_PriceToDetailCalculation.cs" />
+    <Compile Include="Migrations\201908211534586_PriceToDetailCalculation.Designer.cs">
+      <DependentUpon>201908211534586_PriceToDetailCalculation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909090547043_WhenPaymentDone.cs" />
+    <Compile Include="Migrations\201909090547043_WhenPaymentDone.Designer.cs">
+      <DependentUpon>201909090547043_WhenPaymentDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909090819224_whenPaymentDoneRemove.cs" />
+    <Compile Include="Migrations\201909090819224_whenPaymentDoneRemove.Designer.cs">
+      <DependentUpon>201909090819224_whenPaymentDoneRemove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909150622289_addWhenPaymentDone.cs" />
+    <Compile Include="Migrations\201909150622289_addWhenPaymentDone.Designer.cs">
+      <DependentUpon>201909150622289_addWhenPaymentDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909150627349_WhenPaymentDoneAsNulable.cs" />
+    <Compile Include="Migrations\201909150627349_WhenPaymentDoneAsNulable.Designer.cs">
+      <DependentUpon>201909150627349_WhenPaymentDoneAsNulable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151849526_removeWhenPaymentDoneBool.cs" />
+    <Compile Include="Migrations\201909151849526_removeWhenPaymentDoneBool.Designer.cs">
+      <DependentUpon>201909151849526_removeWhenPaymentDoneBool.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909151852210_WhenPaymentDoneList.cs" />
+    <Compile Include="Migrations\201909151852210_WhenPaymentDoneList.Designer.cs">
+      <DependentUpon>201909151852210_WhenPaymentDoneList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909171542573_WhenPaymentDoneListRemove.cs" />
+    <Compile Include="Migrations\201909171542573_WhenPaymentDoneListRemove.Designer.cs">
+      <DependentUpon>201909171542573_WhenPaymentDoneListRemove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909171544517_WhenPaymentDone1.cs" />
+    <Compile Include="Migrations\201909171544517_WhenPaymentDone1.Designer.cs">
+      <DependentUpon>201909171544517_WhenPaymentDone1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909180528437_RemoveWhenPaymentDone.cs" />
+    <Compile Include="Migrations\201909180528437_RemoveWhenPaymentDone.Designer.cs">
+      <DependentUpon>201909180528437_RemoveWhenPaymentDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911130633463_IncomingsAndOutgoingsRemoved.cs" />
+    <Compile Include="Migrations\201911130633463_IncomingsAndOutgoingsRemoved.Designer.cs">
+      <DependentUpon>201911130633463_IncomingsAndOutgoingsRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201911130659572_ModelsPaymentPartialPaymentCheckedApprovedDone.cs" />
+    <Compile Include="Migrations\201911130659572_ModelsPaymentPartialPaymentCheckedApprovedDone.Designer.cs">
+      <DependentUpon>201911130659572_ModelsPaymentPartialPaymentCheckedApprovedDone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912050711542_PaymentRenew.cs" />
+    <Compile Include="Migrations\201912050711542_PaymentRenew.Designer.cs">
+      <DependentUpon>201912050711542_PaymentRenew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912250655121_WhenCreated.cs" />
+    <Compile Include="Migrations\201912250655121_WhenCreated.Designer.cs">
+      <DependentUpon>201912250655121_WhenCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003130618511_BankAdded.cs" />
+    <Compile Include="Migrations\202003130618511_BankAdded.Designer.cs">
+      <DependentUpon>202003130618511_BankAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003270722216_RemoveBank.cs" />
+    <Compile Include="Migrations\202003270722216_RemoveBank.Designer.cs">
+      <DependentUpon>202003270722216_RemoveBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004110812076_AddNumberDocumentInPayment.cs" />
+    <Compile Include="Migrations\202004110812076_AddNumberDocumentInPayment.Designer.cs">
+      <DependentUpon>202004110812076_AddNumberDocumentInPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004130504533_RemoveNumberDocumentFromPayment.cs" />
+    <Compile Include="Migrations\202004130504533_RemoveNumberDocumentFromPayment.Designer.cs">
+      <DependentUpon>202004130504533_RemoveNumberDocumentFromPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005060936578_OutgoingPayments.cs" />
+    <Compile Include="Migrations\202005060936578_OutgoingPayments.Designer.cs">
+      <DependentUpon>202005060936578_OutgoingPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005080847587_RemoveOutgoingPayments.cs" />
+    <Compile Include="Migrations\202005080847587_RemoveOutgoingPayments.Designer.cs">
+      <DependentUpon>202005080847587_RemoveOutgoingPayments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005250756366_OrestPrhId.cs" />
+    <Compile Include="Migrations\202005250756366_OrestPrhId.Designer.cs">
+      <DependentUpon>202005250756366_OrestPrhId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202005270652176_OrestPaymentId.cs" />
+    <Compile Include="Migrations\202005270652176_OrestPaymentId.Designer.cs">
+      <DependentUpon>202005270652176_OrestPaymentId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -528,22 +661,40 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BankTransactionsFromOrestdb.cs" />
     <Compile Include="Models\Currency.cs" />
+    <Compile Include="Models\DetailCalculation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\Incoming.cs" />
     <Compile Include="Models\IncomingCategory.cs" />
-    <Compile Include="Models\IncomingsFromOrestdb.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Outgoing.cs" />
+    <Compile Include="Models\OrestSupplierInvoice.cs" />
+    <Compile Include="Models\OutgoingPayment.cs" />
     <Compile Include="Models\OutgoingsCategory.cs" />
     <Compile Include="Models\OutgoingsType.cs" />
+    <Compile Include="Models\PaginationPageInfo.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\PaymentsDocument.cs" />
     <Compile Include="Models\PaymentStatement.cs" />
+    <Compile Include="Models\PaymentStatementsViewModel.cs" />
     <Compile Include="Models\RemovedCounterparty.cs" />
+    <Compile Include="Models\SheetDetail.cs" />
+    <Compile Include="Models\SheetDetailsCalculation.cs" />
     <Compile Include="Models\WayOfPayment.cs" />
+    <Compile Include="prh.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="prih.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="prp.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rsh.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Services\CheckGoodsStock.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -552,7 +703,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="CSS\Checkbox.css" />
+    <Content Include="CSS\deletePaymentStatement.css" />
+    <Content Include="CSS\getAllCalculations.css" />
+    <Content Include="CSS\main.css" />
     <Content Include="CSS\MenuBar.css" />
+    <Content Include="CSS\myWarningPopUp.css" />
+    <Content Include="CSS\paymentProgressBar.css" />
     <Content Include="CSS\pulse-ring.css" />
     <Content Include="CSS\responstable.css" />
     <Content Include="CSS\Table.css" />
@@ -564,15 +720,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <EntityDeploy Include="Model1.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
+    <Content Include="prh-bkh.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\CreateEditePayment.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -589,17 +740,24 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.edmx.diagram">
+      <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="pictures\magnifier_icon-icons.com_67993.png" />
     <Content Include="pictures\plus_icon.jpg" />
     <Content Include="pictures\plus_icon2.png" />
@@ -654,6 +812,7 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Tasks.txt" />
     <Content Include="PStasks.txt" />
+    <Content Include="SheetDetCalcToDoList.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -742,6 +901,14 @@
     <Content Include="Views\Incomings\SearchIncoming.cshtml" />
     <Content Include="Views\PaymentStatements\_PartialPartOfPayment.cshtml" />
     <Content Include="Views\PaymentStatements\FileViewer.cshtml" />
+    <Content Include="Views\SheetDetailsCalculation\Index.cshtml" />
+    <Content Include="Views\SheetDetailsCalculation\SaveCalculation.cshtml" />
+    <Content Include="Views\SheetDetailsCalculation\GetAllCalculations.cshtml" />
+    <Content Include="Views\SheetDetailsCalculation\EditCalculation.cshtml" />
+    <Content Include="Views\SheetDetailsCalculation\GetAllDetails.cshtml" />
+    <Content Include="Views\SheetDetailsCalculation\GetDetailCalculationIfo.cshtml" />
+    <Content Include="Views\IncomingCategories\Index.cshtml" />
+    <Content Include="Views\PaymentStatements\PaymentsByComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -954,6 +1121,93 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810200727488_CheckAddCurrencyId.resx">
       <DependentUpon>201810200727488_CheckAddCurrencyId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040610059_calculation.resx">
+      <DependentUpon>201906040610059_calculation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906040611487_calculation2.resx">
+      <DependentUpon>201906040611487_calculation2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906180631232_SheetDetailFiealdsSetRequered.resx">
+      <DependentUpon>201906180631232_SheetDetailFiealdsSetRequered.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906200543230_DetailThickness.resx">
+      <DependentUpon>201906200543230_DetailThickness.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908200651187_RemoveRelationBetweenShetDetailCalculationAndDetail.resx">
+      <DependentUpon>201908200651187_RemoveRelationBetweenShetDetailCalculationAndDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908200653446_ManyToManyCalculationToDetail.resx">
+      <DependentUpon>201908200653446_ManyToManyCalculationToDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908211513446_DetailsCalculationsRelation.resx">
+      <DependentUpon>201908211513446_DetailsCalculationsRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908211534586_PriceToDetailCalculation.resx">
+      <DependentUpon>201908211534586_PriceToDetailCalculation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909090547043_WhenPaymentDone.resx">
+      <DependentUpon>201909090547043_WhenPaymentDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909090819224_whenPaymentDoneRemove.resx">
+      <DependentUpon>201909090819224_whenPaymentDoneRemove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909150622289_addWhenPaymentDone.resx">
+      <DependentUpon>201909150622289_addWhenPaymentDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909150627349_WhenPaymentDoneAsNulable.resx">
+      <DependentUpon>201909150627349_WhenPaymentDoneAsNulable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151849526_removeWhenPaymentDoneBool.resx">
+      <DependentUpon>201909151849526_removeWhenPaymentDoneBool.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909151852210_WhenPaymentDoneList.resx">
+      <DependentUpon>201909151852210_WhenPaymentDoneList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909171542573_WhenPaymentDoneListRemove.resx">
+      <DependentUpon>201909171542573_WhenPaymentDoneListRemove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909171544517_WhenPaymentDone1.resx">
+      <DependentUpon>201909171544517_WhenPaymentDone1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909180528437_RemoveWhenPaymentDone.resx">
+      <DependentUpon>201909180528437_RemoveWhenPaymentDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911130633463_IncomingsAndOutgoingsRemoved.resx">
+      <DependentUpon>201911130633463_IncomingsAndOutgoingsRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201911130659572_ModelsPaymentPartialPaymentCheckedApprovedDone.resx">
+      <DependentUpon>201911130659572_ModelsPaymentPartialPaymentCheckedApprovedDone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912050711542_PaymentRenew.resx">
+      <DependentUpon>201912050711542_PaymentRenew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912250655121_WhenCreated.resx">
+      <DependentUpon>201912250655121_WhenCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003130618511_BankAdded.resx">
+      <DependentUpon>202003130618511_BankAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003270722216_RemoveBank.resx">
+      <DependentUpon>202003270722216_RemoveBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004110812076_AddNumberDocumentInPayment.resx">
+      <DependentUpon>202004110812076_AddNumberDocumentInPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004130504533_RemoveNumberDocumentFromPayment.resx">
+      <DependentUpon>202004130504533_RemoveNumberDocumentFromPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005060936578_OutgoingPayments.resx">
+      <DependentUpon>202005060936578_OutgoingPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005080847587_RemoveOutgoingPayments.resx">
+      <DependentUpon>202005080847587_RemoveOutgoingPayments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005250756366_OrestPrhId.resx">
+      <DependentUpon>202005250756366_OrestPrhId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005270652176_OrestPaymentId.resx">
+      <DependentUpon>202005270652176_OrestPaymentId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

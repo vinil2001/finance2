@@ -12,8 +12,8 @@ var selectFile = function () {
 
     var regex = /[^\\]+$/;
 
-    this.choose,
-        this.selected;
+    this.choose/*,*/
+        /*this.selected*/;
 
     this.msg = (str) => {
         var prefix = '[selectFile.js]\n\nError: ';
@@ -21,22 +21,23 @@ var selectFile = function () {
     }
 
     this.check = () => {
-        if (this.choose && this.selected != null) {
-            var choose = document.getElementById(this.choose),
-                selected = document.getElementById(this.selected);
-            choose.addEventListener("change", () => {
-                if (choose.value != "") {
-                    selected.innerHTML = choose.value.match(regex);
-                }
-            });
+        var chek = this.choose /*&& this.selected*/ != null;
+        if (this.choose /*&& this.selected*/ != null) {
+            var choose = document.getElementById(this.choose);
+                //selected = document.getElementById(this.selected);
+            //choose.addEventListener("change", () => {
+            //    if (choose.value != "") {
+            //        selected.innerHTML = choose.value.match(regex);
+            //    }
+            //});
         } else {
             this.msg("Targets not set.");
         }
     }
 
-    selectFile.prototype.targets = (trigger, filetext) => {
+    selectFile.prototype.targets = (trigger/*, filetext*/) => {
         this.choose = trigger;
-        this.selected = filetext;
+        //this.selected = filetext;
     }
 
     selectFile.prototype.simulate = () => {

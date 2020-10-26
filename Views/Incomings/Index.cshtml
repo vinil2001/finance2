@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Finance.Models.IncomingsFromOrestdb>
+﻿@model IEnumerable<Finance.Models.BankTransactionsFromOrestdb>
 
 @{
     ViewBag.Title = "List";
@@ -25,6 +25,9 @@
     <table class="table" id="incomingsTable">
         <thead>
             <tr>
+                <th>
+                    Номер
+                </th>
                 <th id="Counterparty">
                     Плательщик
                 </th>
@@ -94,7 +97,10 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td style="width: 20%;">
+                    <td style="width: 5%;">
+                        @Html.DisplayFor(modelItem => item.DocumentNumbeInOrestDb)
+                    </td>
+                    <td style="width: 15%;">
                         @Html.DisplayFor(modelItem => item.NameKlt)
                     </td>
                     <td style="width: 10%;">

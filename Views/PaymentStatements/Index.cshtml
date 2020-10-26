@@ -1,11 +1,12 @@
-﻿@model IEnumerable<Finance.Models.PaymentStatement>
+﻿@model Finance.Models.PaymentStatementsViewModel
 
 <link href="~/CSS/Checkbox.css" rel="stylesheet" />
+<link href="~/CSS/paymentProgressBar.css" rel="stylesheet" />
+<link href="~/CSS/myWarningPopUp.css" rel="stylesheet" />
 
 <script>
-    setTimeout("location.reload(true);", 50000, );
+    setTimeout("location.reload(true);", 300000, );
 </script>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,38 +22,77 @@
     </script>
 }
 
+@*<script>
+    $(document).ready(function () {
+        warningModalWindow();
+    });
+    $(window).click(function (event) { hideWarningModalWindow(event) });
+</script>*@
+
+@*@if (ViewBag.errors.Count > 0)
+{
+
+<!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Внимание в системе обнаружны не соотвествия, требующие исправления!!!</p>
+            <p>Не найдены следующие счета:</p>
+            <div>
+                @foreach (var error in ViewBag.errors)
+                {
+                    <p>@error</p>
+                }
+            </div>
+        </div>
+    </div>
+}
+else if(ViewBag.errors[0] == "0-errors")
+{
+    @ViewBag.errors[0]
+}*@
+
 <div style="float:right;">
     Вы вошли под логином: @User.Identity.Name
 </div>
 
 <h2>Список платежей</h2>
 @{ var currentControllerName = Request.Url.Segments.LastOrDefault().ToString();}
-<div>
-    <div class="col-md-3" style="float:left">
+<div id="menueUnderMainMenue" @*class="col-md-12"*@>
+    <div @*class="col-md-3"*@ style="float:left; padding: 10px;">
         <a class="btn btn-default" href='@Url.Action("Create")'>
             Добавить в оплату
         </a>
     </div>
-    <div class="col-md-6" style="float:left;">
+    <div @*class="col-md-6"*@ style="float:left; padding: 10px;">
         <input style="border-radius: 4px; width:300px;" type="text" id="findByCompany" class="text-box single-line ui-autocomplete-input" />
         <label>Поиск по компании</label>
     </div>
-    <div class="sortByPayment col-md-3" style="float:left">
-        @if (currentControllerName == "sortByPayment")
-        {
-            <a href='@Url.Action("Index")' class="btn btn-default sortByPaymentActive">
-                    Отменить сортировку
-            </a>
-        }
-        else
-        {
-            <a href="@Url.Action("sortByPayment")" class="btn btn-default">
-                Сортировать по оплате
-            </a>
-        }
+    <div @*class="col-md-6"*@ style="float:right; padding: 10px;">
+        <input style="border-radius: 4px; width:300px;" type="text" id="findByComment" class="text-box single-line ui-autocomplete-input" />
+        <label>Поиск по комментариям</label>
+    </div>
+    @*<div class="sortByPayment col-md-3" style="float:left">
+            @if (currentControllerName == "sortByPayment")
+            {
+                <a href='@Url.Action("Index")' class="btn btn-default sortByPaymentActive">
+                        Отменить сортировку
+                </a>
+            }
+            else
+            {
+                <a href="@Url.Action("sortByPayment")" class="btn btn-default">
+                    Сортировать по оплате
+                </a>
+            }
 
-        @*</div>*@
-        <img src="~/pictures/sortByPayment.png" title="Сортировать по оплате" alt="Сортировать по оплате" />
+            <img src="~/pictures/sortByPayment.png" title="Сортировать по оплате" alt="Сортировать по оплате" />
+        </div>*@
+    <div @*class="col-md-3"*@ style="padding: 10px;">
+        <a href="/SheetDetailsCalculation/Index" target="_blank">
+            <img src="~/pictures/blue-calculator-icon-svg-by-Vexels.png" />
+        </a>
     </div>
 </div>
 
@@ -86,189 +126,237 @@
                 Коммент.
             </th>
             <th>
-                <img src="~/pictures/approved-512-30x30.png" alt="Счет проверен" title="Счет проверен" />
+                Статус оплаты
             </th>
-            <th>
-                <img src="~/pictures/Approved-5-512-30x30.png" alt="К оплате" title="К оплате" />
-            </th>
-            <th>
-                <img src="~/pictures/PaymentDone-30x30.png" alt="Оплачен" title="Оплачен" />
-            </th>
+            @*<th>
+                    <img src="~/pictures/approved-512-30x30.png" alt="Счет проверен" title="Счет проверен" />
+                </th>
+                <th>
+                    <img src="~/pictures/Approved-5-512-30x30.png" alt="К оплате" title="К оплате" />
+                </th>
+                <th>
+                    <img src="~/pictures/PaymentDone-30x30.png" alt="Оплачен" title="Оплачен" />
+                </th>*@
             <th>
                 Счет(файл)
             </th>
             <th></th>
         </tr>
-
-        @foreach (var item in Model)
+        @foreach (var item in Model.PaymentDocumnets)
         {
-        <tr id=@item.Id.ToString() class='@(item.PaymentDone == false ? "PaymentUndone" : "")'>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.KltId)*@
-                @item.Id.ToString()
-            </td>
-            <td>
-                <a target="_blank" href='@Url.Action("PaymentsByCompany", new { companyId = item.KltId })' title="Все платежи по компании">
-                    @Html.DisplayFor(modelItem => item.Counterparty.name)
-                </a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.InvoiceNumber)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.InvoiceDate, "{0:dd.MM.yyyy}", new { @class = "input-large" })*@
-                @item.InvoiceDate.ToShortDateString()
-            </td>
-            <td class="h5" style="border:1px solid #ddd; text-align:center;">
-                @Html.DisplayFor(modelItem => item.InvoiceSumma) @item.GetCurrencyName
-            </td>
-
-            @{
-                decimal summ = 0;
-                decimal payedSumm = 0;
-                var paymentsList = item.Payments.Where(i => i.PaymentStatementId == item.Id);
-                foreach (var i in paymentsList)
+            long bankId = 0;
+            bool paymentStaus = false;
+            bool paymentCheckedStatus = false;
+            foreach (var payment in item.Payments)
+            {
+                if (payment.PartialPaymentApproved == true && payment.PaymentPaymentDone != true)
                 {
-                    if (i.PaymentPaymentDone == false)
+                    paymentStaus = true;
+                    if (payment.PartialPaymentApproved == true && payment.PaymentPaymentDone == false)
                     {
-                        summ += i.Summa;
+                        bankId = payment.MySQLBankId;
+                    }
+                }
+                if (payment.PartialPaymentChecked == true && payment.PartialPaymentApproved != true)
+                {
+                    paymentCheckedStatus = true;
+                }
+            }
+            <tr id=@item.Id.ToString() class='@(item.PaymentDone == false ? "PaymentUndone" : "")'>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.KltId)*@
+                    @item.Id.ToString()
+                </td>
+                <td>
+                    <a target="_blank" href='@Url.Action("PaymentsByCompany", new { companyId = item.KltId })' title="Все платежи по компании">
+                        @Html.DisplayFor(modelItem => item.Counterparty.name)
+                    </a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InvoiceNumber)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.InvoiceDate, "{0:dd.MM.yyyy}", new { @class = "input-large" })*@
+                    @item.InvoiceDate.ToShortDateString()
+                </td>
+                <td class="h5" style="border:1px solid #ddd; text-align:center;">
+                    @Html.DisplayFor(modelItem => item.InvoiceSumma) @item.GetCurrencyName
+                </td>
+
+                @{
+                    decimal width = 0;
+                    decimal summ = 0;   //не оплачено
+                    decimal payedSumm = 0; // оплачено
+                    var paymentsList = item.Payments.Where(i => i.PaymentStatementId == item.Id);
+                    foreach (var i in paymentsList)
+                    {
+                        if (i.PaymentPaymentDone == false)
+                        {
+                            summ += i.Summa;
+                        }
+                        else
+                        {
+                            payedSumm += i.Summa;
+
+                        }
+                    }
+
+                    var summStr = summ.ToString() + " " + (item.Currency == null ? "грн" : item.Currency.CurrencyName);
+                    var payedSummStr = payedSumm.ToString() + " " + item.GetCurrencyName;
+                    if (payedSumm > 0)
+                    {
+                        width = Decimal.Round(100 / (item.InvoiceSumma / payedSumm), 2);
                     }
                     else
                     {
-                        payedSumm += i.Summa;
+                        width = 0;
                     }
+
                 }
 
-                var summStr = summ.ToString() + " " + (item.Currency == null ? "грн" : item.Currency.CurrencyName);
-                var payedSummStr = payedSumm.ToString() + " " + item.GetCurrencyName;
-            }
-            @if (item.PaymentApproved == true && item.PaymentDone != true && summ != 0)
-            {
 
-                <td class="alerts-font" style="font-weight:bolder; border:1px solid #ddd; text-align:center;">
-                    @summStr
-                </td>
-            }
-            else
-            {
-                <td style="font-weight:bolder; border:1px solid #ddd; text-align:center;">
-                    @summStr
-                </td>
-            }
-
-            <td class="h5" style="border:1px solid #ddd; text-align:center;">
-                @payedSummStr
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comment)
-            </td>
-            <td align="center">
-                @if (User.IsInRole("Sign1") || User.IsInRole("Developer"))
+                @if (paymentStaus == true)
                 {
-                    <label class="container-checkbox">
-                        @if (item.PaymentApproved == true)
+                    <td class="awaitingForPayment" style="font-weight:bolder; border:1px solid #ddd; text-align:center;">
+                        <p>@summStr</p>
+                        @if (bankId == 1)// Ukribbank
                         {
-                            @Html.CheckBoxFor(model => item.InvoiceChecked, new { @onclick = "return false;" })
+                            <p>Укрсиббанк</p>
+                        }
+                        else if (bankId == 4) // privatbank
+                        {
+                            <p>Приватбанк</p>
                         }
                         else
                         {
-                            @Html.EditorFor(modelItem => item.InvoiceChecked, new { htmlAttributes = new { id = item.Id } })
+                            <p style="color: red">Внимание банк не выбран!!!</p>
                         }
-                        <span class="checkmark"></span>
-                    </label>
+
+                    </td>
                 }
                 else
                 {
-                    <label class="container-checkbox">
-                        @Html.CheckBoxFor(model => item.InvoiceChecked, new { @onclick = "return false;" })
-                        <span class="checkmark"></span>
-                    </label>
+                    <td style="font-weight:bolder; border:1px solid #ddd; text-align:center;">
+                        @summStr
+                    </td>
                 }
 
-            </td>
-            <td align="center">
-                @if (User.IsInRole("Sign1") || User.IsInRole("Developer"))
-                {
-                    <label class="container-checkbox">
-                        @if (item.PaymentDone == true)
+
+                <td class="h5" style="border:1px solid #ddd; text-align:center;">
+                    @payedSummStr
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td align="center" style="vertical-align: middle;">
+                    @if (paymentCheckedStatus == true)
+                    {
+                    <div class="paymentProgressBarContainer" style="background-color: #FFA500;">
+                        @if (width == 0)
                         {
-                            @Html.CheckBoxFor(model => item.PaymentApproved, new { @onclick = "return false;" })
+                            <div class="paymentStausBar" style="width:@width.ToString().Replace(',', '.')px; background-color: #FFA500;">
+                                @width%
+                            </div>
                         }
                         else
                         {
-                            @Html.EditorFor(modelItem => item.PaymentApproved, new { htmlAttributes = new { id = item.Id } })
+                            <div class="paymentStausBar" style="width:@width.ToString().Replace(',', '.')px;">
+                                @width%
+                            </div>
                         }
-                        <span class="checkmark"></span>
-                    </label>
-                }
-                else
-                {
-                    <label class="container-checkbox">
-                        @Html.CheckBoxFor(model => item.PaymentApproved, new { @onclick = "return false;" })
-                        <span class="checkmark"></span>
-                    </label>
-                }
+                        <img class="imgCheckMarkPosition" alt="Проверен" src="~/pictures/check-mark-transparent_50X51.png" />
+                    </div>
+                    }
+                    else
+                    {
+                        <div class="paymentProgressBarContainer">
+                            @if (width == 0)
+                            {
+                                <div class="paymentStausBar" style="width:@width.ToString().Replace(',','.')px; background-color: #f1f1f1;">@width%</div>
+                            }
+                            else
+                            {
+                                <div class="paymentStausBar" style="width:@width.ToString().Replace(',','.')px;">@width%</div>
+                            }
 
-            </td>
-            <td align="center">
-                @if (item.PaymentApproved == true && item.PaymentDone != true && summ != 0)
-                {
-                    <label class="container-checkbox">
-                        @Html.CheckBoxFor(model => item.PaymentDone, new { @onclick = "return false;" })
-                        <span class="checkmark alerts-border" title="Ожидает проведения платежа"></span>
-                    </label>
-                }
-                else
-                {
-                    <label class="container-checkbox">
-                        @Html.CheckBoxFor(model => item.PaymentDone, new { @onclick = "return false;" })
-                        <span class="checkmark"></span>
-                    </label>
-                }
+                        </div>
+                    }
 
-                @*@if ((User.IsInRole("Accountant") && item.PaymentApproved == true) || User.IsInRole("Sign1") || User.IsInRole("Developer"))
-            {
-                <label class="container-checkbox">
-                    @Html.EditorFor(modelItem => item.PaymentDone, new { htmlAttributes = new { id = item.Id } })
-                    <span class="checkmark"></span>
-                </label>
-            }
-            else
-            {
-                <label class="container-checkbox">
-                    @Html.CheckBoxFor(model => item.PaymentDone, new { @onclick = "return false;" })
-                    <span class="checkmark"></span>
-                </label>
-            }*@
-            </td>
-            <td>
-                <button type="button" onclick="window.open('@Url.Action("FileViewer", new { id=item.Id } )')" @*onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')"*@>
-                    Открыть счет
-                </button>
-                @*@Html.DisplayFor(modelItem => item.DocumentUrl)*@
-            </td>
-            <td>
-                <a href='@Url.Action("Edit", new { id = item.Id })'>
-                    <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
-                </a>
-                @if (item.InvoiceChecked != true)
-                {
-                    <a href='@Url.Action("Delete", new { id = item.Id })'>
-                        <img src='~/pictures/icons8-delete-2.png' alt='Удалить' title='Удалить' />
+
+                </td>
+                <td>
+                    <button type="button" onclick="window.open('@Url.Action("FileViewer", new { id = item.Id })')" @*onclick="window.open('@Url.Action("GetFileUrl", new { id=item.Id } )')"*@>
+                        Открыть счет
+                    </button>
+                </td>
+                <td>
+                    <a href='@Url.Action("Edit", new { id = item.Id })'>
+                        <img src="~/pictures/icons8-pencil-50.png" alt="Редактировать" title="Редактировать" />
                     </a>
-                }
-                else
-                {
-                    <a href='@Url.Action("Delete", new { id = item.Id })' onclick="event.preventDefault(); alert('Удаление не возможно пока документ проверен и подписан в оплату.')">
-                        <img src='~/pictures/CanNotRemove.png' alt='Удалить не возможно' title='Удаление запрещено' />
-                    </a>
-                }
-            </td>
-        </tr>
-
+                    @if (item.InvoiceChecked != true)
+                    {
+                        <a href='@Url.Action("Delete", new { id = item.Id })'>
+                            <img src='~/pictures/icons8-delete-2.png' alt='Удалить' title='Удалить' />
+                        </a>
+                    }
+                    else
+                    {
+                        <a href='@Url.Action("Delete", new { id = item.Id })' onclick="event.preventDefault(); alert('Удаление не возможно пока документ проверен и подписан в оплату.')">
+                            <img src='~/pictures/CanNotRemove.png' alt='Удалить не возможно' title='Удаление запрещено' />
+                        </a>
+                    }
+                </td>
+            </tr>
         }
     </table>
 </div>
+<div style="width: 100%; text-align: center">
+    Количество платежей на странице:
+    <select name="paymentsAmountSelect" onchange="if (this.selectedIndex) getIndex(this);">
+        <option selected="selected">@Model.PageInfo.PageSize</option>
+        <option value="100">100</option>
+        <option value="150">150</option>
+        <option value="200">200</option>
+    </select>
+</div>
+<div id="pageNumber">
+    @for (int i = 1; i < Model.PageInfo.TotalPages + 1; i++)
+    {
+        if (Model.PageInfo.PageNumber == i)
+        {
+            <a class="btn-primary btn btn-default pagination_button_style selected" href='@Url.Action("Index", new { pageNumber = i })'> @i </a>
+        }
+        else
+        {
+            <a class="btn btn-default pagination_button_style" href='@Url.Action("Index", new { pageNumber = i, itemsOnView = Model.PageInfo.PageSize })'> @i </a>
+        }
+    }
+</div>
+<script>
+    function getIndex(selection) {
+        var val = selection.value;
+        var url = "/PaymentStatements/Index?pageNumber=1&itemsOnView=" + selection.value;
+        window.location.href = url; 
+        //var xmlHttp = new XMLHttpRequest();
+        //xmlHttp.open("GET", url, false); // false for synchronous request
+        //xmlHttp.send(null);
+        //return (xmlHttp.responseText);
+        //var result = $.get(url, function () {
+        //    alert("success");
+        //})
+    }
+
+</script>
+
+<script>
+    var currentLink = window.location.toString().split('/');
+    var pageName = currentLink[currentLink.length - 1];
+
+    switch (pageName) {
+        case 'Index': document.getElementById('main').classList.add('isActive');
+    }
+
+</script>
 <script>
     $(function () {
         $("#InvoiceDate").datepicker(
@@ -286,26 +374,18 @@
         var status = $(e.target).is(":checked");
         var tagDelete = $(e.target).closest("td").next("td").next("td").next("td").next("td").children()[1];
             if (status == true) {
-                tagDelete.innerHTML = "<img src='/pictures/CanNotRemove.png' alt= 'Удалить не возможно' title= 'Удаление запрещено' />";
+                tagDelete.innerHTML = "<img src='/pictures/CanNotRemove.png' alt='Удалить не возможно' title='Удаление запрещено' />";
                 tagDelete.onclick = function (e) {
                     e.preventDefault();
                     alert('Удаление не возможно пока документ проверен и подписан в оплату.');
                 };
             }
             else {
-                //var onclick = tagDelete.attributes[1].nodeValue;
-                //onclick = null;
                 var targetId = 'parseInt($(e.target).attr("id"))';
                 tagDelete.innerHTML = "<img src='/pictures/icons8-delete-2.png' alt='Удалить' title='Удалить' />";
                 tagDelete.onclick = function () {
-
                 };
             }
-
-
-            //var groupCheckboxes = $('#' + id).find('.check-box');
-            //var el = groupCheckboxes[1];
-            //alert(groupCheckboxes[0]);
 
             var NextCheckboxStatus = $('#' + id + ' input[name="item.PaymentApproved"]').is(":checked");
 
@@ -323,7 +403,7 @@
             }
             else {
                 $(e.target).prop("checked", true);
-                alert("Изменение статуса запрещено. Для изменения статуса данного этапа, снимите с проводки следующий этап. ")
+                alert("Изменение статуса запрещено. Для изменения статуса данного этапа, снимите с проводки следующий этап. Изменение статуса запрещено. Для изменения статуса данного этапа, снимите с проводки следующий этап. ")
             }
     })
 
@@ -341,7 +421,7 @@
             if (paymentDoneCheckBox.hasClass('alerts-border')) {
                 paymentDoneCheckBox.removeClass('alerts-border');
                 $($("#" + id).children()[5]).removeClass('alerts-font');
-            }            
+            }
             else if ($("#" + id).children()[5].innerText != "0,00 грн") {
                 paymentDoneCheckBox.addClass('alerts-border');
                 var tdSummToPay = $("#" + id).children()[5];
@@ -393,6 +473,34 @@
     })
 
 </script>
+<script>
+    var CommentNameAutocomplete = $("#findByComment").autocomplete({
+        source: function (request, response) {
+            var request = $("#findByComment").val();
+            $.ajax({
+                url: '/PaymentStatements/GetPaymentsByComment/',
+                type: "POST",
+                dataType: "json",
+                data: {
+                    request: request,
+                },
+                success: function (data) {
+                    response($.map(data, function (item) {
+                        return { label: item };
+                    }))
+                },
+                error: function (data) {
+                    alert('Нет связи с базой данных');
+                }
+            })
+        },
+        select: function (event, ui) {
+            var comment = ui.item.label;
+            //alert("select" + companyId);
+            window.open('/PaymentStatements/PaymentsByComment/?comment=' + comment);
+        },
+    });
+</script>
 
 <script>
     $(document).ready(function () {
@@ -404,7 +512,7 @@
                 var request = $("#findByCompany").val();
                 $.ajax({
                     url: '/PaymentStatements/GetCompaniesByName/',
-                    type: "POST", //Типа HTML-запроса
+                    type: "POST",
                     dataType: "json",
                     data: {
                         request: request,
@@ -412,7 +520,7 @@
                     success: function (data) {
                         response($.map(data, function (item) {
                             return { label: item.name, id: item.id };
-                        }))                        
+                        }))
                     },
                     error: function () {
                         alert('Нет связи с базой данных');

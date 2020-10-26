@@ -1,0 +1,97 @@
+﻿@model List<Finance.Models.DetailCalculation>
+
+@{
+    ViewBag.Title = "GetDetailCalculationIfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .inline {
+        display: inline-block;
+        margin: 10px;
+    }
+    .text_to_right{
+        align-content: right;
+    }
+</style>
+
+<h2>Движение по детали: @ViewBag.DetailName (@Model[0].Detail.DetailLength * @Model[0].Detail.DetailWidth * @Model[0].Calculation.SheetThickness мм.)</h2>
+
+<input type="button" value="Все расcчеты" onclick="location.href='@Url.Action("GetAllCalculations", "SheetDetailsCalculation")'" />
+<input type="button" value="Все детали" onclick="location.href='@Url.Action("GetAllDetails", "SheetDetailsCalculation")'" />
+<p>
+    @Html.ActionLink("Создать новый", "Index")
+</p>
+<div>
+    <div class="inline">
+        Минимальная цена детали -
+    </div>
+    <div class="inline text_to_right">
+        @ViewBag.MinPrice грн.
+    </div>
+</div>
+
+<div>
+    <div class="inline">
+        Максимальная цена детали -
+    </div>
+    <div class="inline text_to_right">
+        @ViewBag.MaxPrice грн.
+    </div>
+</div>
+
+<div>
+    <div class="inline">
+        Средняя цена детали -
+    </div>
+    <div class="inline text_to_right">
+        @ViewBag.AvarageDetailPrice грн.
+    </div>
+</div>
+
+
+<table class="table">
+    <tr>
+        <th>
+            № Счета поставщика
+        </th>
+        <th>
+            Дата счета
+        </th>
+        <th>
+            Кол-во шт.
+        </th>
+        <th>
+            Цена грн.
+        </th>
+        <th>
+            Коэф.отхода
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calculation.InvoiceNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calculation.InvoiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DetailPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Calculation.WasteCoeficcient)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>*@
+        </tr>
+    }
+
+</table>

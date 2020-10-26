@@ -43,7 +43,23 @@
             @Html.LabelFor(model => model.nds, "Плательщик НДС", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.nds)
+                    @Html.DropDownList("ndsDropDown", new SelectList(new string[] { "Да", "Нет" }), "Выберите значение")
+                    @*@Html.DropDownList("nds", new SelectList(new List<SelectListItem> {
+                        new SelectListItem { Selected = true, Value = "1", Text = "Да" },
+                        new SelectListItem { Selected = false, Value = "0", Text = "Нет"}
+                     }), "Выберите значение")*@
+                    <input hidden name="nds" id="nds" value="Выберите значение" />
+                    <script>
+                        $("#ndsDropDown").on("change", function () {
+                            if ($("#ndsDropDown").val() == "Нет")
+                                $("#nds").val(0)
+                            else if ($("#ndsDropDown").val() == "Да")
+                                $("#nds").val(1);
+                            else
+                                $("#nds").val('Выберите значение');
+                        })
+                    </script>
+                    @*@Html.DropDownListFor(model => model.nds, ViewBag.nds as SelectList, "Выберите значение ")*@
                     @Html.ValidationMessageFor(model => model.nds, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -183,6 +199,12 @@
                 return true;
             }
         })
+        let ndsValue = $("#nds").val();
+        if (ndsValue != 0 && ndsValue != 1) {
+            alert('Выберите значение плательщика НДС.');
+            return;
+        }
+
         if (searchRes[0] != null)
             return;
 
@@ -204,7 +226,7 @@
 
             },
             error: function () {
-                alert('error');
+                alert('error CreateKltForm');
             }
         })
 
@@ -214,7 +236,7 @@
 
 
 <script type="text/javascript">
-   
+    var SearchResult;
 
     $(document).ready(function () {
         $("#name").autocomplete({

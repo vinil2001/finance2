@@ -27,11 +27,11 @@ namespace Finance.Controllers
          SELECT  TABLE_NAME, TABLE_ROWS
          FROM information_schema.TABLES
         */
-        static List<IncomingsFromOrestdb> UnionOrestEntiry;
+        static List<BankTransactionsFromOrestdb> UnionOrestEntiry;
 
-        public List<IncomingsFromOrestdb> ReturnAllIncomingsFromOrestDb()
+        public List<BankTransactionsFromOrestdb> ReturnAllIncomingsFromOrestDb()
         {
-            return dbOrest.Database.SqlQuery<IncomingsFromOrestdb>(
+            return dbOrest.Database.SqlQuery<BankTransactionsFromOrestdb>(
                    @"SELECT  bkh.id AS BankIncomingId, bkh.ndoc AS DocumentNumbeInOrestDb, bkh.curs AS CurrencyRate, NULL AS PaymentSum, bkh.sd AS TotalPaymentSumm, bkh.ncht AS InvoiceNumber, bkh.datd AS DocumentCreated, bkh.dusr AS DucumentEdited, 
                    bkh.klt AS PayerId, bkh.comt AS Comment, klt.name AS NameKlt, bank.name AS NameBank, '0' AS type
                    FROM      bkh INNER JOIN
@@ -50,8 +50,9 @@ namespace Finance.Controllers
         // GET: Incomings
         public ActionResult Index()
         {
-            UnionOrestEntiry = ReturnAllIncomingsFromOrestDb();
-            return View(UnionOrestEntiry.Where(a => a.DocumentCreated >= DateTime.Today.AddMonths(-1) && a.DocumentCreated <= DateTime.Today));
+            UnionOrestEntiry = ReturnAllIncomingsFromOrestDb().OrderByDescending(i=>i.BankIncomingId).Take(100).ToList();
+            //return View(UnionOrestEntiry.Where(a => a.DocumentCreated >= DateTime.Today.AddMonths(-1) && a.DocumentCreated <= DateTime.Today));
+            return View(UnionOrestEntiry);
         }
 
         public PartialViewResult SearchIncoming(string IncomingDataFrom, string IncomingDataTo, string searchRequest = null)

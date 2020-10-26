@@ -1,4 +1,4 @@
-﻿@model Finance.Models.Bank
+﻿@model Finance.bank
 
 @{
     ViewBag.Title = "Details";
@@ -8,28 +8,36 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Bank</h4>
+    <h4>bank</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.BankName)
+            @Html.DisplayNameFor(model => model.name)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BankName)
+            @Html.DisplayFor(model => model.name)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.BankMFO)
+            @Html.DisplayNameFor(model => model.chet)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.BankMFO)
+            @Html.DisplayFor(model => model.chet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mfob)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mfob)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Назад", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

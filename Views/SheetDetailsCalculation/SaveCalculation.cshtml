@@ -1,0 +1,114 @@
+﻿@model Finance.Models.SheetDetailsCalculation
+
+@{
+    ViewBag.Title = "CalculationResults";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Рассчет №@Model.Id успешно сохранен</h2>
+@Html.DisplayName("Дата расчета ")@Model.CalculationDate.ToString("MM/dd/yyyy")
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Номер счета")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvoiceNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Дата счета")
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.InvoiceDate)*@
+            @Model.InvoiceDate.ToString("MM/dd/yyyy")
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayName("Стоимость метериала")
+        </dt>
+
+        <dd>
+            @{ var materialPriceAsDouble = string.Format("{0:0.00}", Model.MaterialPrice); }
+            @Html.DisplayFor(model => materialPriceAsDouble) грн.
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Стоимость порезки")
+        </dt>
+
+        <dd>
+            @{ var workPriceAsDouble = string.Format("{0:0.00}", Model.CuttingPrice); }
+            @Html.DisplayFor(model => workPriceAsDouble) грн.
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Площадь листа")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area) м.кв.
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Толщина листа")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SheetThickness) мм.
+        </dd>
+        <br />
+        <dt>
+            @Html.DisplayName("Коэфициент отхода")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WasteCoeficcient)
+        </dd>
+
+        @*<dt>
+                @Html.DisplayName("Дата расчета")
+            </dt>*@
+
+        @*<dd>
+                @Model.CalculationDate.ToString("MM/dd/yyyy")
+                @Html.DisplayFor(model => model.CalculationDate)
+            </dd>*@
+        <br />
+    </dl>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col"> Название детали </th>
+            <th scope="col"> Длинна </th>
+            <th scope="col"> Ширина </th>
+            <th scope="col"> Кол-во </th>
+            <th scope="col"> Цена (без НДС) </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model.Details)
+        {
+            <tr>
+                <th scope="row">@i.DetailNumber</th>
+                <td>@i.DetailName</td>
+                <td>@i.DetailLength</td>
+                <td>@i.DetailWidth</td>
+                <td>@i.DetailAmount</td>
+                <td>@i.DetailPrice</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Назад", "Index")
+</p>
